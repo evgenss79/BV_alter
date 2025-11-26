@@ -1,0 +1,38 @@
+{
+  "aroma_diffusers": {
+    "name": {"en": "Aroma diffusers"},
+    "description": {"en": "High concentration reed diffusers that envelope your interiors with hotel-worthy ambiance."}
+  },
+  "home_perfume": {
+    "name": {"en": "Home perfume"},
+    "description": {"en": "Room sprays to instantly refresh any corner with your favorite By Velcheva accords."}
+  },
+  "scented_candles": {
+    "name": {"en": "Scented candles"},
+    "description": {"en": "Plant-based wax candles with deep fragrances and soft golden light."}
+  },
+  "car_perfume": {
+    "name": {"en": "Car perfume"},
+    "description": {"en": "Elevate every drive with elegant aromas crafted for vehicles."}
+  },
+  "limited_edition": {
+    "name": {"en": "Limited edition"},
+    "description": {"en": "Special creations inspired by iconic destinations, produced in small batches."}
+  },
+  "textile_perfume": {
+    "name": {"en": "Textile perfume"},
+    "description": {"en": "Gentle mists to refresh linens, curtains, and upholstery without staining."}
+  },
+  "gift_sets": {
+    "name": {"en": "Gift sets"},
+    "description": {"en": "Curate bespoke selections for memorable gifting."}
+  },
+  "aroma_marketing": {
+    "name": {"en": "Aroma-marketing"},
+    "description": {"en": "Signature scents tailored for boutiques, showrooms, and hotels."}
+  },
+  "accessories": {
+    "name": {"en": "Accessories"},
+    "description": {"en": "Elegant tools and accents to elevate your ritual."}
+  }
+}
