@@ -1,0 +1,91 @@
+{
+  "meta": {"title": "NICHEHOME.CH | By Velcheva"},
+  "nav": {
+    "home": "Home",
+    "catalog": "Catalog",
+    "about": "About",
+    "blog": "Blog",
+    "contacts": "Contacts"
+  },
+  "home": {
+    "headline": "Luxury home fragrances inspired by boutique hotels.",
+    "subtext": "Discover premium diffusers, candles, and perfumes crafted for Switzerland and Liechtenstein.",
+    "highlight": "Fine materials, high concentration aromas, and a calm aesthetic for your sanctuary.",
+    "swiss": "CHF • Ships from Switzerland",
+    "categories": "Featured collection"
+  },
+  "actions": {
+    "view": "View product",
+    "explore": "Explore",
+    "add_to_cart": "Add to cart",
+    "select": "Select",
+    "add": "Add",
+    "notify": "Notify me"
+  },
+  "categories": {
+    "enjoy": "Indulge in curated aromas and volumes tailored for your space."
+  },
+  "product": {
+    "fragrance": "Select your signature fragrance"
+  },
+  "gift": {
+    "title": "Create your bespoke gift set",
+    "subtitle": "Choose up to three different products and aromas. We'll apply a 5% bundle reward automatically.",
+    "slot": "Slot",
+    "add": "Add gift set to cart"
+  },
+  "cart": {
+    "title": "Your cart",
+    "item": "Item",
+    "qty": "Qty",
+    "price": "Price",
+    "total": "Total",
+    "checkout": "Proceed to checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Shipping address",
+    "comment": "Order notes",
+    "payment": "Payment method",
+    "submit": "Place order",
+    "thanks": "Thank you. We received your order request."
+  },
+  "footer": {
+    "delivery": "Delivery & Returns",
+    "legal": "Privacy & Terms",
+    "aroma": "Aroma-marketing",
+    "follow": "Follow"
+  },
+  "pages": {
+    "coming": "Content coming soon."
+  },
+  "products": {
+    "diffuser_classic_01": {
+      "name": "Signature Reed Diffuser",
+      "desc": "Elegant glass bottle with fiber reeds and high saturation oils."
+    },
+    "home_perfume_01": {
+      "name": "Interior Perfume",
+      "desc": "Fine mist room spray to refresh spaces instantly."
+    },
+    "candle_limited": {
+      "name": "Limited Scented Candle",
+      "desc": "Plant-based wax candle inspired by world destinations."
+    },
+    "car_perfume_01": {
+      "name": "Car Perfume",
+      "desc": "Compact aroma accessory for refined drives."
+    },
+    "textile_perfume_01": {
+      "name": "Textile Perfume",
+      "desc": "Soft fabric-safe spray for linens and upholstery."
+    },
+    "accessory_spoons": {
+      "name": "Decor Spoon Accessory",
+      "desc": "Minimal metal spoon for elegant candle care."
+    }
+  }
+}
