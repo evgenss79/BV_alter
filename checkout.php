@@ -58,7 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div><label><?php echo I18N::t('ui.checkout.postal_code'); ?></label><input name="postal_code" required></div>
                 <div><label><?php echo I18N::t('ui.checkout.city'); ?></label><input name="city" required></div>
             </div>
-            <div class="form-row"><label><?php echo I18N::t('ui.checkout.country'); ?></label><input name="country" value="Switzerland"></div>
+            <div class="form-row"><label><?php echo I18N::t('ui.checkout.country'); ?></label><input name="country" value="<?php echo I18N::t('ui.checkout.country_default'); ?>">
+            </div>
             <div class="form-row checkbox-row">
                 <label><input type="checkbox" name="billing_enabled" value="1"> <?php echo I18N::t('ui.checkout.billing_toggle'); ?></label>
             </div>
@@ -84,9 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-row">
                 <label><?php echo I18N::t('ui.checkout.payment'); ?></label>
                 <select name="payment">
-                    <option value="twint">TWINT</option>
-                    <option value="card">Credit Card (soon)</option>
-                    <option value="paypal">PayPal (soon)</option>
+                    <option value="twint"><?php echo I18N::t('ui.checkout.payment_twint'); ?></option>
+                    <option value="card"><?php echo I18N::t('ui.checkout.payment_card'); ?></option>
+                    <option value="paypal"><?php echo I18N::t('ui.checkout.payment_paypal'); ?></option>
                 </select>
             </div>
             <button class="btn btn--gold" type="submit"><?php echo I18N::t('ui.checkout.submit'); ?></button>

@@ -1,28 +1,95 @@
 {
   "about": {
-    "title": {"en": "About NICHEHOME.CH"},
-    "body": {"en": "By Velcheva crafts luxury fragrances that mirror boutique hotel atmospheres. NICHEHOME.CH curates these creations for Switzerland and Liechtenstein."}
+    "title": {"en": "About us", "de": "About us", "fr": "About us", "it": "About us", "ru": "About us", "ukr": "About us"},
+    "body": {
+      "en": "By Velcheva crafts luxury fragrances that mirror boutique hotel atmospheres. NICHEHOME.CH curates these creations for Switzerland and Liechtenstein.",
+      "de": "By Velcheva crafts luxury fragrances that mirror boutique hotel atmospheres. NICHEHOME.CH curates these creations for Switzerland and Liechtenstein.",
+      "fr": "By Velcheva crafts luxury fragrances that mirror boutique hotel atmospheres. NICHEHOME.CH curates these creations for Switzerland and Liechtenstein.",
+      "it": "By Velcheva crafts luxury fragrances that mirror boutique hotel atmospheres. NICHEHOME.CH curates these creations for Switzerland and Liechtenstein.",
+      "ru": "By Velcheva crafts luxury fragrances that mirror boutique hotel atmospheres. NICHEHOME.CH curates these creations for Switzerland and Liechtenstein.",
+      "ukr": "By Velcheva crafts luxury fragrances that mirror boutique hotel atmospheres. NICHEHOME.CH curates these creations for Switzerland and Liechtenstein."
+    }
   },
   "contacts": {
-    "title": {"en": "Contacts"},
-    "body": {"en": "Email: info@nichehome.ch\nService area: Switzerland & Liechtenstein"}
+    "title": {"en": "Contacts", "de": "Contacts", "fr": "Contacts", "it": "Contacts", "ru": "Contacts", "ukr": "Contacts"},
+    "body": {
+      "en": "Email: info@nichehome.ch\nService area: Switzerland & Liechtenstein",
+      "de": "Email: info@nichehome.ch\nService area: Switzerland & Liechtenstein",
+      "fr": "Email: info@nichehome.ch\nService area: Switzerland & Liechtenstein",
+      "it": "Email: info@nichehome.ch\nService area: Switzerland & Liechtenstein",
+      "ru": "Email: info@nichehome.ch\nService area: Switzerland & Liechtenstein",
+      "ukr": "Email: info@nichehome.ch\nService area: Switzerland & Liechtenstein"
+    }
+  },
+  "support": {
+    "title": {"en": "Support", "de": "Support", "fr": "Support", "it": "Support", "ru": "Support", "ukr": "Support"},
+    "body": {
+      "en": "Need help with orders, delivery, or product care? Email support@nichehome.ch and we will respond within one business day.",
+      "de": "Need help with orders, delivery, or product care? Email support@nichehome.ch and we will respond within one business day.",
+      "fr": "Need help with orders, delivery, or product care? Email support@nichehome.ch and we will respond within one business day.",
+      "it": "Need help with orders, delivery, or product care? Email support@nichehome.ch and we will respond within one business day.",
+      "ru": "Need help with orders, delivery, or product care? Email support@nichehome.ch and we will respond within one business day.",
+      "ukr": "Need help with orders, delivery, or product care? Email support@nichehome.ch and we will respond within one business day."
+    }
   },
   "delivery-returns": {
-    "title": {"en": "Delivery & Returns"},
-    "body": {"en": "We ship within Switzerland and Liechtenstein. Free shipping over 80 CHF. Returns are accepted on unopened items within 14 days."}
+    "title": {"en": "Delivery & Returns", "de": "Delivery & Returns", "fr": "Delivery & Returns", "it": "Delivery & Returns", "ru": "Delivery & Returns", "ukr": "Delivery & Returns"},
+    "body": {
+      "en": "We ship within Switzerland and Liechtenstein. Free shipping over 80 CHF. Returns are accepted on unopened items within 14 days.",
+      "de": "We ship within Switzerland and Liechtenstein. Free shipping over 80 CHF. Returns are accepted on unopened items within 14 days.",
+      "fr": "We ship within Switzerland and Liechtenstein. Free shipping over 80 CHF. Returns are accepted on unopened items within 14 days.",
+      "it": "We ship within Switzerland and Liechtenstein. Free shipping over 80 CHF. Returns are accepted on unopened items within 14 days.",
+      "ru": "We ship within Switzerland and Liechtenstein. Free shipping over 80 CHF. Returns are accepted on unopened items within 14 days.",
+      "ukr": "We ship within Switzerland and Liechtenstein. Free shipping over 80 CHF. Returns are accepted on unopened items within 14 days."
+    }
   },
   "legal": {
-    "title": {"en": "Privacy & Terms"},
-    "body": {"en": "We respect your privacy and only use data to process orders and provide service."}
+    "title": {"en": "Privacy & Terms", "de": "Privacy & Terms", "fr": "Privacy & Terms", "it": "Privacy & Terms", "ru": "Privacy & Terms", "ukr": "Privacy & Terms"},
+    "body": {
+      "en": "We respect your privacy and only use data to process orders and provide service.",
+      "de": "We respect your privacy and only use data to process orders and provide service.",
+      "fr": "We respect your privacy and only use data to process orders and provide service.",
+      "it": "We respect your privacy and only use data to process orders and provide service.",
+      "ru": "We respect your privacy and only use data to process orders and provide service.",
+      "ukr": "We respect your privacy and only use data to process orders and provide service."
+    }
   },
   "aroma-marketing": {
-    "title": {"en": "Aroma-marketing"},
-    "body": {"en": "Request bespoke scenting for hotels, showrooms, and offices. We tailor intensity, devices, and fragrance families to your brand."}
+    "title": {"en": "Aroma-marketing", "de": "Aroma-marketing", "fr": "Aroma-marketing", "it": "Aroma-marketing", "ru": "Aroma-marketing", "ukr": "Aroma-marketing"},
+    "body": {
+      "en": "Request bespoke scenting for hotels, showrooms, and offices. We tailor intensity, devices, and fragrance families to your brand.",
+      "de": "Request bespoke scenting for hotels, showrooms, and offices. We tailor intensity, devices, and fragrance families to your brand.",
+      "fr": "Request bespoke scenting for hotels, showrooms, and offices. We tailor intensity, devices, and fragrance families to your brand.",
+      "it": "Request bespoke scenting for hotels, showrooms, and offices. We tailor intensity, devices, and fragrance families to your brand.",
+      "ru": "Request bespoke scenting for hotels, showrooms, and offices. We tailor intensity, devices, and fragrance families to your brand.",
+      "ukr": "Request bespoke scenting for hotels, showrooms, and offices. We tailor intensity, devices, and fragrance families to your brand."
+    }
   },
   "blog": {
-    "title": {"en": "Journal"},
-    "body": {"en": "Stories about interiors, scent rituals, and By Velcheva behind the scenes."},
-    "post_title": {"en": "The art of layering home fragrance"},
-    "post_body": {"en": "Begin with a diffuser to set the base, add a candle for glow, and finish with a textile perfume for linens."}
+    "title": {"en": "Journal", "de": "Journal", "fr": "Journal", "it": "Journal", "ru": "Journal", "ukr": "Journal"},
+    "body": {
+      "en": "Stories about interiors, scent rituals, and By Velcheva behind the scenes.",
+      "de": "Stories about interiors, scent rituals, and By Velcheva behind the scenes.",
+      "fr": "Stories about interiors, scent rituals, and By Velcheva behind the scenes.",
+      "it": "Stories about interiors, scent rituals, and By Velcheva behind the scenes.",
+      "ru": "Stories about interiors, scent rituals, and By Velcheva behind the scenes.",
+      "ukr": "Stories about interiors, scent rituals, and By Velcheva behind the scenes."
+    },
+    "post_title": {
+      "en": "The art of layering home fragrance",
+      "de": "The art of layering home fragrance",
+      "fr": "The art of layering home fragrance",
+      "it": "The art of layering home fragrance",
+      "ru": "The art of layering home fragrance",
+      "ukr": "The art of layering home fragrance"
+    },
+    "post_body": {
+      "en": "Begin with a diffuser to set the base, add a candle for glow, and finish with a textile perfume for linens.",
+      "de": "Begin with a diffuser to set the base, add a candle for glow, and finish with a textile perfume for linens.",
+      "fr": "Begin with a diffuser to set the base, add a candle for glow, and finish with a textile perfume for linens.",
+      "it": "Begin with a diffuser to set the base, add a candle for glow, and finish with a textile perfume for linens.",
+      "ru": "Begin with a diffuser to set the base, add a candle for glow, and finish with a textile perfume for linens.",
+      "ukr": "Begin with a diffuser to set the base, add a candle for glow, and finish with a textile perfume for linens."
+    }
   }
 }
