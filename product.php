@@ -31,6 +31,7 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
         $v['fragranceCode'] = $v['fragranceCode'] ?? null;
         return $v;
     }, $variants);
+    $initialPrice = $variantPayload[0]['priceLabel'] ?? ($variants[0]['priceCHF'] . ' ' . $currencyLabel);
 ?>
 <section class="section product-detail">
     <div class="section-heading">
@@ -66,8 +67,7 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
                         <label for="fragrance-select-single"><?php echo I18N::t('ui.product.fragrance'); ?></label>
                         <select id="fragrance-select-single" data-single-fragrance>
                             <?php foreach ($fragrances as $code): ?>
-                                <?php $variant = current(array_filter($variants, fn($v) => $v['fragranceCode'] === $code)); ?>
-                                <option value="<?php echo htmlspecialchars($code); ?>"><?php echo htmlspecialchars(I18N::tFragrance($code, 'name')); ?> — <?php echo $variant ? $variant['priceCHF'] . ' ' . $currencyLabel : ''; ?></option>
+                                <option value="<?php echo htmlspecialchars($code); ?>"><?php echo htmlspecialchars(I18N::tFragrance($code, 'name')); ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -77,7 +77,7 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
                 <div class="price-row">
                     <div>
                         <p class="price-label"><?php echo I18N::t('ui.product.price'); ?></p>
-                        <p class="price-value" data-price><?php echo $variants[0]['priceCHF'] . ' ' . $currencyLabel; ?></p>
+                        <p class="price-value" data-price><?php echo $initialPrice; ?></p>
                         <p class="stock-label" data-stock-label></p>
                     </div>
                 </div>

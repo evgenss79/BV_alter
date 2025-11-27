@@ -42,7 +42,7 @@ $navItems = [
     <link rel="stylesheet" href="/assets/css/style.css">
     <script>window.__LANG__ = '<?php echo $currentLang; ?>';</script>
 </head>
-<body>
+<body data-select-label="<?php echo htmlspecialchars(I18N::t('ui.actions.select')); ?>">
 <header class="site-header" id="siteHeader">
     <div class="utility-bar">
         <p class="utility-bar__item"><?php echo I18N::t('ui.utility.shipping'); ?></p>
@@ -70,6 +70,10 @@ $navItems = [
             </a>
             <div class="lang-dropdown">
                 <form method="get" action="" class="lang-dropdown__form">
+                    <?php foreach ($_GET as $paramKey => $paramValue): ?>
+                        <?php if ($paramKey === 'lang') { continue; } ?>
+                        <input type="hidden" name="<?php echo htmlspecialchars($paramKey); ?>" value="<?php echo htmlspecialchars($paramValue); ?>">
+                    <?php endforeach; ?>
                     <select name="lang" onchange="this.form.submit()" aria-label="<?php echo I18N::t('ui.nav.language'); ?>">
                         <?php foreach ($supportedLanguages as $lang): ?>
                             <option value="<?php echo $lang; ?>" <?php echo $lang === $currentLang ? 'selected' : ''; ?>><?php echo strtoupper($lang); ?></option>

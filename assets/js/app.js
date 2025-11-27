@@ -1,4 +1,5 @@
 (function(){
+  const selectLabel = (document.body && document.body.dataset.selectLabel) || 'Select';
   const productDataEl = document.getElementById('product-data');
   if (productDataEl) {
     const data = JSON.parse(productDataEl.textContent);
@@ -67,6 +68,18 @@
     updateVariant();
   }
 
+  document.querySelectorAll('select[data-variant-select]').forEach((select) => {
+    const priceTarget = document.getElementById(select.dataset.target);
+    const updatePrice = () => {
+      const option = select.selectedOptions[0];
+      if (priceTarget && option && option.dataset.price) {
+        priceTarget.textContent = option.dataset.price;
+      }
+    };
+    select.addEventListener('change', updatePrice);
+    updatePrice();
+  });
+
   // Gift set configurator
   const giftRows = document.querySelectorAll('.gift-row');
   const productsDataEl = document.getElementById('products-data');
@@ -79,8 +92,8 @@
 
       categorySelect.addEventListener('change', function(){
         const cat = this.value;
-        productSelect.innerHTML = '<option value="">Select</option>';
-        variantSelect.innerHTML = '<option value="">Select</option>';
+        productSelect.innerHTML = `<option value="">${selectLabel}</option>`;
+        variantSelect.innerHTML = `<option value="">${selectLabel}</option>`;
         products.filter(p => p.category === cat).forEach(p => {
           const opt = document.createElement('option');
           opt.value = p.id;
@@ -91,7 +104,7 @@
 
       productSelect.addEventListener('change', function(){
         const prod = products.find(p => p.id === this.value);
-        variantSelect.innerHTML = '<option value="">Select</option>';
+        variantSelect.innerHTML = `<option value="">${selectLabel}</option>`;
         if (prod) {
           prod.variants.forEach(v => {
             const opt = document.createElement('option');
@@ -99,7 +112,8 @@
             if (v.volume) labelParts.push(v.volume);
             if (v.fragrance) labelParts.push(v.fragrance);
             opt.value = v.sku;
-            opt.textContent = (labelParts.join(' / ') || v.sku) + ' — ' + v.priceCHF + ' CHF';
+            opt.textContent = labelParts.join(' / ') || v.sku;
+            opt.dataset.price = v.priceCHF;
             variantSelect.appendChild(opt);
           });
         }
