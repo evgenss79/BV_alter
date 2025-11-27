@@ -10,9 +10,11 @@
     "language": "Language",
     "home": "Home",
     "catalog": "Catalog",
+    "gifts": "Gifts",
     "gift_sets": "Gift sets",
-    "about": "About",
-    "contacts": "Contacts"
+    "about": "About us",
+    "contacts": "Contacts",
+    "support": "Support"
   },
   "actions": {
     "view": "View product",
@@ -74,6 +76,10 @@
     "billing": "Billing address",
     "comment": "Comment",
     "payment": "Payment method",
+    "payment_twint": "TWINT",
+    "payment_card": "Credit Card (soon)",
+    "payment_paypal": "PayPal (soon)",
+    "country_default": "Switzerland",
     "submit": "Place order",
     "field_required": "This field is required",
     "invalid_email": "Please enter a valid email"
