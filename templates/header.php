@@ -69,17 +69,16 @@ $navItems = [
                 <span>(<span data-cart-count><?php echo count(Cart::get()); ?></span> <?php echo I18N::t('ui.cart.items'); ?>)</span>
             </a>
             <div class="lang-dropdown">
-                <form method="get" action="" class="lang-dropdown__form">
-                    <?php foreach ($_GET as $paramKey => $paramValue): ?>
-                        <?php if ($paramKey === 'lang') { continue; } ?>
-                        <input type="hidden" name="<?php echo htmlspecialchars($paramKey); ?>" value="<?php echo htmlspecialchars($paramValue); ?>">
+                <?php $currentQuery = $_GET; ?>
+                <div class="lang-dropdown__links" aria-label="<?php echo I18N::t('ui.nav.language'); ?>">
+                    <?php foreach ($supportedLanguages as $lang): ?>
+                        <?php $query = http_build_query(array_merge($currentQuery, ['lang' => $lang])); ?>
+                        <a href="?<?php echo htmlspecialchars($query); ?>" class="<?php echo $lang === $currentLang ? 'is-active' : ''; ?>"><?php echo strtoupper($lang); ?></a>
+                        <?php if ($lang !== end($supportedLanguages)): ?>
+                            <span class="lang-separator">|</span>
+                        <?php endif; ?>
                     <?php endforeach; ?>
-                    <select name="lang" onchange="this.form.submit()" aria-label="<?php echo I18N::t('ui.nav.language'); ?>">
-                        <?php foreach ($supportedLanguages as $lang): ?>
-                            <option value="<?php echo $lang; ?>" <?php echo $lang === $currentLang ? 'selected' : ''; ?>><?php echo strtoupper($lang); ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </form>
+                </div>
             </div>
         </div>
     </div>
