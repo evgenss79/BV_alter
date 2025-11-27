@@ -1,0 +1,28 @@
+{
+  "about": {
+    "title": {"en": "About NICHEHOME.CH"},
+    "body": {"en": "By Velcheva crafts luxury fragrances that mirror boutique hotel atmospheres. NICHEHOME.CH curates these creations for Switzerland and Liechtenstein."}
+  },
+  "contacts": {
+    "title": {"en": "Contacts"},
+    "body": {"en": "Email: info@nichehome.ch\nService area: Switzerland & Liechtenstein"}
+  },
+  "delivery-returns": {
+    "title": {"en": "Delivery & Returns"},
+    "body": {"en": "We ship within Switzerland and Liechtenstein. Free shipping over 80 CHF. Returns are accepted on unopened items within 14 days."}
+  },
+  "legal": {
+    "title": {"en": "Privacy & Terms"},
+    "body": {"en": "We respect your privacy and only use data to process orders and provide service."}
+  },
+  "aroma-marketing": {
+    "title": {"en": "Aroma-marketing"},
+    "body": {"en": "Request bespoke scenting for hotels, showrooms, and offices. We tailor intensity, devices, and fragrance families to your brand."}
+  },
+  "blog": {
+    "title": {"en": "Journal"},
+    "body": {"en": "Stories about interiors, scent rituals, and By Velcheva behind the scenes."},
+    "post_title": {"en": "The art of layering home fragrance"},
+    "post_body": {"en": "Begin with a diffuser to set the base, add a candle for glow, and finish with a textile perfume for linens."}
+  }
+}
