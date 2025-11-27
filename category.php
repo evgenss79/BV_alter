@@ -2,7 +2,7 @@
 <?php
 $slug = $_GET['slug'] ?? '';
 $categoryName = I18N::tCategory($slug, 'name');
-$categoryDesc = I18N::tCategory($slug, 'description');
+$categoryDesc = I18N::tCategory($slug, 'short') ?: I18N::tCategory($slug, 'description');
 $products = Products::byCategory($slug);
 ?>
 <section class="hero">
