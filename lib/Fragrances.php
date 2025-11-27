@@ -63,6 +63,10 @@ class Fragrances {
         return array_values(array_diff(self::$allCodes, $exclude));
     }
 
+    public static function allowedFragrances(string $categorySlug): array {
+        return self::getAllowedFragrancesByCategory($categorySlug);
+    }
+
     public static function getImagePath(string $code): string {
         $fileName = self::$fragranceImages[$code] ?? strtoupper($code) . '.jpg';
         return '/assets/img/fragrances/' . $fileName;

@@ -10,13 +10,13 @@ class I18N {
     private static $fragrances = [];
     private static $pages = [];
 
-    public static function init(array $config): void {
+    public static function init(array $config, ?string $lang = null): void {
         self::$defaultLang = $config['defaultLanguage'] ?? 'en';
         self::$supported = $config['supportedLanguages'] ?? [self::$defaultLang];
         if (!in_array(self::$defaultLang, self::$supported, true)) {
             self::$supported[] = self::$defaultLang;
         }
-        $requested = $_GET['lang'] ?? ($_COOKIE['lang'] ?? ($_SESSION['lang'] ?? self::$defaultLang));
+        $requested = $lang ?? ($_GET['lang'] ?? ($_COOKIE['lang'] ?? ($_SESSION['lang'] ?? self::$defaultLang)));
         self::setLanguage($requested);
         self::$ui = self::loadFile('ui');
         self::$categories = self::loadFile('categories');
@@ -53,14 +53,43 @@ class I18N {
 
     public static function t(string $key, string $fallback = ''): string {
         $segments = explode('.', $key);
-        $value = self::resolve(self::$ui, $segments);
-        if ($value === null) {
-            $value = self::resolve(self::loadFile('ui'), $segments);
+        $scope = array_shift($segments);
+
+        switch ($scope) {
+            case 'ui':
+                $value = self::resolve(self::$ui, $segments);
+                if ($value === null) {
+                    $value = self::resolve(self::loadFile('ui'), $segments);
+                }
+                if ($value === null) {
+                    $value = self::resolve(self::loadFile('ui', self::$defaultLang), $segments);
+                }
+                return $value ?? $fallback;
+            case 'category':
+                $value = self::resolve(self::$categories, $segments);
+                if ($value === null) {
+                    $value = self::resolve(self::loadFile('categories', self::$defaultLang), $segments);
+                }
+                return $value ?? $fallback;
+            case 'page':
+                $value = self::resolve(self::$pages, $segments);
+                if ($value === null) {
+                    $value = self::resolve(self::loadFile('pages', self::$defaultLang), $segments);
+                }
+                return $value ?? $fallback;
+            case 'fragrance':
+                $value = self::resolve(self::$fragrances, $segments);
+                if ($value === null) {
+                    $value = self::resolve(self::loadFile('fragrances', self::$defaultLang), $segments);
+                }
+                return $value ?? $fallback;
+            default:
+                $value = self::resolve(self::$ui, array_merge([$scope], $segments));
+                if ($value === null) {
+                    $value = self::resolve(self::loadFile('ui', self::$defaultLang), array_merge([$scope], $segments));
+                }
+                return $value ?? $fallback;
         }
-        if ($value === null) {
-            $value = $fallback !== '' ? $fallback : self::resolve(self::loadFile('ui', self::$defaultLang), $segments);
-        }
-        return $value ?? $fallback;
     }
 
     public static function tCategory(string $categoryKey, string $field): string {

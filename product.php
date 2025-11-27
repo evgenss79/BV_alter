@@ -9,7 +9,7 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
 <?php if ($product): ?>
 <?php
     $categorySlug = $product['category'];
-    $allowedFragrances = Fragrances::getAllowedFragrancesByCategory($categorySlug);
+    $allowedFragrances = Fragrances::allowedFragrances($categorySlug);
     $variants = array_values(array_filter($product['variants'], function ($variant) use ($allowedFragrances) {
         return empty($variant['fragranceCode']) || in_array($variant['fragranceCode'], $allowedFragrances, true);
     }));
