@@ -1,5 +1,34 @@
 <?php
 require_once __DIR__ . '/../init.php';
+$currentPage = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '.php');
+if ($currentPage === '' || $currentPage === 'index') {
+    $currentPage = 'about';
+}
+if ($currentPage === 'gift-sets') {
+    $currentPage = 'gifts';
+}
+$navItems = [
+    'catalog' => [
+        'label' => 'ui.nav.catalog',
+        'href' => 'catalog.php',
+    ],
+    'gifts' => [
+        'label' => 'ui.nav.gifts',
+        'href' => 'gift-sets.php',
+    ],
+    'about' => [
+        'label' => 'ui.nav.about',
+        'href' => 'about.php',
+    ],
+    'contacts' => [
+        'label' => 'ui.nav.contacts',
+        'href' => 'contacts.php',
+    ],
+    'support' => [
+        'label' => 'ui.nav.support',
+        'href' => 'support.php',
+    ],
+];
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo htmlspecialchars($currentLang); ?>">
@@ -13,7 +42,7 @@ require_once __DIR__ . '/../init.php';
     <link rel="stylesheet" href="/assets/css/style.css">
     <script>window.__LANG__ = '<?php echo $currentLang; ?>';</script>
 </head>
-<body>
+<body data-select-label="<?php echo htmlspecialchars(I18N::t('ui.actions.select')); ?>">
 <header class="site-header" id="siteHeader">
     <div class="utility-bar">
         <p class="utility-bar__item"><?php echo I18N::t('ui.utility.shipping'); ?></p>
@@ -23,14 +52,15 @@ require_once __DIR__ . '/../init.php';
         <button class="site-header__burger" aria-label="<?php echo I18N::t('ui.nav.toggle'); ?>">
             <span></span><span></span><span></span>
         </button>
-        <a href="/index.php" class="site-header__logo">NICHEHOME.CH</a>
+        <a href="/about.php" class="site-header__logo">NICHEHOME.CH</a>
         <nav class="primary-nav" aria-label="<?php echo I18N::t('ui.nav.main'); ?>">
             <ul class="primary-nav__list">
-                <li class="primary-nav__item"><a class="primary-nav__link" href="/index.php"><?php echo I18N::t('ui.nav.home'); ?></a></li>
-                <li class="primary-nav__item"><a class="primary-nav__link" href="/catalog.php"><?php echo I18N::t('ui.nav.catalog'); ?></a></li>
-                <li class="primary-nav__item"><a class="primary-nav__link" href="/gift-sets.php"><?php echo I18N::t('ui.nav.gift_sets'); ?></a></li>
-                <li class="primary-nav__item"><a class="primary-nav__link" href="/about.php"><?php echo I18N::t('ui.nav.about'); ?></a></li>
-                <li class="primary-nav__item"><a class="primary-nav__link" href="/contacts.php"><?php echo I18N::t('ui.nav.contacts'); ?></a></li>
+                <?php foreach ($navItems as $key => $item): ?>
+                    <?php $isActive = $currentPage === $key; ?>
+                    <li class="primary-nav__item<?php echo $isActive ? ' is-active' : ''; ?>">
+                        <a class="primary-nav__link<?php echo $isActive ? ' primary-nav__link--active' : ''; ?>" href="<?php echo $item['href']; ?>"><?php echo I18N::t($item['label']); ?></a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </nav>
         <div class="site-header__actions">
@@ -40,6 +70,10 @@ require_once __DIR__ . '/../init.php';
             </a>
             <div class="lang-dropdown">
                 <form method="get" action="" class="lang-dropdown__form">
+                    <?php foreach ($_GET as $paramKey => $paramValue): ?>
+                        <?php if ($paramKey === 'lang') { continue; } ?>
+                        <input type="hidden" name="<?php echo htmlspecialchars($paramKey); ?>" value="<?php echo htmlspecialchars($paramValue); ?>">
+                    <?php endforeach; ?>
                     <select name="lang" onchange="this.form.submit()" aria-label="<?php echo I18N::t('ui.nav.language'); ?>">
                         <?php foreach ($supportedLanguages as $lang): ?>
                             <option value="<?php echo $lang; ?>" <?php echo $lang === $currentLang ? 'selected' : ''; ?>><?php echo strtoupper($lang); ?></option>

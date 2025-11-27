@@ -21,15 +21,18 @@ class I18N {
         self::$pages = self::loadFile('pages');
     }
 
-    private static function loadFile(string $name): array {
-        $lang = self::$lang;
+    private static function loadFile(string $name, ?string $lang = null): array {
+        $lang = $lang ?? self::$lang;
         $path = __DIR__ . '/../data/i18n/' . $name . '_' . $lang . '.json';
         $data = DataStore::readJson($path);
-        if (empty($data) && $lang !== self::$defaultLang) {
+
+        if ($lang !== self::$defaultLang) {
             $fallbackPath = __DIR__ . '/../data/i18n/' . $name . '_' . self::$defaultLang . '.json';
-            $data = DataStore::readJson($fallbackPath);
+            $fallback = DataStore::readJson($fallbackPath);
+            $data = array_replace_recursive($fallback, $data);
         }
-        return $data;
+
+        return $data ?: [];
     }
 
     public static function setLanguage(string $lang): void {
@@ -51,21 +54,34 @@ class I18N {
             $value = self::resolve(self::loadFile('ui'), $segments);
         }
         if ($value === null) {
-            $value = $fallback !== '' ? $fallback : self::resolve(self::loadFile('ui'), $segments, self::$defaultLang);
+            $value = $fallback !== '' ? $fallback : self::resolve(self::loadFile('ui', self::$defaultLang), $segments);
         }
         return $value ?? $fallback;
     }
 
     public static function tCategory(string $categoryKey, string $field): string {
-        return self::resolve(self::$categories, [$categoryKey, $field]) ?? '';
+        $value = self::resolve(self::$categories, [$categoryKey, $field]);
+        if ($value === null) {
+            $value = self::resolve(self::loadFile('categories', self::$defaultLang), [$categoryKey, $field]);
+        }
+        return $value ?? '';
     }
 
     public static function tFragrance(string $fragranceKey, string $field): string {
-        return self::resolve(self::$fragrances, [$fragranceKey, $field]) ?? '';
+        $value = self::resolve(self::$fragrances, [$fragranceKey, $field]);
+        if ($value === null) {
+            $value = self::resolve(self::loadFile('fragrances', self::$defaultLang), [$fragranceKey, $field]);
+        }
+        return $value ?? '';
     }
 
     public static function tPage(string $key): string {
-        return self::resolve(self::$pages, explode('.', $key)) ?? '';
+        $segments = explode('.', $key);
+        $value = self::resolve(self::$pages, $segments);
+        if ($value === null) {
+            $value = self::resolve(self::loadFile('pages', self::$defaultLang), $segments);
+        }
+        return $value ?? '';
     }
 
     public static function autoTranslate(string $enText, string $targetLang): string {

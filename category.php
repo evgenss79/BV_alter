@@ -2,7 +2,7 @@
 <?php
 $slug = $_GET['slug'] ?? '';
 $categoryName = I18N::tCategory($slug, 'name');
-$categoryDesc = I18N::tCategory($slug, 'description');
+$categoryDesc = I18N::tCategory($slug, 'short') ?: I18N::tCategory($slug, 'description');
 $products = Products::byCategory($slug);
 ?>
 <section class="hero">
@@ -24,9 +24,21 @@ $products = Products::byCategory($slug);
                 <form method="post" action="/cart.php">
                     <select name="sku" data-variant-select data-target="price-<?php echo $product['id']; ?>">
                         <?php foreach ($product['variants'] as $variant): ?>
-                            <?php $priceLabel = $variant['priceCHF'] . ' ' . $currency; ?>
+                            <?php
+                                $priceLabel = $variant['priceCHF'] . ' ' . $currency;
+                                $labelParts = [];
+                                if (!empty($variant['volume'])) {
+                                    $labelParts[] = $variant['volume'];
+                                }
+                                if (!empty($variant['fragranceCode'])) {
+                                    $labelParts[] = I18N::tFragrance($variant['fragranceCode'], 'name');
+                                }
+                                if (!$labelParts) {
+                                    $labelParts[] = $variant['sku'];
+                                }
+                            ?>
                             <option data-price="<?php echo $priceLabel; ?>" value="<?php echo $variant['sku']; ?>">
-                                <?php echo ($variant['volume'] ?? '') . ' ' . ($variant['fragrance'] ?? ''); ?> - <?php echo $priceLabel; ?>
+                                <?php echo htmlspecialchars(implode(' / ', $labelParts)); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
