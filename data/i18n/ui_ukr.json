@@ -4,20 +4,20 @@
       "title": "NICHEHOME.CH | By Velcheva"
     },
     "utility": {
-      "shipping": "Free shipping in CH & LI from 80 CHF",
-      "delivery": "Delivery in 1–3 business days"
+      "shipping": "Безкоштовна доставка по Швейцарії та Ліхтенштейну від 80 CHF",
+      "delivery": "Доставка за 1–3 робочі дні"
     },
     "nav": {
-      "main": "Main navigation",
-      "toggle": "Toggle menu",
-      "language": "Language",
-      "home": "Home",
-      "catalog": "Catalog",
-      "gifts": "Gifts",
-      "gift_sets": "Gift sets",
-      "about": "About us",
-      "contacts": "Contacts",
-      "support": "Support"
+      "main": "Основна навігація",
+      "toggle": "Перемкнути меню",
+      "language": "Мова",
+      "home": "Головна",
+      "catalog": "Каталог",
+      "gifts": "Подарунки",
+      "gift_sets": "Подарункові набори",
+      "about": "Про нас",
+      "contacts": "Контакти",
+      "support": "Підтримка"
     },
     "actions": {
       "view": "View product",
@@ -33,6 +33,9 @@
       "highlight": "Fine materials, high concentration aromas, and a calm aesthetic for your sanctuary.",
       "swiss": "CHF • Ships from Switzerland",
       "categories": "Featured collection"
+    },
+    "categories": {
+      "enjoy": "Enjoy curated aromas for every space."
     },
     "cart": {
       "title": "Cart",

@@ -34,6 +34,9 @@
       "swiss": "CHF • Ships from Switzerland",
       "categories": "Featured collection"
     },
+    "categories": {
+      "enjoy": "Enjoy curated aromas for every space."
+    },
     "cart": {
       "title": "Cart",
       "items": "items",

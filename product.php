@@ -40,9 +40,9 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
     }, $variants);
     $initialPrice = $variantPayload[0]['priceLabel'] ?? ($variants[0]['priceCHF'] . ' ' . $currencyLabel);
     $fallbackDescription = I18N::tCategory($categorySlug, 'short') ?: I18N::tCategory($categorySlug, 'description');
-    $initialName = $firstFragrance ? I18N::tFragrance($firstFragrance, 'name') : I18N::tCategory($categorySlug, 'name');
-    $initialShort = $firstFragrance ? I18N::tFragrance($firstFragrance, 'shortDescription') : $fallbackDescription;
-    $initialImage = $firstFragrance ? Fragrances::getImagePath($firstFragrance) : '/assets/images/product-placeholder.jpg';
+    $initialName = I18N::tCategory($categorySlug, 'name');
+    $initialShort = $fallbackDescription;
+    $initialImage = '/assets/images/product-placeholder.jpg';
 ?>
 <section class="section product-detail">
     <div class="section-heading">

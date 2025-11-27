@@ -91,6 +91,8 @@
       } else if (singleFragranceSelect) {
         const frag = singleFragranceSelect.value;
         selectedVariant = data.variants.find(v => v.fragranceCode === frag);
+      } else {
+        selectedVariant = data.variants[0] || null;
       }
       if (!selectedVariant) {
         renderFallback();
