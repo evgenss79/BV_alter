@@ -212,6 +212,7 @@ main {
 }
 
 .primary-nav__link:hover,
+.primary-nav__link--active,
 .primary-nav__item.is-open > .primary-nav__link {
   color: #fff;
 }
