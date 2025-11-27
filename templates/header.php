@@ -4,12 +4,30 @@ $currentPage = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '.php'
 if ($currentPage === '' || $currentPage === 'index') {
     $currentPage = 'about';
 }
+if ($currentPage === 'gift-sets') {
+    $currentPage = 'gifts';
+}
 $navItems = [
-    ['key' => 'catalog', 'label' => 'ui.nav.catalog', 'href' => '/catalog.php'],
-    ['key' => 'gift-sets', 'label' => 'ui.nav.gifts', 'href' => '/gift-sets.php'],
-    ['key' => 'about', 'label' => 'ui.nav.about', 'href' => '/about.php'],
-    ['key' => 'contacts', 'label' => 'ui.nav.contacts', 'href' => '/contacts.php'],
-    ['key' => 'support', 'label' => 'ui.nav.support', 'href' => '/support.php'],
+    'catalog' => [
+        'label' => 'ui.nav.catalog',
+        'href' => 'catalog.php',
+    ],
+    'gifts' => [
+        'label' => 'ui.nav.gifts',
+        'href' => 'gift-sets.php',
+    ],
+    'about' => [
+        'label' => 'ui.nav.about',
+        'href' => 'about.php',
+    ],
+    'contacts' => [
+        'label' => 'ui.nav.contacts',
+        'href' => 'contacts.php',
+    ],
+    'support' => [
+        'label' => 'ui.nav.support',
+        'href' => 'support.php',
+    ],
 ];
 ?>
 <!DOCTYPE html>
@@ -37,8 +55,8 @@ $navItems = [
         <a href="/about.php" class="site-header__logo">NICHEHOME.CH</a>
         <nav class="primary-nav" aria-label="<?php echo I18N::t('ui.nav.main'); ?>">
             <ul class="primary-nav__list">
-                <?php foreach ($navItems as $item): ?>
-                    <?php $isActive = $currentPage === $item['key']; ?>
+                <?php foreach ($navItems as $key => $item): ?>
+                    <?php $isActive = $currentPage === $key; ?>
                     <li class="primary-nav__item<?php echo $isActive ? ' is-active' : ''; ?>">
                         <a class="primary-nav__link<?php echo $isActive ? ' primary-nav__link--active' : ''; ?>" href="<?php echo $item['href']; ?>"><?php echo I18N::t($item['label']); ?></a>
                     </li>
