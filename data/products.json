@@ -5,9 +5,9 @@
     "nameKey": "products.diffuser_classic_01.name",
     "descriptionKey": "products.diffuser_classic_01.desc",
     "variants": [
-      {"sku": "DF-CL-125-BV", "volume": "125 ml", "fragrance": "CHERRY BLOSSOM", "priceCHF": 45},
-      {"sku": "DF-CL-250-BV", "volume": "250 ml", "fragrance": "BELLINI", "priceCHF": 65},
-      {"sku": "DF-CL-500-BV", "volume": "500 ml", "fragrance": "EDEN", "priceCHF": 95}
+      {"sku": "DF-CL-125-BV", "volume": "125 ml", "fragranceCode": "cherry_blossom", "priceCHF": 45},
+      {"sku": "DF-CL-250-BV", "volume": "250 ml", "fragranceCode": "bellini", "priceCHF": 65},
+      {"sku": "DF-CL-500-BV", "volume": "500 ml", "fragranceCode": "eden", "priceCHF": 95}
     ]
   },
   {
@@ -16,8 +16,8 @@
     "nameKey": "products.home_perfume_01.name",
     "descriptionKey": "products.home_perfume_01.desc",
     "variants": [
-      {"sku": "HP-10-BV", "volume": "10 ml", "fragrance": "SALTED CARAMEL", "priceCHF": 25},
-      {"sku": "HP-50-BV", "volume": "50 ml", "fragrance": "SANTAL", "priceCHF": 38}
+      {"sku": "HP-10-BV", "volume": "10 ml", "fragranceCode": "salted_caramel", "priceCHF": 25},
+      {"sku": "HP-50-BV", "volume": "50 ml", "fragranceCode": "santal", "priceCHF": 38}
     ]
   },
   {
@@ -26,9 +26,9 @@
     "nameKey": "products.candle_limited.name",
     "descriptionKey": "products.candle_limited.desc",
     "variants": [
-      {"sku": "LE-NY-270", "fragrance": "NEW YORK", "priceCHF": 48},
-      {"sku": "LE-AD-270", "fragrance": "ABU DHABI", "priceCHF": 48},
-      {"sku": "LE-PA-270", "fragrance": "PALERMO", "priceCHF": 48}
+      {"sku": "LE-NY-270", "fragranceCode": "new_york", "priceCHF": 48},
+      {"sku": "LE-AD-270", "fragranceCode": "abu_dhabi", "priceCHF": 48},
+      {"sku": "LE-PA-270", "fragranceCode": "palermo", "priceCHF": 48}
     ]
   },
   {
@@ -37,8 +37,8 @@
     "nameKey": "products.car_perfume_01.name",
     "descriptionKey": "products.car_perfume_01.desc",
     "variants": [
-      {"sku": "CP-SW-01", "fragrance": "SALTY WATER", "priceCHF": 22},
-      {"sku": "CP-TV-01", "fragrance": "TOBACCO VANILLA", "priceCHF": 22}
+      {"sku": "CP-SW-01", "fragranceCode": "salty_water", "priceCHF": 22},
+      {"sku": "CP-TV-01", "fragranceCode": "tobacco_vanilla", "priceCHF": 22}
     ]
   },
   {
@@ -47,8 +47,8 @@
     "nameKey": "products.textile_perfume_01.name",
     "descriptionKey": "products.textile_perfume_01.desc",
     "variants": [
-      {"sku": "TP-BL-01", "fragrance": "BLANC", "priceCHF": 28},
-      {"sku": "TP-FL-01", "fragrance": "FLEUR", "priceCHF": 28}
+      {"sku": "TP-BL-01", "fragranceCode": "blanc", "priceCHF": 28},
+      {"sku": "TP-FL-01", "fragranceCode": "fleur", "priceCHF": 28}
     ]
   },
   {

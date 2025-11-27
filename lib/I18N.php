@@ -82,11 +82,14 @@ class I18N {
             }
             $current = $current[$segment];
         }
-        if (is_array($current) && array_key_exists(self::$lang, $current)) {
-            return $current[self::$lang];
-        }
-        if (is_array($current) && array_key_exists(self::$defaultLang, $current)) {
-            return $current[self::$defaultLang];
+        if (is_array($current)) {
+            if (array_key_exists(self::$lang, $current)) {
+                return $current[self::$lang];
+            }
+            if (array_key_exists(self::$defaultLang, $current)) {
+                return $current[self::$defaultLang];
+            }
+            return $current; // raw array (e.g., olfactory pyramid lists)
         }
         return is_string($current) ? $current : null;
     }

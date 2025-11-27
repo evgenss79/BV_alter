@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['gift_set'])) {
                 return [
                     'sku' => $v['sku'],
                     'volume' => $v['volume'] ?? '',
-                    'fragrance' => $v['fragrance'] ?? '',
+                    'fragrance' => isset($v['fragranceCode']) ? I18N::tFragrance($v['fragranceCode'], 'name') : '',
                     'priceCHF' => $v['priceCHF']
                 ];
             }, $p['variants'])
