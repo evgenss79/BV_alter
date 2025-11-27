@@ -13,7 +13,7 @@ class I18N {
     public static function init(array $config): void {
         self::$defaultLang = $config['defaultLanguage'] ?? 'en';
         self::$supported = $config['supportedLanguages'] ?? [self::$defaultLang];
-        $requested = $_GET['lang'] ?? ($_COOKIE['lang'] ?? self::$defaultLang);
+        $requested = $_GET['lang'] ?? ($_SESSION['lang'] ?? ($_COOKIE['lang'] ?? self::$defaultLang));
         self::setLanguage($requested);
         self::$ui = self::loadFile('ui');
         self::$categories = self::loadFile('categories');
@@ -41,6 +41,7 @@ class I18N {
         }
         self::$lang = $lang;
         setcookie('lang', $lang, time() + 60 * 60 * 24 * 30, '/');
+        $_SESSION['lang'] = $lang;
     }
 
     public static function getLanguage(): string {
