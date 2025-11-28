@@ -3,7 +3,7 @@
 $slug = $_GET['slug'] ?? '';
 $categoryName = I18N::tCategory($slug, 'name');
 $categoryDesc = I18N::tCategory($slug, 'short') ?: I18N::tCategory($slug, 'description');
-$products = Products::byCategory($slug);
+$products = $slug ? Products::byCategory($slug) : [];
 $volumeFragranceCategories = ['aroma_diffusers', 'home_perfume', 'scented_candles'];
 $fragranceOnlyCategories = ['car_perfume', 'textile_perfume', 'limited_edition'];
 ?>
@@ -17,6 +17,9 @@ $fragranceOnlyCategories = ['car_perfume', 'textile_perfume', 'limited_edition']
     </div>
 </section>
 <section class="section">
+    <?php if (empty($products)): ?>
+        <p><?php echo I18N::t('ui.messages.category_not_found'); ?></p>
+    <?php else: ?>
     <div class="grid">
         <?php foreach ($products as $product): ?>
             <?php
@@ -110,5 +113,6 @@ $fragranceOnlyCategories = ['car_perfume', 'textile_perfume', 'limited_edition']
             </div>
         <?php endforeach; ?>
     </div>
+    <?php endif; ?>
 </section>
 <?php include __DIR__ . '/templates/footer.php'; ?>

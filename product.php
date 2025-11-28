@@ -145,8 +145,13 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
         'addToCart' => I18N::t('ui.actions.add_to_cart'),
         'notify' => I18N::t('ui.actions.notify'),
         'inStock' => I18N::t('ui.product.in_stock'),
-        'outOfStock' => I18N::t('ui.product.out_of_stock'),
+    'outOfStock' => I18N::t('ui.product.out_of_stock'),
     ]
 ]); ?></script>
+<?php endif; ?>
+<?php if (!$product): ?>
+<section class="section">
+    <p><?php echo I18N::t('ui.messages.product_not_found'); ?></p>
+</section>
 <?php endif; ?>
 <?php include __DIR__ . '/templates/footer.php'; ?>
