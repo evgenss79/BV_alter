@@ -43,18 +43,6 @@ class Fragrances {
     ];
 
     public static function getAllowedFragrancesByCategory(string $categorySlug): array {
-        $categoryRules = [
-            'aroma_diffusers',
-            'scented_candles',
-            'home_perfume',
-            'car_perfume',
-            'textile_perfume',
-        ];
-
-        if (!in_array($categorySlug, $categoryRules, true)) {
-            return self::$allCodes;
-        }
-
         $exclude = self::$baseExclusions;
         if (isset(self::$extraExclusions[$categorySlug])) {
             $exclude = array_merge($exclude, self::$extraExclusions[$categorySlug]);

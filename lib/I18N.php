@@ -5,19 +5,21 @@ class I18N {
     private static $defaultLang = 'en';
     private static $supported = ['en'];
     private static $lang = 'en';
+    private static $config;
     private static $ui = [];
     private static $categories = [];
     private static $fragrances = [];
     private static $pages = [];
 
     public static function init(array $config, ?string $lang = null): void {
+        self::$config = $config;
         self::$defaultLang = $config['defaultLanguage'] ?? 'en';
         self::$supported = $config['supportedLanguages'] ?? [self::$defaultLang];
         if (!in_array(self::$defaultLang, self::$supported, true)) {
             self::$supported[] = self::$defaultLang;
         }
-        $requested = $lang ?? ($_GET['lang'] ?? ($_COOKIE['lang'] ?? ($_SESSION['lang'] ?? self::$defaultLang)));
-        self::setLanguage($requested);
+        $requested = $lang ?? self::$lang ?? ($_GET['lang'] ?? ($_COOKIE['lang'] ?? ($_SESSION['lang'] ?? self::$defaultLang)));
+        self::applyLanguage($requested);
         self::$ui = self::loadFile('ui');
         self::$categories = self::loadFile('categories');
         self::$fragrances = self::loadFile('fragrances');
@@ -39,6 +41,21 @@ class I18N {
     }
 
     public static function setLanguage(string $lang): void {
+        if (self::$config === null) {
+            self::$lang = $lang ?: self::$defaultLang;
+            setcookie('lang', self::$lang, time() + 60 * 60 * 24 * 30, '/');
+            $_SESSION['lang'] = self::$lang;
+            return;
+        }
+
+        self::applyLanguage($lang);
+        self::$ui = self::loadFile('ui');
+        self::$categories = self::loadFile('categories');
+        self::$fragrances = self::loadFile('fragrances');
+        self::$pages = self::loadFile('pages');
+    }
+
+    private static function applyLanguage(string $lang): void {
         if (!in_array($lang, self::$supported, true)) {
             $lang = self::$defaultLang;
         }

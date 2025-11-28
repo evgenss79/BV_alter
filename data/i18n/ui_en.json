@@ -27,6 +27,12 @@
       "select": "Select",
       "add": "Add"
     },
+    "btn": {
+      "add_to_cart": "Add to cart",
+      "notify": "Notify me",
+      "checkout": "Checkout",
+      "explore": "Explore"
+    },
     "home": {
       "headline": "Luxury home fragrances inspired by boutique hotels.",
       "subtext": "Discover premium diffusers, candles, and perfumes crafted for Switzerland and Liechtenstein.",
