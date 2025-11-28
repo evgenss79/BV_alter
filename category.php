@@ -80,7 +80,7 @@ $fragranceOnlyCategories = ['car_perfume', 'textile_perfume', 'limited_edition']
                     <button class="button" type="submit" name="add_to_cart" value="1" data-add-to-cart><?php echo I18N::t('ui.actions.add_to_cart'); ?></button>
                     <div class="fragrance-name" data-fragrance-name><?php echo I18N::tCategory($categorySlug, 'name'); ?></div>
                     <div id="fragrance-info-<?php echo $product['id']; ?>" class="fragrance-info" data-fragrance-short><?php echo htmlspecialchars($fallbackDescription); ?></div>
-                    <div id="fragrance-image-<?php echo $product['id']; ?>" class="fragrance-image" data-fragrance-image></div>
+                    <img id="fragrance-image-<?php echo $product['id']; ?>" class="fragrance-image" data-fragrance-image alt="" src="/assets/images/product-placeholder.jpg">
                     <script type="application/json" class="product-data"><?php echo json_encode([
                         'category' => $categorySlug,
                         'variants' => $variantPayload,

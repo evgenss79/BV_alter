@@ -84,8 +84,6 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
                             <?php endforeach; ?>
                         </select>
                     </div>
-                <?php else: ?>
-                    <input type="hidden" data-sku-input name="sku" value="<?php echo htmlspecialchars($variants[0]['sku']); ?>">
                 <?php endif; ?>
                 <div class="price-row">
                     <div>

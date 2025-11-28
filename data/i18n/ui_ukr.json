@@ -4,20 +4,20 @@
       "title": "NICHEHOME.CH | By Velcheva"
     },
     "utility": {
-      "shipping": "Безкоштовна доставка по Швейцарії та Ліхтенштейну від 80 CHF",
-      "delivery": "Доставка за 1–3 робочі дні"
+      "shipping": "Free shipping in CH & LI from 80 CHF",
+      "delivery": "Delivery in 1–3 business days"
     },
     "nav": {
-      "main": "Основна навігація",
-      "toggle": "Перемкнути меню",
-      "language": "Мова",
-      "home": "Головна",
-      "catalog": "Каталог",
-      "gifts": "Подарунки",
-      "gift_sets": "Подарункові набори",
-      "about": "Про нас",
-      "contacts": "Контакти",
-      "support": "Підтримка"
+      "main": "Main navigation",
+      "toggle": "Toggle menu",
+      "language": "Language",
+      "home": "Home",
+      "catalog": "Catalog",
+      "gifts": "Gifts",
+      "gift_sets": "Gift sets",
+      "about": "About us",
+      "contacts": "Contacts",
+      "support": "Support"
     },
     "actions": {
       "view": "View product",
@@ -26,6 +26,12 @@
       "notify": "Notify me",
       "select": "Select",
       "add": "Add"
+    },
+    "btn": {
+      "add_to_cart": "Add to cart",
+      "notify": "Notify me",
+      "checkout": "Checkout",
+      "explore": "Explore"
     },
     "home": {
       "headline": "Luxury home fragrances inspired by boutique hotels.",

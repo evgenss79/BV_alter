@@ -19,15 +19,22 @@
     const stockLabel = root.querySelector('[data-stock-label]');
     const fallback = data.fallback || {};
 
+    const setImage = (el, src, altText) => {
+      if (!el) return;
+      if (el.tagName && el.tagName.toLowerCase() === 'img') {
+        el.src = src;
+        el.alt = altText || '';
+      } else {
+        el.style.backgroundImage = src ? `url(${src})` : '';
+      }
+    };
+
     const renderFallback = () => {
       fragranceNameEl && (fragranceNameEl.textContent = fallback.title || '');
       fragranceShortEl && (fragranceShortEl.textContent = fallback.description || '');
       if (fragranceFullEl) fragranceFullEl.textContent = '';
       if (fragranceRecommendedEl) fragranceRecommendedEl.textContent = '';
-      if (fragranceImageEl) {
-        fragranceImageEl.src = fallback.image || fragranceImageEl.src;
-        fragranceImageEl.alt = fallback.title || '';
-      }
+      setImage(fragranceImageEl, fallback.image, fallback.title || '');
       [pyramidTop, pyramidHeart, pyramidBase].forEach((target) => { if (target) target.innerHTML = ''; });
       if (priceEl && data.initialPrice) priceEl.textContent = data.initialPrice;
       if (skuInput) skuInput.value = '';
@@ -45,10 +52,7 @@
       fragranceShortEl && (fragranceShortEl.textContent = frag.shortDescription);
       if (fragranceFullEl) fragranceFullEl.textContent = frag.fullDescription || '';
       if (fragranceRecommendedEl) fragranceRecommendedEl.textContent = frag.recommendedSpaces || '';
-      if (fragranceImageEl && frag.image) {
-        fragranceImageEl.src = frag.image;
-        fragranceImageEl.alt = frag.name;
-      }
+      if (frag.image) setImage(fragranceImageEl, frag.image, frag.name);
       const renderList = (target, items) => {
         if (!target || !items) return;
         target.innerHTML = '';
