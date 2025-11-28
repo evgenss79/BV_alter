@@ -36,7 +36,14 @@
       if (fragranceRecommendedEl) fragranceRecommendedEl.textContent = '';
       setImage(fragranceImageEl, fallback.image, fallback.title || '');
       [pyramidTop, pyramidHeart, pyramidBase].forEach((target) => { if (target) target.innerHTML = ''; });
-      if (priceEl && data.initialPrice) priceEl.textContent = data.initialPrice;
+      if (priceEl) {
+        const vol = volumeSelect ? volumeSelect.value : null;
+        if (vol && data.priceByVolume && data.priceByVolume[vol]) {
+          priceEl.textContent = `${data.priceByVolume[vol]} ${data.currency || ''}`.trim();
+        } else if (data.initialPrice) {
+          priceEl.textContent = data.initialPrice;
+        }
+      }
       if (skuInput) skuInput.value = '';
       if (addBtn) {
         addBtn.disabled = true;
@@ -73,6 +80,14 @@
         const vol = volumeSelect.value;
         const frag = fragranceSelect.value;
         if (!frag) {
+          if (priceEl && data.priceByVolume && data.priceByVolume[vol]) {
+            priceEl.textContent = `${data.priceByVolume[vol]} ${data.currency || ''}`.trim();
+          }
+          if (addBtn) {
+            addBtn.disabled = true;
+            if (data.labels) addBtn.textContent = data.labels.addToCart;
+          }
+          if (stockLabel) stockLabel.textContent = '';
           renderFallback();
           return;
         }

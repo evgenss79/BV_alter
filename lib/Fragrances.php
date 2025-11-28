@@ -2,9 +2,11 @@
 
 class Fragrances {
     private static $allCodes = [
-        'cherry_blossom', 'bellini', 'eden', 'rosso', 'salted_caramel', 'santal', 'lime_basil',
-        'bamboo', 'tobacco_vanilla', 'salty_water', 'christmas_tree', 'fleur', 'blanc',
-        'green_mango', 'carolina', 'sugar', 'dubai', 'africa', 'dune', 'valencia', 'etna',
+        'cherry_blossom', 'bellini', 'eden', 'rosso',
+        'salted_caramel', 'santal', 'lime_basil', 'bamboo',
+        'tobacco_vanilla', 'salty_water', 'christmas_tree',
+        'fleur', 'blanc', 'green_mango', 'carolina', 'sugar',
+        'dubai', 'africa', 'dune', 'valencia', 'etna',
         'new_york', 'abu_dhabi', 'palermo'
     ];
 
@@ -42,17 +44,22 @@ class Fragrances {
         'palermo' => 'PALERMO.jpg',
     ];
 
-    public static function getAllowedFragrancesByCategory(string $categorySlug): array {
+    public static function allowedFragrances(string $category): array {
+        $all = self::$allCodes;
         $exclude = self::$baseExclusions;
-        if (isset(self::$extraExclusions[$categorySlug])) {
-            $exclude = array_merge($exclude, self::$extraExclusions[$categorySlug]);
+
+        if ($category === 'scented_candles') {
+            $exclude = array_merge($exclude, ['etna', 'valencia']);
         }
 
-        return array_values(array_diff(self::$allCodes, $exclude));
-    }
+        if ($category === 'textile_perfume') {
+            $exclude = array_merge($exclude, [
+                'salted_caramel', 'cherry_blossom', 'dubai',
+                'salty_water', 'rosso', 'christmas_tree'
+            ]);
+        }
 
-    public static function allowedFragrances(string $categorySlug): array {
-        return self::getAllowedFragrancesByCategory($categorySlug);
+        return array_values(array_diff($all, $exclude));
     }
 
     public static function getImagePath(string $code): string {

@@ -28,8 +28,13 @@ $fragranceOnlyCategories = ['car_perfume', 'textile_perfume', 'limited_edition']
                 $volumes = array_values(array_unique(array_filter(array_map(fn($v) => $v['volume'] ?? null, $variants))));
                 $variantFragrances = array_values(array_unique(array_filter(array_map(fn($v) => $v['fragranceCode'] ?? null, $variants))));
                 $fragrances = array_values(array_intersect($allowedFragrances, $variantFragrances));
+                $volumePrices = [];
+                foreach ($volumes as $volume) {
+                    $volumePrices[$volume] = Products::getPrice($categorySlug, $volume, $variants[0]['priceCHF'] ?? 0);
+                }
                 $initialVariant = $variants[0] ?? null;
-                $initialPrice = $initialVariant ? ($initialVariant['priceCHF'] . ' ' . $currency) : '';
+                $initialPriceValue = $initialVariant ? Products::getPrice($categorySlug, $initialVariant['volume'] ?? null, $initialVariant['priceCHF'] ?? 0) : 0;
+                $initialPrice = $initialVariant ? ($initialPriceValue . ' ' . $currency) : '';
                 $fallbackDescription = I18N::tCategory($categorySlug, 'short') ?: I18N::tCategory($categorySlug, 'description');
                 $fragranceData = [];
                 foreach ($fragrances as $code) {
@@ -40,7 +45,8 @@ $fragranceOnlyCategories = ['car_perfume', 'textile_perfume', 'limited_edition']
                         'image' => Fragrances::getImagePath($code),
                     ];
                 }
-                $variantPayload = array_map(function($v) use ($currency) {
+                $variantPayload = array_map(function($v) use ($currency, $categorySlug) {
+                    $v['priceCHF'] = Products::getPrice($categorySlug, $v['volume'] ?? null, $v['priceCHF'] ?? 0);
                     $v['priceLabel'] = $v['priceCHF'] . ' ' . $currency;
                     $v['stock'] = Products::getStock($v['sku']);
                     $v['fragranceCode'] = $v['fragranceCode'] ?? null;
@@ -83,7 +89,9 @@ $fragranceOnlyCategories = ['car_perfume', 'textile_perfume', 'limited_edition']
                     <img id="fragrance-image-<?php echo $product['id']; ?>" class="fragrance-image" data-fragrance-image alt="" src="/assets/images/product-placeholder.jpg">
                     <script type="application/json" class="product-data"><?php echo json_encode([
                         'category' => $categorySlug,
+                        'currency' => $currency,
                         'variants' => $variantPayload,
+                        'priceByVolume' => $volumePrices,
                         'fragrances' => $fragranceData,
                         'fallback' => [
                             'title' => I18N::tCategory($categorySlug, 'name'),

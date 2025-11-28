@@ -7,7 +7,7 @@ $categories = [
     'car_perfume',
     'textile_perfume',
     'limited_edition',
-    'accessories',
+    'gift_sets',
     'aroma_marketing'
 ];
 ?>
