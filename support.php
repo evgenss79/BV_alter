@@ -47,7 +47,7 @@ $currentLang = I18N::getLanguage();
         <div class="product-card mb-4" id="privacy">
             <h3><?php echo I18N::t('footer.privacy', 'Privacy Policy'); ?></h3>
             <p class="text-muted">
-                We are committed to protecting your privacy. Your personal information is used only to process your order and improve your shopping experience. We do not share your data with third parties except as necessary to fulfill your order.
+                <?php echo I18N::t('support.privacyContent', 'We are committed to protecting your privacy. Your personal information is used only to process your order and improve your shopping experience. We do not share your data with third parties except as necessary to fulfill your order.'); ?>
             </p>
         </div>
         
@@ -55,7 +55,7 @@ $currentLang = I18N::getLanguage();
         <div class="product-card mb-4" id="terms">
             <h3><?php echo I18N::t('footer.terms', 'Terms & Conditions'); ?></h3>
             <p class="text-muted">
-                By placing an order on NicheHome.ch, you agree to our terms and conditions. All products are subject to availability. Prices are in Swiss Francs (CHF) and include VAT.
+                <?php echo I18N::t('support.termsContent', 'By placing an order on NicheHome.ch, you agree to our terms and conditions. All products are subject to availability. Prices are in Swiss Francs (CHF) and include VAT.'); ?>
             </p>
         </div>
         

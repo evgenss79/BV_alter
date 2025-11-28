@@ -132,6 +132,13 @@
             "formMessage": "Tell us about your needs",
             "formSubmit": "Send request",
             "formSuccess": "Thank you for your inquiry. Our team will contact you within 24 hours."
+        },
+        "support": {
+            "title": "Support & FAQ",
+            "subtitle": "Trouvez des réponses aux questions courantes",
+            "moreQuestions": "Vous avez d'autres questions?",
+            "privacyContent": "Nous nous engageons à protéger votre vie privée. Vos informations personnelles ne sont utilisées que pour traiter votre commande et améliorer votre expérience d'achat. Nous ne partageons pas vos données avec des tiers sauf si cela est nécessaire pour exécuter votre commande.",
+            "termsContent": "En passant une commande sur NicheHome.ch, vous acceptez nos conditions générales. Tous les produits sont soumis à disponibilité. Les prix sont en francs suisses (CHF) et incluent la TVA."
         }
     },
     "footer": {

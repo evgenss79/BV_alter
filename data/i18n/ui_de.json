@@ -47,11 +47,11 @@
         "about": {
             "title": "Über uns",
             "subtitle": "Premium Raumdüfte von By Velcheva",
-            "content": "NicheHome.ch präsentiert eine sorgfältig kuratierte Auswahl an Raumdüften, die für anspruchsvolle Wohn- und Hospitality-Konzepte entwickelt wurden.\n\nUnsere Boutique beliefert Interior Designer, Boutiquen und Privatkunden in der gesamten Schweiz mit flexiblen Konditionen, massgeschneiderter Beratung und sofort einsatzbereiten Kollektionen."
+            "content": "NicheHome.ch präsentiert eine sorgfältig kuratierte Auswahl an Raumdüften, die für anspruchsvolle Wohn- und Hospitality-Konzepte entwickelt wurden. Jede Kreation entspringt einer Leidenschaft für aussergewöhnliche Akkorde und langanhaltende Performance.\n\nUnsere Boutique beliefert Interior Designer, Boutiquen und Privatkunden in der gesamten Schweiz mit flexiblen Konditionen, massgeschneiderter Beratung und sofort einsatzbereiten Kollektionen.\n\nBy Velcheva verbindet Eleganz und Wärme in einem raffinierten Format. Perfekt für alle, die Premium-Düfte suchen, die jeden Raum in ein sinnliches Erlebnis verwandeln."
         },
         "catalog": {
             "title": "Unsere Kollektionen",
-            "subtitle": "Entdecken Sie unsere Premium-Duftkatege"
+            "subtitle": "Entdecken Sie unsere Premium-Duftkategorien"
         },
         "contacts": {
             "title": "Kontaktieren Sie uns",
@@ -107,6 +107,13 @@
             "title": "Aroma Marketing",
             "subtitle": "Professionelle Duftlösungen für Ihr Unternehmen",
             "content": "Transformieren Sie Ihre Geschäftsumgebung mit unseren professionellen Aroma-Marketing-Dienstleistungen."
+        },
+        "support": {
+            "title": "Support & FAQ",
+            "subtitle": "Antworten auf häufige Fragen",
+            "moreQuestions": "Haben Sie noch Fragen?",
+            "privacyContent": "Wir verpflichten uns zum Schutz Ihrer Privatsphäre. Ihre persönlichen Daten werden nur zur Bearbeitung Ihrer Bestellung und zur Verbesserung Ihres Einkaufserlebnisses verwendet. Wir geben Ihre Daten nicht an Dritte weiter, ausser wenn dies zur Erfüllung Ihrer Bestellung erforderlich ist.",
+            "termsContent": "Mit einer Bestellung auf NicheHome.ch stimmen Sie unseren AGB zu. Alle Produkte sind vorbehaltlich Verfügbarkeit. Preise sind in Schweizer Franken (CHF) und beinhalten MwSt."
         }
     },
     "footer": {
