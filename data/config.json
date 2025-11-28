@@ -1,0 +1,21 @@
+{
+    "site_name": "NicheHome.ch",
+    "brand_name": "By Velcheva",
+    "currency": "CHF",
+    "free_shipping_threshold": 80,
+    "discount_gift_set": 0.05,
+    "admin_email": "admin@nichehome.ch",
+    "contact_email": "info@nichehome.ch",
+    "contact_phone": "+41 XX XXX XX XX",
+    "address": {
+        "street": "Sample Street 123",
+        "city": "Zurich",
+        "zip": "8000",
+        "country": "Switzerland"
+    },
+    "social": {
+        "instagram": "https://instagram.com/nichehome.ch",
+        "whatsapp": "",
+        "pinterest": ""
+    }
+}
