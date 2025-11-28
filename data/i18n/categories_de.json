@@ -1,0 +1,44 @@
+{
+    "category": {
+        "aroma_diffusers": {
+            "name": "Aroma-Diffusoren",
+            "short": "Satinierte Glasflakons mit Naturfasern, die Räume bis zu 60 m² konstant beduften.",
+            "long": "Premium-Reediffusoren für kontinuierliche Duftverteilung."
+        },
+        "scented_candles": {
+            "name": "Duftkerzen",
+            "short": "Handgegossene Wachsblends mit drei Dochten und eleganten Keramikgefässen.",
+            "long": "Unsere Duftkerzen werden von Hand gegossen."
+        },
+        "home_perfume": {
+            "name": "Raumduft",
+            "short": "Fein zerstäubte Raum- und Kissensprays mit sofortiger Wirkung.",
+            "long": "Unsere Raumduft-Sprays bieten sofortige Dufterfrischung."
+        },
+        "car_perfume": {
+            "name": "Autoparfum",
+            "short": "Magnetische Clips mit austauschbaren Duftkapseln für jede Fahrt.",
+            "long": "Transformieren Sie jede Fahrt mit unseren Premium-Autoparfum-Clips."
+        },
+        "textile_perfume": {
+            "name": "Textilspray",
+            "short": "Pflegende Kompositionen für Vorhänge, Teppiche und Bettwäsche.",
+            "long": "Speziell für Stoffe formuliert."
+        },
+        "limited_edition": {
+            "name": "Limitierte Kollektion",
+            "short": "Saisonale Editionen mit kunstvollen Labels, nummeriert und nur auf Anfrage.",
+            "long": "Unsere limitierte Edition-Kollektion."
+        },
+        "gift_sets": {
+            "name": "Geschenksets",
+            "short": "Kuratierte Boxen mit abgestimmten Düften für besondere Momente.",
+            "long": "Erstellen Sie das perfekte Geschenk."
+        },
+        "aroma_marketing": {
+            "name": "Aroma Marketing",
+            "short": "Skalierbare Sets für Retail, Hospitality und Offices inklusive Installation.",
+            "long": "Professionelle Duftlösungen für Unternehmen."
+        }
+    }
+}

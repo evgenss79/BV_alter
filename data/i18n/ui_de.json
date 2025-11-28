@@ -1,0 +1,171 @@
+{
+    "site": {
+        "title": "NicheHome.ch - Premium Raumdüfte"
+    },
+    "common": {
+        "utilityShipping": "Gratis Versand ab CHF 80",
+        "utilityDelivery": "Lieferung innerhalb von 1-3 Werktagen",
+        "menuToggle": "Menü umschalten",
+        "mainMenu": "Hauptmenü",
+        "cart": "Warenkorb",
+        "search": "Suchen",
+        "wishlist": "Merkliste",
+        "account": "Konto",
+        "addToCart": "In den Warenkorb",
+        "buyNow": "Jetzt kaufen",
+        "outOfStock": "Nicht vorrätig",
+        "notifyMe": "Benachrichtigen wenn verfügbar",
+        "price": "Preis",
+        "quantity": "Menge",
+        "total": "Gesamt",
+        "subtotal": "Zwischensumme",
+        "shipping": "Versand",
+        "freeShipping": "Kostenlos",
+        "shippingInfo": "Gratis Versand ab CHF 80",
+        "amountToFreeShipping": "Noch CHF {amount} bis zum kostenlosen Versand",
+        "proceedToCheckout": "Zur Kasse",
+        "continueShopping": "Weiter einkaufen",
+        "remove": "Entfernen",
+        "update": "Aktualisieren",
+        "volume": "Volumen",
+        "fragrance": "Duft",
+        "selectFragrance": "Duft wählen",
+        "selectVolume": "Volumen wählen",
+        "noFragrance": "Kein Duft",
+        "moreInfo": "Mehr Info",
+        "lessInfo": "Weniger Info"
+    },
+    "nav": {
+        "catalog": "Katalog",
+        "giftSets": "Geschenksets",
+        "aromaMarketing": "Aroma Marketing",
+        "about": "Über uns",
+        "contacts": "Kontakt",
+        "support": "Support"
+    },
+    "page": {
+        "about": {
+            "title": "Über uns",
+            "subtitle": "Premium Raumdüfte von By Velcheva",
+            "content": "NicheHome.ch präsentiert eine sorgfältig kuratierte Auswahl an Raumdüften, die für anspruchsvolle Wohn- und Hospitality-Konzepte entwickelt wurden. Jede Kreation entspringt einer Leidenschaft für aussergewöhnliche Akkorde und langanhaltende Performance.\n\nUnsere Boutique beliefert Interior Designer, Boutiquen und Privatkunden in der gesamten Schweiz mit flexiblen Konditionen, massgeschneiderter Beratung und sofort einsatzbereiten Kollektionen.\n\nBy Velcheva verbindet Eleganz und Wärme in einem raffinierten Format. Perfekt für alle, die Premium-Düfte suchen, die jeden Raum in ein sinnliches Erlebnis verwandeln."
+        },
+        "catalog": {
+            "title": "Unsere Kollektionen",
+            "subtitle": "Entdecken Sie unsere Premium-Duftkategorien"
+        },
+        "contacts": {
+            "title": "Kontaktieren Sie uns",
+            "subtitle": "Nehmen Sie Kontakt mit unserem Team auf",
+            "formName": "Ihr Name",
+            "formEmail": "E-Mail-Adresse",
+            "formPhone": "Telefonnummer",
+            "formMessage": "Ihre Nachricht",
+            "formSubmit": "Nachricht senden",
+            "formSuccess": "Vielen Dank für Ihre Nachricht. Wir werden uns bald bei Ihnen melden."
+        },
+        "support": {
+            "title": "Support & FAQ",
+            "subtitle": "Häufig gestellte Fragen"
+        },
+        "cart": {
+            "title": "Warenkorb",
+            "empty": "Ihr Warenkorb ist leer"
+        },
+        "checkout": {
+            "title": "Kasse",
+            "shipping": "Lieferadresse",
+            "billing": "Rechnungsadresse",
+            "sameAsShipping": "Gleich wie Lieferadresse",
+            "firstName": "Vorname",
+            "lastName": "Nachname",
+            "email": "E-Mail",
+            "phone": "Telefon",
+            "street": "Strasse",
+            "houseNumber": "Hausnummer",
+            "zip": "PLZ",
+            "city": "Ort",
+            "country": "Land",
+            "comment": "Bestellkommentar (optional)",
+            "payment": "Zahlungsart",
+            "paymentTwint": "TWINT",
+            "paymentCard": "Kreditkarte (demnächst)",
+            "paymentPaypal": "PayPal (demnächst)",
+            "placeOrder": "Bestellung aufgeben",
+            "orderSuccess": "Vielen Dank für Ihre Bestellung!"
+        },
+        "giftSets": {
+            "title": "Geschenkset zusammenstellen",
+            "subtitle": "Kombinieren Sie Ihre Lieblingsprodukte mit 5% Rabatt",
+            "slot": "Platz",
+            "selectCategory": "Kategorie wählen",
+            "selectProduct": "Produkt wählen",
+            "totalPrice": "Gesamtpreis",
+            "discount": "5% Geschenkset-Rabatt",
+            "addToCart": "Geschenkset in den Warenkorb"
+        },
+        "aromaMarketing": {
+            "title": "Aroma Marketing",
+            "subtitle": "Professionelle Duftlösungen für Ihr Unternehmen",
+            "content": "Transformieren Sie Ihre Geschäftsumgebung mit unseren professionellen Aroma-Marketing-Dienstleistungen."
+        },
+        "support": {
+            "title": "Support & FAQ",
+            "subtitle": "Antworten auf häufige Fragen",
+            "moreQuestions": "Haben Sie noch Fragen?",
+            "privacyContent": "Wir verpflichten uns zum Schutz Ihrer Privatsphäre. Ihre persönlichen Daten werden nur zur Bearbeitung Ihrer Bestellung und zur Verbesserung Ihres Einkaufserlebnisses verwendet. Wir geben Ihre Daten nicht an Dritte weiter, ausser wenn dies zur Erfüllung Ihrer Bestellung erforderlich ist.",
+            "termsContent": "Mit einer Bestellung auf NicheHome.ch stimmen Sie unseren AGB zu. Alle Produkte sind vorbehaltlich Verfügbarkeit. Preise sind in Schweizer Franken (CHF) und beinhalten MwSt."
+        }
+    },
+    "footer": {
+        "catalogTitle": "Katalog",
+        "infoTitle": "Informationen",
+        "legalTitle": "Rechtliches",
+        "newsletterTitle": "Newsletter",
+        "newsletterText": "Exklusive Launches, Tipps zur Platzierung und Einladungen zu Scent Sessions.",
+        "newsletterPlaceholder": "Ihre E-Mail",
+        "newsletterButton": "Anmelden",
+        "socialLabel": "Folgen Sie uns",
+        "about": "Über die Marke",
+        "corporate": "Corporate Services",
+        "faq": "FAQ",
+        "privacy": "Datenschutz",
+        "terms": "AGB",
+        "shipping": "Versand & Rückgabe",
+        "paymentTitle": "Wir akzeptieren Visa, Mastercard, TWINT",
+        "copyright": "© NicheHome.ch – Offizieller Schweizer Vertreter von By Velcheva"
+    },
+    "product": {
+        "diffuser_classic": {
+            "name": "Aroma-Diffusor Klassik",
+            "desc": "Premium-Reediffusor mit natürlichen Faserstäbchen für kontinuierliche Duftverteilung."
+        },
+        "candle_classic": {
+            "name": "Duftkerze Klassik",
+            "desc": "Handgegossene Kerzen mit Premium-Pflanzenwachsmischung."
+        },
+        "home_spray": {
+            "name": "Raumduft-Spray",
+            "desc": "Feiner Nebel-Raumspray für sofortige Dufterfrischung."
+        },
+        "car_clip": {
+            "name": "Auto-Parfum-Clip",
+            "desc": "Magnetischer Lüftungsclip mit austauschbaren Duftkapseln."
+        },
+        "textile_spray": {
+            "name": "Textil-Parfum-Spray",
+            "desc": "Sanfter Duftspray für Vorhänge, Teppiche und Bettwäsche."
+        },
+        "limited_new_york": {
+            "name": "New York Limited Edition",
+            "desc": "Eine lebhafte Party, scharfe Cocktails und die würzige Frische der Lichterstadt."
+        },
+        "limited_abu_dhabi": {
+            "name": "Abu Dhabi Limited Edition",
+            "desc": "Warme Nächte unter einem Sternenhimmel und weicher Sand unter den Füssen."
+        },
+        "limited_palermo": {
+            "name": "Palermo Limited Edition",
+            "desc": "Sanfte Sonnenstrahlen und erfrischende Küstenbrise mit Zitrusnoten."
+        }
+    }
+}

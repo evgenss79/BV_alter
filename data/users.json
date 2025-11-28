@@ -1,0 +1,14 @@
+{
+    "admin": {
+        "email": "admin@nichehome.ch",
+        "password": "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+        "role": "admin",
+        "name": "Administrator"
+    },
+    "manager": {
+        "email": "manager@nichehome.ch",
+        "password": "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",
+        "role": "manager",
+        "name": "Manager"
+    }
+}

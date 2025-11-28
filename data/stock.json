@@ -1,0 +1,156 @@
+{
+    "DF-125-BEL": {
+        "productId": "diffuser_classic",
+        "volume": "125ml",
+        "fragrance": "bellini",
+        "quantity": 10,
+        "lowStockThreshold": 3
+    },
+    "DF-250-BEL": {
+        "productId": "diffuser_classic",
+        "volume": "250ml",
+        "fragrance": "bellini",
+        "quantity": 8,
+        "lowStockThreshold": 3
+    },
+    "DF-500-BEL": {
+        "productId": "diffuser_classic",
+        "volume": "500ml",
+        "fragrance": "bellini",
+        "quantity": 5,
+        "lowStockThreshold": 2
+    },
+    "DF-125-CHE": {
+        "productId": "diffuser_classic",
+        "volume": "125ml",
+        "fragrance": "cherry_blossom",
+        "quantity": 12,
+        "lowStockThreshold": 3
+    },
+    "DF-250-CHE": {
+        "productId": "diffuser_classic",
+        "volume": "250ml",
+        "fragrance": "cherry_blossom",
+        "quantity": 7,
+        "lowStockThreshold": 3
+    },
+    "DF-500-CHE": {
+        "productId": "diffuser_classic",
+        "volume": "500ml",
+        "fragrance": "cherry_blossom",
+        "quantity": 4,
+        "lowStockThreshold": 2
+    },
+    "DF-125-AFR": {
+        "productId": "diffuser_classic",
+        "volume": "125ml",
+        "fragrance": "africa",
+        "quantity": 15,
+        "lowStockThreshold": 3
+    },
+    "DF-250-AFR": {
+        "productId": "diffuser_classic",
+        "volume": "250ml",
+        "fragrance": "africa",
+        "quantity": 10,
+        "lowStockThreshold": 3
+    },
+    "DF-500-AFR": {
+        "productId": "diffuser_classic",
+        "volume": "500ml",
+        "fragrance": "africa",
+        "quantity": 6,
+        "lowStockThreshold": 2
+    },
+    "CD-160-BEL": {
+        "productId": "candle_classic",
+        "volume": "160ml",
+        "fragrance": "bellini",
+        "quantity": 20,
+        "lowStockThreshold": 5
+    },
+    "CD-500-BEL": {
+        "productId": "candle_classic",
+        "volume": "500ml",
+        "fragrance": "bellini",
+        "quantity": 8,
+        "lowStockThreshold": 3
+    },
+    "CD-160-TOB": {
+        "productId": "candle_classic",
+        "volume": "160ml",
+        "fragrance": "tobacco_vanilla",
+        "quantity": 15,
+        "lowStockThreshold": 5
+    },
+    "CD-500-TOB": {
+        "productId": "candle_classic",
+        "volume": "500ml",
+        "fragrance": "tobacco_vanilla",
+        "quantity": 6,
+        "lowStockThreshold": 3
+    },
+    "HP-10-BLA": {
+        "productId": "home_spray",
+        "volume": "10ml",
+        "fragrance": "blanc",
+        "quantity": 25,
+        "lowStockThreshold": 5
+    },
+    "HP-50-BLA": {
+        "productId": "home_spray",
+        "volume": "50ml",
+        "fragrance": "blanc",
+        "quantity": 18,
+        "lowStockThreshold": 5
+    },
+    "CP-STD-AFR": {
+        "productId": "car_clip",
+        "volume": "standard",
+        "fragrance": "africa",
+        "quantity": 30,
+        "lowStockThreshold": 10
+    },
+    "CP-STD-DUB": {
+        "productId": "car_clip",
+        "volume": "standard",
+        "fragrance": "dubai",
+        "quantity": 25,
+        "lowStockThreshold": 10
+    },
+    "TP-STD-BAM": {
+        "productId": "textile_spray",
+        "volume": "standard",
+        "fragrance": "bamboo",
+        "quantity": 20,
+        "lowStockThreshold": 5
+    },
+    "TP-STD-FLE": {
+        "productId": "textile_spray",
+        "volume": "standard",
+        "fragrance": "fleur",
+        "quantity": 18,
+        "lowStockThreshold": 5
+    },
+    "LE-270-NYC": {
+        "productId": "limited_new_york",
+        "volume": "270ml",
+        "fragrance": "new_york",
+        "quantity": 10,
+        "lowStockThreshold": 3
+    },
+    "LE-270-ABU": {
+        "productId": "limited_abu_dhabi",
+        "volume": "270ml",
+        "fragrance": "abu_dhabi",
+        "quantity": 8,
+        "lowStockThreshold": 3
+    },
+    "LE-270-PAL": {
+        "productId": "limited_palermo",
+        "volume": "270ml",
+        "fragrance": "palermo",
+        "quantity": 12,
+        "lowStockThreshold": 3
+    }
+}
