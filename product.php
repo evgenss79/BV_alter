@@ -31,14 +31,19 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
             ],
         ];
     }
-    $firstFragrance = $fragrances[0] ?? null;
-    $variantPayload = array_map(function($v) use ($currencyLabel) {
+    $volumePrices = [];
+    foreach ($volumes as $volume) {
+        $volumePrices[$volume] = Products::getPrice($categorySlug, $volume, $variants[0]['priceCHF'] ?? 0);
+    }
+    $variantPayload = array_map(function($v) use ($currencyLabel, $categorySlug) {
+        $v['priceCHF'] = Products::getPrice($categorySlug, $v['volume'] ?? null, $v['priceCHF'] ?? 0);
         $v['priceLabel'] = $v['priceCHF'] . ' ' . $currencyLabel;
         $v['stock'] = Products::getStock($v['sku']);
         $v['fragranceCode'] = $v['fragranceCode'] ?? null;
         return $v;
     }, $variants);
-    $initialPrice = $variantPayload[0]['priceLabel'] ?? ($variants[0]['priceCHF'] . ' ' . $currencyLabel);
+    $initialPriceValue = $variantPayload[0]['priceCHF'] ?? ($variants[0]['priceCHF'] ?? 0);
+    $initialPrice = $initialPriceValue . ' ' . $currencyLabel;
     $fallbackDescription = I18N::tCategory($categorySlug, 'short') ?: I18N::tCategory($categorySlug, 'description');
     $initialName = I18N::tCategory($categorySlug, 'name');
     $initialShort = $fallbackDescription;
@@ -126,7 +131,9 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
     </div>
 </section>
 <script id="product-data" type="application/json"><?php echo json_encode([
+    'currency' => $currencyLabel,
     'variants' => $variantPayload,
+    'priceByVolume' => $volumePrices,
     'fragrances' => $fragranceData,
     'fallback' => [
         'title' => I18N::tCategory($categorySlug, 'name'),
@@ -138,8 +145,13 @@ $fragranceOnlyCategories = ['car_perfume', 'limited_edition', 'textile_perfume']
         'addToCart' => I18N::t('ui.actions.add_to_cart'),
         'notify' => I18N::t('ui.actions.notify'),
         'inStock' => I18N::t('ui.product.in_stock'),
-        'outOfStock' => I18N::t('ui.product.out_of_stock'),
+    'outOfStock' => I18N::t('ui.product.out_of_stock'),
     ]
 ]); ?></script>
+<?php endif; ?>
+<?php if (!$product): ?>
+<section class="section">
+    <p><?php echo I18N::t('ui.messages.product_not_found'); ?></p>
+</section>
 <?php endif; ?>
 <?php include __DIR__ . '/templates/footer.php'; ?>

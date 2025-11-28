@@ -1,21 +1,36 @@
 <?php include __DIR__ . '/templates/header.php'; ?>
 <?php
 $products = Products::all();
+$allowedCategories = ['aroma_diffusers', 'scented_candles', 'home_perfume', 'car_perfume', 'textile_perfume', 'limited_edition'];
+$notice = '';
+$summary = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['gift_set'])) {
     $selected = array_filter($_POST['variant'] ?? []);
+    $seen = [];
     $components = [];
     $subtotal = 0.0;
     foreach ($selected as $sku) {
+        if (in_array($sku, $seen, true)) {
+            continue;
+        }
+        $seen[] = $sku;
         $info = Products::getProductBySku($sku);
         if ($info) {
-            $components[] = ['sku' => $sku, 'productId' => $info['product']['id'], 'price' => $info['variant']['priceCHF']];
-            $subtotal += $info['variant']['priceCHF'];
+            $stockQty = Products::getStock($sku);
+            if ($stockQty <= 0) {
+                $notice = I18N::t('ui.messages.gift_out_of_stock');
+                continue;
+            }
+            $price = $info['variant']['priceCHF'];
+            $components[] = ['sku' => $sku, 'productId' => $info['product']['id'], 'price' => $price];
+            $subtotal += $price;
         }
     }
     $discount = $subtotal * 0.05;
     $final = $subtotal - $discount;
     if ($components) {
         Cart::addGiftSet($components, $subtotal, $discount, $final);
+        $summary = ['subtotal' => $subtotal, 'discount' => $discount, 'final' => $final];
     }
 }
 ?>
@@ -31,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['gift_set'])) {
                         <label><?php echo I18N::t('ui.gift.slot'); ?> <?php echo $i+1; ?></label>
                         <select class="gift-category" name="category[<?php echo $i; ?>]">
                             <option value=""><?php echo I18N::t('ui.actions.select'); ?></option>
-                            <?php foreach (DataStore::readJson(__DIR__ . '/data/i18n/categories_en.json') as $slug => $label): ?>
+                            <?php foreach ($allowedCategories as $slug): ?>
                                 <option value="<?php echo $slug; ?>"><?php echo I18N::tCategory($slug, 'name'); ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -46,6 +61,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['gift_set'])) {
             <?php endfor; ?>
         </div>
         <button class="button" type="submit"><?php echo I18N::t('ui.gift.add'); ?></button>
+        <?php if ($summary): ?>
+            <div class="gift-summary">
+                <p><?php echo I18N::t('ui.gift.subtotal'); ?>: <?php echo number_format($summary['subtotal'], 2); ?> CHF</p>
+                <p><?php echo I18N::t('ui.gift.discount'); ?>: -<?php echo number_format($summary['discount'], 2); ?> CHF</p>
+                <strong><?php echo I18N::t('ui.gift.total'); ?>: <?php echo number_format($summary['final'], 2); ?> CHF</strong>
+            </div>
+        <?php endif; ?>
+        <?php if ($notice): ?>
+            <p class="gift-notice"><?php echo htmlspecialchars($notice); ?></p>
+        <?php endif; ?>
     </form>
     <script type="application/json" id="products-data"><?php echo json_encode(array_map(function($p){
         return [

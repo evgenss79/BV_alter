@@ -43,6 +43,11 @@
     "categories": {
       "enjoy": "Enjoy curated aromas for every space."
     },
+    "messages": {
+      "category_not_found": "This category is not available.",
+      "product_not_found": "The product you are looking for was not found.",
+      "gift_out_of_stock": "One or more selected gift items are currently out of stock."
+    },
     "cart": {
       "title": "Cart",
       "items": "items",
@@ -68,7 +73,10 @@
       "title": "Create your bespoke gift set",
       "subtitle": "Choose up to three different products and aromas. We'll apply a 5% bundle reward automatically.",
       "slot": "Slot",
-      "add": "Add gift set to cart"
+      "add": "Add gift set to cart",
+      "subtotal": "Subtotal",
+      "discount": "Discount",
+      "total": "Total"
     },
     "checkout": {
       "title": "Checkout",
