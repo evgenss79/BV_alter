@@ -1,8 +1,0 @@
-{
-  "defaultLanguage": "en",
-  "supportedLanguages": ["en", "fr", "de", "it", "ru", "ukr"],
-  "currency": "CHF",
-  "freeShippingThreshold": 80,
-  "adminEmail": "info@nichehome.ch",
-  "lowStockDefaultThreshold": 5
-}
