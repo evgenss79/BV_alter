@@ -52,7 +52,7 @@ $navItems = [
         <button class="site-header__burger" aria-label="<?php echo I18N::t('ui.nav.toggle'); ?>">
             <span></span><span></span><span></span>
         </button>
-        <a href="/about.php" class="site-header__logo">NICHEHOME.CH</a>
+        <a href="/about.php" class="site-header__logo">By Velcheva</a>
         <nav class="primary-nav" aria-label="<?php echo I18N::t('ui.nav.main'); ?>">
             <ul class="primary-nav__list">
                 <?php foreach ($navItems as $key => $item): ?>
