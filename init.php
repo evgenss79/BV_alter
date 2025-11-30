@@ -39,3 +39,7 @@ if (file_exists($config_file)) {
 
 // Load helpers
 require_once __DIR__ . '/includes/helpers.php';
+
+// Load fragrance descriptions from fragrance.txt
+require_once __DIR__ . '/includes/fragrance_data.php';
+$FRAGRANCE_DESCRIPTIONS = loadFragranceDescriptions();
