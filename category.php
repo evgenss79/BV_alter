@@ -46,19 +46,6 @@ $allowedFrags = allowedFragrances($slug);
 // Get volumes for this category
 $volumes = getVolumesForCategory($slug);
 
-// Helper function to get fragrance image path with fallback
-function getFragranceImagePath($fragranceCode, $fragrances) {
-    if (!$fragranceCode) {
-        return 'assets/img/placeholder.svg';
-    }
-    $fragData = $fragrances[$fragranceCode] ?? null;
-    if ($fragData && !empty($fragData['image'])) {
-        $imagePath = 'assets/img/fragrances/' . $fragData['image'];
-        return $imagePath;
-    }
-    return 'assets/img/placeholder.svg';
-}
-
 include __DIR__ . '/includes/header.php';
 ?>
 
@@ -67,7 +54,7 @@ include __DIR__ . '/includes/header.php';
         <h1><?php echo htmlspecialchars($categoryName); ?></h1>
         <p class="category-hero__desc"><?php echo nl2br(htmlspecialchars($categoryLong ?: $categoryShort)); ?></p>
     </div>
-    <img src="<?php echo htmlspecialchars($categoryImage); ?>" alt="<?php echo htmlspecialchars($categoryName); ?>" class="category-hero__image" onerror="this.src='assets/img/placeholder.svg'">
+    <img src="<?php echo htmlspecialchars($categoryImage); ?>" alt="<?php echo htmlspecialchars($categoryName); ?>" class="category-hero__image category-hero__image-el" onerror="this.src='/img/placeholder.svg'">
 </section>
 
 <section class="category-products">
@@ -95,16 +82,12 @@ include __DIR__ . '/includes/header.php';
                 $firstFragCode = $product['fragrance'];
             }
             
-            // Determine the image to show
-            $displayImage = '';
-            if ($isLimitedWithFixed && $firstFragCode) {
-                // For limited edition, use fragrance image
-                $displayImage = getFragranceImagePath($firstFragCode, $fragrances);
+            // Determine the image to show - use fragrance image from /img/ folder
+            $displayImage = '/img/placeholder.svg';
+            if ($firstFragCode) {
+                $displayImage = getFragranceImage($firstFragCode);
             } elseif ($productImage) {
-                // Use product image if available
-                $displayImage = 'assets/img/' . $productImage;
-            } else {
-                $displayImage = 'assets/img/placeholder.svg';
+                $displayImage = '/img/' . rawurlencode($productImage);
             }
             ?>
             <article class="product-card" 
@@ -118,7 +101,7 @@ include __DIR__ . '/includes/header.php';
                              alt="<?php echo htmlspecialchars($productName); ?>" 
                              class="product-card__image-el"
                              data-product-image
-                             onerror="this.src='assets/img/placeholder.svg'">
+                             onerror="this.src='/img/placeholder.svg'">
                     </div>
                     
                     <div class="product-card__content">
@@ -151,7 +134,7 @@ include __DIR__ . '/includes/header.php';
                                             $fragName = I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode)));
                                             ?>
                                             <option value="<?php echo htmlspecialchars($fragCode); ?>"
-                                                    data-image="<?php echo htmlspecialchars(getFragranceImagePath($fragCode, $fragrances)); ?>">
+                                                    data-image="<?php echo htmlspecialchars(getFragranceImage($fragCode)); ?>">
                                                 <?php echo htmlspecialchars($fragName); ?>
                                             </option>
                                         <?php endforeach; ?>
@@ -187,17 +170,17 @@ include __DIR__ . '/includes/header.php';
                 <div class="product-card__inner">
                     <div class="product-card__image">
                         <?php 
-                        // For generic cards, use category image or first fragrance image as fallback
+                        // For generic cards, use first fragrance image or category image as fallback
                         $genericFirstFrag = !empty($allowedFrags) ? $allowedFrags[0] : null;
                         $genericDisplayImage = $genericFirstFrag 
-                            ? getFragranceImagePath($genericFirstFrag, $fragrances) 
+                            ? getFragranceImage($genericFirstFrag) 
                             : $categoryImage;
                         ?>
                         <img src="<?php echo htmlspecialchars($genericDisplayImage); ?>" 
                              alt="<?php echo htmlspecialchars($categoryName); ?>" 
                              class="product-card__image-el"
                              data-product-image
-                             onerror="this.src='assets/img/placeholder.svg'">
+                             onerror="this.src='/img/placeholder.svg'">
                     </div>
                     
                     <div class="product-card__content">
@@ -230,7 +213,7 @@ include __DIR__ . '/includes/header.php';
                                             $fragName = I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode)));
                                             ?>
                                             <option value="<?php echo htmlspecialchars($fragCode); ?>"
-                                                    data-image="<?php echo htmlspecialchars(getFragranceImagePath($fragCode, $fragrances)); ?>">
+                                                    data-image="<?php echo htmlspecialchars(getFragranceImage($fragCode)); ?>">
                                                 <?php echo htmlspecialchars($fragName); ?>
                                             </option>
                                         <?php endforeach; ?>
@@ -257,13 +240,12 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <script>
-// Pass fragrance data to JavaScript
+// Pass fragrance data to JavaScript with correct /img/ paths
 window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
-    $fragrances = loadJSON('fragrances.json');
     return [
         'name' => I18N::t('fragrance.' . $code . '.name', ucfirst(str_replace('_', ' ', $code))),
         'short' => I18N::t('fragrance.' . $code . '.short', ''),
-        'image' => $fragrances[$code]['image'] ?? ''
+        'image' => getFragranceImage($code)
     ];
 }, array_combine($allowedFrags, $allowedFrags))); ?>;
 </script>

@@ -342,7 +342,7 @@ function generateOrderId(): string {
 }
 
 /**
- * Get fragrance image path
+ * Get fragrance image path - uses /img/ folder
  */
 function getFragranceImage(string $fragranceCode): string {
     $imageMap = [
@@ -374,31 +374,55 @@ function getFragranceImage(string $fragranceCode): string {
     
     $filename = $imageMap[$fragranceCode] ?? '';
     if ($filename) {
-        return 'assets/img/fragrances/' . $filename;
+        return '/img/' . rawurlencode($filename);
     }
-    return 'assets/img/placeholder.jpg';
+    return '/img/placeholder.svg';
 }
 
 /**
- * Get category image path
+ * Get fragrance image path with file existence check
+ * Used for data-image attributes in select options
+ */
+function getFragranceImagePath(string $fragranceCode): string {
+    return getFragranceImage($fragranceCode);
+}
+
+/**
+ * Get product image path - uses /img/ folder
+ */
+function getProductImagePath(string $productId): string {
+    // Products don't have specific images, use placeholder
+    // or fall back to fragrance images based on product context
+    return '/img/placeholder.svg';
+}
+
+/**
+ * Get category image path - uses /img/ folder
  */
 function getCategoryImage(string $category): string {
     $imageMap = [
-        'aroma_diffusers' => 'Mikado-category.jpg',
+        'aroma_diffusers' => 'Aroma diffusers_category.jpg',
         'scented_candles' => 'Candels category.jpg',
         'home_perfume' => 'home pefume.jpg',
         'car_perfume' => 'AutoParf.jpg',
         'textile_perfume' => 'Textil-spray.jpg',
         'limited_edition' => '3 velas.jpg',
-        'gift_sets' => 'IMG_7321.jpg',
-        'aroma_marketing' => 'IMG_7348.jpg'
+        'gift_sets' => 'ETSY-foto.jpg',
+        'aroma_marketing' => 'ETSY-foto.jpg'
     ];
     
     $filename = $imageMap[$category] ?? '';
     if ($filename) {
-        return 'assets/img/' . $filename;
+        return '/img/' . rawurlencode($filename);
     }
-    return 'assets/img/placeholder.jpg';
+    return '/img/placeholder.svg';
+}
+
+/**
+ * Get category image path helper (alias for getCategoryImage)
+ */
+function getCategoryImagePath(string $categorySlug): string {
+    return getCategoryImage($categorySlug);
 }
 
 /**

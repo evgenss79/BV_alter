@@ -164,10 +164,11 @@
             // Get the image path from the data attribute on the selected option
             const selectedOption = fragranceSelect.querySelector('option:checked');
             if (selectedOption && selectedOption.dataset.image) {
+                // Use the data-image directly - it already contains the full /img/ path
                 productImage.src = selectedOption.dataset.image;
             } else if (window.FRAGRANCES && window.FRAGRANCES[fragranceCode] && window.FRAGRANCES[fragranceCode].image) {
-                // Fallback to FRAGRANCES data
-                productImage.src = 'assets/img/fragrances/' + window.FRAGRANCES[fragranceCode].image;
+                // Fallback to FRAGRANCES data - image already contains the full /img/ path
+                productImage.src = window.FRAGRANCES[fragranceCode].image;
             }
         }
         
@@ -191,7 +192,8 @@
             if (nameEl) nameEl.textContent = fragranceData.name || '';
             if (descEl) descEl.textContent = fragranceData.short || '';
             if (imgEl && fragranceData.image) {
-                imgEl.src = 'assets/img/fragrances/' + fragranceData.image;
+                // Use the image path directly - it already contains the full /img/ path
+                imgEl.src = fragranceData.image;
                 imgEl.alt = fragranceData.name || '';
             }
 
