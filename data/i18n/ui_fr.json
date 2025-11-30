@@ -37,7 +37,7 @@
         "shipping": "Livraison",
         "freeShipping": "Gratuit",
         "shippingInfo": "Livraison gratuite dès CHF 80",
-        "amountToFreeShipping": "Plus que CHF {amount} pour la livraison gratuite",
+        "amountToFreeShipping": "Ajoutez CHF {amount} pour la livraison gratuite",
         "proceedToCheckout": "Commander",
         "continueShopping": "Continuer vos achats",
         "remove": "Supprimer",
