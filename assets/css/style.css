@@ -485,46 +485,98 @@ section {
 /* ========================================
    PRODUCT CARD
    ======================================== */
+
+/* Products list container for category pages */
+.products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Products grid (for catalog/other pages) */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
+/* Product Card - New horizontal layout */
 .product-card {
     background: #fff;
-    padding: 1.5rem;
+    padding: 1.5rem 2rem;
     border-radius: var(--radius-card);
     border: 1px solid var(--color-line);
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .product-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-hover);
+}
+
+.product-card__inner {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
 }
 
 .product-card__image {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
+    flex: 0 0 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-sand);
     border-radius: 12px;
-    background: var(--color-cream);
+    overflow: hidden;
+    min-height: 250px;
 }
 
+.product-card__image-el {
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.product-card__content {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card__header {
+    margin-bottom: 1rem;
+}
+
+.product-card__category-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 0.3rem;
+}
+
+.product-card__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-card__description {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+}
+
+/* Legacy classes for backwards compatibility */
 .product-card__eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.3em;
     font-size: 0.72rem;
     color: var(--color-muted);
-}
-
-.product-card__title {
-    font-size: 1.1rem;
-    margin: 0;
 }
 
 .product-card__desc {
@@ -533,7 +585,30 @@ section {
     line-height: 1.5;
 }
 
-/* Product Options */
+/* Product Selectors */
+.product-card__selectors {
+    margin-top: 1.25rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.product-card__select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid var(--color-line);
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.product-card__select:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+/* Product Options (legacy) */
 .product-card__options {
     display: flex;
     flex-direction: column;
@@ -569,7 +644,28 @@ section {
     border-color: var(--color-gold);
 }
 
-/* Price */
+/* Price Row */
+.product-card__price-row {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-line);
+}
+
+.product-card__price-label {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+.product-card__price-value {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--color-charcoal);
+}
+
+/* Legacy price display */
 .product-card__meta {
     display: flex;
     justify-content: space-between;
@@ -585,7 +681,29 @@ section {
     color: var(--color-charcoal);
 }
 
-/* Fragrance Info */
+/* Add to Cart Button */
+.product-card__add-to-cart {
+    margin-top: 1.25rem;
+    align-self: flex-start;
+}
+
+/* Responsive: stack image and content on small screens */
+@media (max-width: 900px) {
+    .product-card__inner {
+        flex-direction: column;
+    }
+
+    .product-card__image {
+        flex-basis: auto;
+        min-height: 200px;
+    }
+    
+    .product-card__add-to-cart {
+        align-self: stretch;
+    }
+}
+
+/* Fragrance Info (legacy - kept for compatibility) */
 .fragrance-info {
     background: var(--color-sand);
     padding: 1rem;
@@ -618,38 +736,40 @@ section {
 .category-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 2rem;
     align-items: center;
-    padding: 4rem clamp(1.5rem, 4vw, 6rem);
+    padding: 2rem clamp(1.5rem, 4vw, 6rem);
     background: #fff;
 }
 
 @media (max-width: 900px) {
     .category-hero {
         grid-template-columns: 1fr;
+        padding: 1.5rem clamp(1rem, 3vw, 4rem);
     }
 }
 
 .category-hero__content h1 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .category-hero__desc {
     color: var(--color-muted);
-    line-height: 1.7;
+    line-height: 1.6;
     white-space: pre-line;
+    font-size: 0.95rem;
 }
 
 .category-hero__image {
     width: 100%;
-    max-height: 400px;
+    max-height: 280px;
     object-fit: cover;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
 }
 
 .category-products {
-    padding: 3rem clamp(1.5rem, 4vw, 6rem);
+    padding: 2rem clamp(1.5rem, 4vw, 6rem);
     background: var(--color-cream);
 }
 
