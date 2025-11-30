@@ -173,7 +173,7 @@ ul, ol {
 
 .site-header__logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.65rem;
+    font-size: 1.82rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #fff;
@@ -533,6 +533,7 @@ section {
    CATALOG CARD (New design with title bar on top)
    ======================================== */
 .catalog-card {
+    position: relative;
     border-radius: 16px;
     background-color: #fff;
     box-shadow: 0 10px 30px rgba(0,0,0,0.04);
@@ -551,11 +552,12 @@ section {
 }
 
 .catalog-card__title-bar {
-    padding: 0.75rem 1rem;
-    background-color: #ffffff;
+    padding: 0.6rem 0.8rem;
+    background-color: rgba(255,255,255,0.95);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-family: 'Playfair Display', serif;
+    text-align: center;
 }
 
 .catalog-card__image-wrapper {
@@ -626,6 +628,7 @@ section {
     transition: transform var(--transition), box-shadow var(--transition);
     max-height: 420px;
     overflow: hidden;
+    position: relative;
 }
 
 .product-card:hover {
@@ -895,7 +898,7 @@ section {
     overflow: hidden;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
-    margin-left: 2.5rem;
+    margin-left: 3rem;
     background-color: #f3ede4;
 }
 
@@ -949,13 +952,19 @@ section {
     padding: 0.5rem 0.6rem;
     background: var(--color-sand);
     border-radius: 6px;
-    max-height: 80px;
+    max-height: 120px;
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
 
+.product-card__fragrance-description.expanded {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Legacy class for backwards compatibility */
 .product-card__fragrance-description--expanded {
-    max-height: 160px;
+    max-height: 200px;
     overflow-y: auto;
 }
 
