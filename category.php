@@ -49,12 +49,29 @@ $volumes = getVolumesForCategory($slug);
 include __DIR__ . '/includes/header.php';
 ?>
 
+<?php
+// Get category full description for toggle
+$fullCategoryDescription = $categoryLong ?: $categoryShort;
+?>
+
 <section class="category-hero">
     <div class="category-hero__content">
         <h1><?php echo htmlspecialchars($categoryName); ?></h1>
-        <p class="category-hero__desc"><?php echo nl2br(htmlspecialchars($categoryLong ?: $categoryShort)); ?></p>
+        <div class="category-hero__description-block"
+             data-full-description="<?php echo htmlspecialchars($fullCategoryDescription, ENT_QUOTES); ?>">
+            <p class="category-hero__description-short"></p>
+            <p class="category-hero__description-full"></p>
+            <button type="button" class="category-hero__description-toggle">
+                <?php echo I18N::t('ui.category.read_more', 'Read more'); ?>
+            </button>
+        </div>
     </div>
-    <img src="<?php echo htmlspecialchars($categoryImage); ?>" alt="<?php echo htmlspecialchars($categoryName); ?>" class="category-hero__image category-hero__image-el" onerror="this.src='/img/placeholder.svg'">
+    <div class="category-hero__image">
+        <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
+             alt="<?php echo htmlspecialchars($categoryName); ?>" 
+             class="category-hero__image-el" 
+             onerror="this.src='/img/placeholder.svg'">
+    </div>
 </section>
 
 <section class="category-products">
@@ -101,6 +118,8 @@ include __DIR__ . '/includes/header.php';
                              alt="<?php echo htmlspecialchars($productName); ?>" 
                              class="product-card__image-el"
                              data-product-image
+                             data-product-id="<?php echo htmlspecialchars($productId); ?>"
+                             data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
                              onerror="this.src='/img/placeholder.svg'">
                     </div>
                     
@@ -128,7 +147,9 @@ include __DIR__ . '/includes/header.php';
                             <?php if (!$isLimitedWithFixed && !empty($allowedFrags)): ?>
                                 <div class="product-card__field">
                                     <label><?php echo I18N::t('common.fragrance', 'Fragrance'); ?></label>
-                                    <select class="product-card__select product-card__select--fragrance" data-fragrance-select>
+                                    <select class="product-card__select product-card__select--fragrance" 
+                                            data-fragrance-select
+                                            data-product-id="<?php echo htmlspecialchars($productId); ?>">
                                         <?php foreach ($allowedFrags as $fragCode): ?>
                                             <?php
                                             $fragName = I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode)));
@@ -143,6 +164,16 @@ include __DIR__ . '/includes/header.php';
                             <?php elseif ($isLimitedWithFixed): ?>
                                 <input type="hidden" data-fragrance-select value="<?php echo htmlspecialchars($product['fragrance']); ?>">
                             <?php endif; ?>
+                        </div>
+                        
+                        <!-- Fragrance Description Block -->
+                        <div class="product-card__fragrance-description"
+                             data-product-id="<?php echo htmlspecialchars($productId); ?>">
+                            <p class="product-card__fragrance-text product-card__fragrance-text--short"></p>
+                            <p class="product-card__fragrance-text product-card__fragrance-text--full"></p>
+                            <button type="button" class="product-card__fragrance-toggle">
+                                <?php echo I18N::t('ui.fragrance.read_more', 'Read more'); ?>
+                            </button>
                         </div>
                         
                         <div class="product-card__price-row">
@@ -161,25 +192,28 @@ include __DIR__ . '/includes/header.php';
         <?php endforeach; ?>
         
         <?php if (empty($categoryProducts)): ?>
+            <?php
+            // Set variables for generic card
+            $genericProductId = $slug . '_product';
+            $genericFirstFrag = !empty($allowedFrags) ? $allowedFrags[0] : null;
+            $genericDisplayImage = $genericFirstFrag 
+                ? getFragranceImage($genericFirstFrag) 
+                : $categoryImage;
+            ?>
             <!-- Show generic product card for categories without specific products -->
             <article class="product-card" 
                      data-product-card 
-                     data-product-id="<?php echo htmlspecialchars($slug); ?>_product"
+                     data-product-id="<?php echo htmlspecialchars($genericProductId); ?>"
                      data-product-name="<?php echo htmlspecialchars($categoryName); ?>"
                      data-category="<?php echo htmlspecialchars($slug); ?>">
                 <div class="product-card__inner">
                     <div class="product-card__image">
-                        <?php 
-                        // For generic cards, use first fragrance image or category image as fallback
-                        $genericFirstFrag = !empty($allowedFrags) ? $allowedFrags[0] : null;
-                        $genericDisplayImage = $genericFirstFrag 
-                            ? getFragranceImage($genericFirstFrag) 
-                            : $categoryImage;
-                        ?>
                         <img src="<?php echo htmlspecialchars($genericDisplayImage); ?>" 
                              alt="<?php echo htmlspecialchars($categoryName); ?>" 
                              class="product-card__image-el"
                              data-product-image
+                             data-product-id="<?php echo htmlspecialchars($genericProductId); ?>"
+                             data-default-image="<?php echo htmlspecialchars($genericDisplayImage); ?>"
                              onerror="this.src='/img/placeholder.svg'">
                     </div>
                     
@@ -207,7 +241,9 @@ include __DIR__ . '/includes/header.php';
                             <?php if (!empty($allowedFrags)): ?>
                                 <div class="product-card__field">
                                     <label><?php echo I18N::t('common.fragrance', 'Fragrance'); ?></label>
-                                    <select class="product-card__select product-card__select--fragrance" data-fragrance-select>
+                                    <select class="product-card__select product-card__select--fragrance" 
+                                            data-fragrance-select
+                                            data-product-id="<?php echo htmlspecialchars($genericProductId); ?>">
                                         <?php foreach ($allowedFrags as $fragCode): ?>
                                             <?php
                                             $fragName = I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode)));
@@ -220,6 +256,16 @@ include __DIR__ . '/includes/header.php';
                                     </select>
                                 </div>
                             <?php endif; ?>
+                        </div>
+                        
+                        <!-- Fragrance Description Block -->
+                        <div class="product-card__fragrance-description"
+                             data-product-id="<?php echo htmlspecialchars($genericProductId); ?>">
+                            <p class="product-card__fragrance-text product-card__fragrance-text--short"></p>
+                            <p class="product-card__fragrance-text product-card__fragrance-text--full"></p>
+                            <button type="button" class="product-card__fragrance-toggle">
+                                <?php echo I18N::t('ui.fragrance.read_more', 'Read more'); ?>
+                            </button>
                         </div>
                         
                         <div class="product-card__price-row">
@@ -248,6 +294,17 @@ window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
         'image' => getFragranceImage($code)
     ];
 }, array_combine($allowedFrags, $allowedFrags))); ?>;
+
+// Pass fragrance descriptions from fragrance.txt
+window.FRAGRANCE_DESCRIPTIONS = <?php echo json_encode($FRAGRANCE_DESCRIPTIONS, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP); ?>;
+
+// Pass I18N labels for JS
+window.I18N_LABELS = {
+    fragrance_read_more: <?php echo json_encode(I18N::t('ui.fragrance.read_more', 'Read more')); ?>,
+    fragrance_collapse: <?php echo json_encode(I18N::t('ui.fragrance.collapse', 'Collapse')); ?>,
+    category_read_more: <?php echo json_encode(I18N::t('ui.category.read_more', 'Read more')); ?>,
+    category_collapse: <?php echo json_encode(I18N::t('ui.category.collapse', 'Collapse')); ?>
+};
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
