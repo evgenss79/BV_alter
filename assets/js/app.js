@@ -373,6 +373,31 @@
     // Add event listeners for toggle clicks
     document.addEventListener('click', onFragranceToggleClick);
     document.addEventListener('click', onCategoryDescriptionToggleClick);
+    
+    // Delegated event listener for fragrance select changes
+    document.addEventListener('change', function(event) {
+        if (!event.target.classList.contains('product-card__select--fragrance')) return;
+        
+        const select = event.target;
+        const productId = select.dataset.productId;
+        const option = select.options[select.selectedIndex];
+        const imagePath = option.dataset.image;
+        const fragranceCode = option.value;
+        
+        const card = select.closest('.product-card');
+        if (!card) return;
+        
+        // 1) Update image
+        const img = card.querySelector('.product-card__image-el[data-product-id="' + productId + '"]');
+        if (img && imagePath) {
+            img.src = imagePath;
+        }
+        
+        // 2) Update fragrance description (short/full)
+        if (typeof updateFragranceDescription === 'function') {
+            updateFragranceDescription(card, fragranceCode);
+        }
+    });
 
     // ========================================
     // CART FUNCTIONALITY
@@ -386,6 +411,44 @@
     function saveCart(cart) {
         localStorage.setItem('nichehome_cart', JSON.stringify(cart));
         updateCartCount();
+        // Sync to PHP session
+        syncCartToServer(cart);
+    }
+    
+    /**
+     * Sync cart to PHP session
+     */
+    function syncCartToServer(cart) {
+        fetch('add_to_cart.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: 'sync',
+                cart: cart
+            })
+        }).catch(function(error) {
+            console.error('Cart sync error:', error);
+        });
+    }
+    
+    /**
+     * Add item to server cart
+     */
+    function addItemToServer(item) {
+        fetch('add_to_cart.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: 'add',
+                item: item
+            })
+        }).catch(function(error) {
+            console.error('Add to cart error:', error);
+        });
     }
 
     function updateCartCount() {
@@ -475,10 +538,28 @@
         cart = cart.filter(item => item.sku !== sku);
         saveCart(cart);
         
-        // Reload cart page if on cart page
-        if (window.location.pathname.includes('cart.php')) {
-            window.location.reload();
-        }
+        // Also send remove to server
+        fetch('add_to_cart.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: 'remove',
+                sku: sku
+            })
+        }).then(function() {
+            // Reload cart page if on cart page
+            if (window.location.pathname.includes('cart.php')) {
+                window.location.reload();
+            }
+        }).catch(function(error) {
+            console.error('Remove from cart error:', error);
+            // Still reload even on error
+            if (window.location.pathname.includes('cart.php')) {
+                window.location.reload();
+            }
+        });
     };
 
     // Update cart quantity
@@ -492,9 +573,34 @@
             } else {
                 item.quantity = parseInt(quantity);
                 saveCart(cart);
+                
+                // Also update on server
+                fetch('add_to_cart.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        action: 'update',
+                        sku: sku,
+                        quantity: parseInt(quantity)
+                    })
+                }).catch(function(error) {
+                    console.error('Update quantity error:', error);
+                });
             }
         }
     };
+    
+    /**
+     * Sync localStorage cart to server on page load
+     */
+    function syncCartOnLoad() {
+        const cart = getCart();
+        if (cart.length > 0) {
+            syncCartToServer(cart);
+        }
+    }
 
     // ========================================
     // GIFT SET FUNCTIONALITY
@@ -775,6 +881,8 @@
         // Initialize category and fragrance descriptions
         initCategoryDescriptions();
         initFragranceDescriptions();
+        // Sync cart from localStorage to server session
+        syncCartOnLoad();
     });
 
 })();

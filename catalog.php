@@ -17,9 +17,7 @@ uasort($categories, function($a, $b) {
 
 <section class="page-hero">
     <div class="page-hero__content">
-        <p class="section-heading__label"><?php echo I18N::t('nav.catalog', 'Catalog'); ?></p>
-        <h1 class="page-hero__title"><?php echo I18N::t('page.catalog.title', 'Our Collections'); ?></h1>
-        <p class="page-hero__subtitle"><?php echo I18N::t('page.catalog.subtitle', 'Discover our premium home fragrance categories'); ?></p>
+        <h1 class="page-title"><?php echo I18N::t('page.catalog.title', 'Catalog'); ?></h1>
     </div>
 </section>
 
@@ -39,7 +37,9 @@ uasort($categories, function($a, $b) {
             }
             ?>
             <a href="<?php echo htmlspecialchars($link); ?>" class="category-card">
-                <img src="<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($name); ?>" class="category-card__image" onerror="this.src='assets/img/placeholder.jpg'">
+                <div class="category-card__image">
+                    <img src="<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($name); ?>" class="category-card__image-el" onerror="this.src='/img/placeholder.svg'">
+                </div>
                 <div class="category-card__content">
                     <h3 class="category-card__title"><?php echo htmlspecialchars($name); ?></h3>
                     <p class="category-card__desc"><?php echo htmlspecialchars($short); ?></p>
