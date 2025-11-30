@@ -522,23 +522,23 @@ section {
 }
 
 .product-card__image {
-    flex: 0 0 38%;   /* left column - 38% as per spec */
+    flex: 0 0 38%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f3ede4;
     border-radius: 12px;
     overflow: hidden;
-    min-height: 200px;
+    max-height: 260px;
 }
 
 .product-card__image-el {
     max-width: 100%;
-    max-height: 260px;   /* Adjusted so hero+card fit into one screen */
+    max-height: 100%;
     width: auto;
     height: auto;
+    object-fit: contain !important;
     display: block;
-    object-fit: contain; /* No cropping */
 }
 
 .product-card__content {
@@ -763,6 +763,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 420px;
+    max-height: 280px;
     overflow: hidden;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
@@ -770,11 +772,9 @@ section {
 
 /* Category hero image element - no cropping */
 .category-hero__image-el {
-    max-width: 100%;
-    max-height: 280px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
     display: block;
 }
 
