@@ -48,7 +48,8 @@
         "selectVolume": "Select volume",
         "noFragrance": "No fragrance",
         "moreInfo": "More info",
-        "lessInfo": "Less info"
+        "lessInfo": "Less info",
+        "accessory": "Accessory"
     },
     "nav": {
         "catalog": "Catalog",

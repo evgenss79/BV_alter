@@ -173,7 +173,7 @@ ul, ol {
 
 .site-header__logo {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.65rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #fff;
@@ -530,6 +530,53 @@ section {
 }
 
 /* ========================================
+   CATALOG CARD (New design with title bar on top)
+   ======================================== */
+.catalog-card {
+    border-radius: 16px;
+    background-color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--color-charcoal);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.catalog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    color: var(--color-charcoal);
+}
+
+.catalog-card__title-bar {
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.catalog-card__image-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3ede4;
+    min-height: 120px;
+}
+
+.catalog-card__image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain !important;
+    display: block;
+}
+
+/* ========================================
    PRODUCT CARD
    ======================================== */
 
@@ -545,6 +592,28 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+}
+
+/* Accessories grid (4x2 grid similar to catalog) */
+.accessories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+    .accessories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .accessories-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
 }
 
 /* Product Card - New horizontal layout */
@@ -821,12 +890,12 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 380px;
-    max-height: 220px;
+    max-width: 420px;
+    max-height: 280px;
     overflow: hidden;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
-    margin-left: 2rem;
+    margin-left: 2.5rem;
     background-color: #f3ede4;
 }
 
@@ -880,6 +949,14 @@ section {
     padding: 0.5rem 0.6rem;
     background: var(--color-sand);
     border-radius: 6px;
+    max-height: 80px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.product-card__fragrance-description--expanded {
+    max-height: 160px;
+    overflow-y: auto;
 }
 
 .product-card__fragrance-text {
