@@ -33,7 +33,7 @@ foreach ($catalogCategories as $slug) {
 ?>
 
 <main class="catalog-page">
-<section class="page-hero">
+<section class="page-hero catalog-hero">
     <div class="page-hero__content">
         <h1 class="page-title"><?php echo I18N::t('page.catalog.title', 'Catalog'); ?></h1>
     </div>
@@ -69,4 +69,6 @@ foreach ($catalogCategories as $slug) {
 </section>
 </main>
 
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<!-- Footer hidden on catalog page to ensure 4x2 grid fits in one viewport -->
+</body>
+</html>
