@@ -31,6 +31,8 @@ foreach ($catalogCategories as $slug) {
     }
 }
 ?>
+</main>
+<script>document.body.classList.add('is-catalog-page');</script>
 
 <main class="catalog-page">
 <section class="page-hero">
