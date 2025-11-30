@@ -172,6 +172,9 @@
             }
         }
         
+        // Update fragrance description from FRAGRANCE_DESCRIPTIONS
+        updateFragranceDescription(card, fragranceCode);
+        
         // Legacy fragrance info display (if the element exists)
         const fragranceInfo = card.querySelector('[data-fragrance-info]');
         if (!fragranceInfo || !fragranceCode || fragranceCode === 'none') {
@@ -200,6 +203,176 @@
             fragranceInfo.style.display = 'block';
         }
     }
+
+    // ========================================
+    // FRAGRANCE & CATEGORY DESCRIPTION TOGGLE
+    // ========================================
+
+    /**
+     * Get first N lines from text
+     */
+    function getShortText(fullText, maxLines) {
+        const lines = fullText.split(/\r?\n/).filter(l => l.trim() !== '');
+        const shortLines = lines.slice(0, maxLines);
+        return shortLines.join('\n');
+    }
+
+    /**
+     * Update fragrance description in product card
+     */
+    function updateFragranceDescription(card, fragranceCode) {
+        const descData = window.FRAGRANCE_DESCRIPTIONS || {};
+        const info = descData[fragranceCode];
+        const descBlock = card.querySelector('.product-card__fragrance-description');
+        
+        if (!descBlock) return;
+        
+        const shortEl = descBlock.querySelector('.product-card__fragrance-text--short');
+        const fullEl = descBlock.querySelector('.product-card__fragrance-text--full');
+        const toggleBtn = descBlock.querySelector('.product-card__fragrance-toggle');
+
+        if (!shortEl || !fullEl || !toggleBtn) return;
+
+        if (!info || !info.full) {
+            shortEl.textContent = '';
+            fullEl.textContent = '';
+            toggleBtn.style.display = 'none';
+            descBlock.style.display = 'none';
+            return;
+        }
+
+        const full = info.full;
+        const short = getShortText(full, 2); // show 2 lines by default
+
+        shortEl.textContent = short;
+        fullEl.textContent = full;
+        fullEl.style.display = 'none';
+        shortEl.style.display = 'block';
+        descBlock.style.display = 'block';
+
+        toggleBtn.style.display = 'inline-block';
+        toggleBtn.textContent = getI18NLabel('fragrance_read_more');
+        toggleBtn.dataset.expanded = 'false';
+    }
+
+    /**
+     * Handle fragrance description toggle click
+     */
+    function onFragranceToggleClick(event) {
+        const btn = event.target.closest('.product-card__fragrance-toggle');
+        if (!btn) return;
+
+        const card = btn.closest('.product-card');
+        if (!card) return;
+
+        const descBlock = card.querySelector('.product-card__fragrance-description');
+        if (!descBlock) return;
+
+        const shortEl = descBlock.querySelector('.product-card__fragrance-text--short');
+        const fullEl = descBlock.querySelector('.product-card__fragrance-text--full');
+        if (!shortEl || !fullEl) return;
+
+        const expanded = btn.dataset.expanded === 'true';
+
+        if (expanded) {
+            fullEl.style.display = 'none';
+            shortEl.style.display = 'block';
+            btn.textContent = getI18NLabel('fragrance_read_more');
+            btn.dataset.expanded = 'false';
+        } else {
+            fullEl.style.display = 'block';
+            shortEl.style.display = 'none';
+            btn.textContent = getI18NLabel('fragrance_collapse');
+            btn.dataset.expanded = 'true';
+        }
+    }
+
+    /**
+     * Initialize category descriptions with toggle
+     */
+    function initCategoryDescriptions() {
+        document.querySelectorAll('.category-hero__description-block').forEach(block => {
+            const full = block.dataset.fullDescription || '';
+            const shortEl = block.querySelector('.category-hero__description-short');
+            const fullEl = block.querySelector('.category-hero__description-full');
+            const toggleBtn = block.querySelector('.category-hero__description-toggle');
+            
+            if (!shortEl || !fullEl || !toggleBtn || !full) {
+                if (toggleBtn) toggleBtn.style.display = 'none';
+                return;
+            }
+
+            const short = getShortText(full, 3); // first 3 lines for category
+
+            shortEl.textContent = short;
+            fullEl.textContent = full;
+            fullEl.style.display = 'none';
+            shortEl.style.display = 'block';
+
+            toggleBtn.dataset.expanded = 'false';
+            toggleBtn.textContent = getI18NLabel('category_read_more');
+        });
+    }
+
+    /**
+     * Handle category description toggle click
+     */
+    function onCategoryDescriptionToggleClick(event) {
+        const btn = event.target.closest('.category-hero__description-toggle');
+        if (!btn) return;
+
+        const block = btn.closest('.category-hero__description-block');
+        if (!block) return;
+
+        const shortEl = block.querySelector('.category-hero__description-short');
+        const fullEl = block.querySelector('.category-hero__description-full');
+        if (!shortEl || !fullEl) return;
+
+        const expanded = btn.dataset.expanded === 'true';
+
+        if (expanded) {
+            fullEl.style.display = 'none';
+            shortEl.style.display = 'block';
+            btn.textContent = getI18NLabel('category_read_more');
+            btn.dataset.expanded = 'false';
+        } else {
+            fullEl.style.display = 'block';
+            shortEl.style.display = 'none';
+            btn.textContent = getI18NLabel('category_collapse');
+            btn.dataset.expanded = 'true';
+        }
+    }
+
+    /**
+     * Get I18N label with fallback
+     */
+    function getI18NLabel(key) {
+        const labels = window.I18N_LABELS || {};
+        const defaults = {
+            fragrance_read_more: 'Read more',
+            fragrance_collapse: 'Collapse',
+            category_read_more: 'Read more',
+            category_collapse: 'Collapse'
+        };
+        return labels[key] || defaults[key] || key;
+    }
+
+    /**
+     * Initialize fragrance descriptions on page load
+     */
+    function initFragranceDescriptions() {
+        const productCards = document.querySelectorAll('[data-product-card]');
+        productCards.forEach(card => {
+            const fragranceSelect = card.querySelector('[data-fragrance-select]');
+            if (fragranceSelect && fragranceSelect.value) {
+                updateFragranceDescription(card, fragranceSelect.value);
+            }
+        });
+    }
+
+    // Add event listeners for toggle clicks
+    document.addEventListener('click', onFragranceToggleClick);
+    document.addEventListener('click', onCategoryDescriptionToggleClick);
 
     // ========================================
     // CART FUNCTIONALITY
@@ -599,6 +772,9 @@
         initBackInStock();
         initNewsletter();
         updateCartCount();
+        // Initialize category and fragrance descriptions
+        initCategoryDescriptions();
+        initFragranceDescriptions();
     });
 
 })();

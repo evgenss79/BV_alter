@@ -2,6 +2,21 @@
     "site": {
         "title": "NicheHome.ch - Premium Raumdüfte"
     },
+    "ui": {
+        "fragrance": {
+            "read_more": "Mehr lesen",
+            "collapse": "Weniger"
+        },
+        "category": {
+            "read_more": "Mehr lesen",
+            "collapse": "Weniger"
+        },
+        "product": {
+            "volume": "Volumen",
+            "fragrance": "Duft",
+            "price": "Preis"
+        }
+    },
     "common": {
         "utilityShipping": "Gratis Versand ab CHF 80",
         "utilityDelivery": "Lieferung innerhalb von 1-3 Werktagen",
