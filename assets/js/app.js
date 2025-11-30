@@ -233,7 +233,7 @@
 
         if (!shortEl || !fullEl || !toggleBtn) return;
 
-        if (!info || !info.full) {
+        if (!info || (!info.short && !info.full)) {
             shortEl.textContent = '';
             fullEl.textContent = '';
             toggleBtn.style.display = 'none';
@@ -241,8 +241,9 @@
             return;
         }
 
-        const full = info.full;
-        const short = getShortText(full, 2); // show 2 lines by default
+        // Use the short text from i18n, or fall back to first 2 lines of full
+        const full = info.full || '';
+        const short = info.short || getShortText(full, 2);
 
         shortEl.textContent = short;
         fullEl.textContent = full;
@@ -250,7 +251,7 @@
         shortEl.style.display = 'block';
         descBlock.style.display = 'block';
 
-        toggleBtn.style.display = 'inline-block';
+        toggleBtn.style.display = full && full !== short ? 'inline-block' : 'none';
         toggleBtn.textContent = getI18NLabel('fragrance_read_more');
         toggleBtn.dataset.expanded = 'false';
     }
