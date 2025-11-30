@@ -9,10 +9,27 @@ include __DIR__ . '/includes/header.php';
 $categories = loadJSON('categories.json');
 $currentLang = I18N::getLanguage();
 
-// Sort categories by sort_order
-uasort($categories, function($a, $b) {
-    return ($a['sort_order'] ?? 99) - ($b['sort_order'] ?? 99);
-});
+// Define which categories to display on catalog page
+// We show accessories instead of gift_sets on catalog cards
+// gift_sets is still accessible via navigation
+$catalogCategories = [
+    'aroma_diffusers',
+    'scented_candles',
+    'home_perfume',
+    'car_perfume',
+    'textile_perfume',
+    'limited_edition',
+    'accessories',       // instead of gift_sets
+    'aroma_marketing',
+];
+
+// Filter and keep only catalog categories in the correct order
+$displayCategories = [];
+foreach ($catalogCategories as $slug) {
+    if (isset($categories[$slug])) {
+        $displayCategories[$slug] = $categories[$slug];
+    }
+}
 ?>
 
 <main class="catalog-page">
@@ -24,10 +41,9 @@ uasort($categories, function($a, $b) {
 
 <section class="catalog-section">
     <div class="catalog-grid">
-        <?php foreach ($categories as $slug => $category): ?>
+        <?php foreach ($displayCategories as $slug => $category): ?>
             <?php
             $name = I18N::t('category.' . $slug . '.name', ucfirst(str_replace('_', ' ', $slug)));
-            $short = I18N::t('category.' . $slug . '.short', '');
             $image = getCategoryImage($slug);
             
             // Determine link
@@ -37,13 +53,15 @@ uasort($categories, function($a, $b) {
                 $link = 'category.php?slug=' . urlencode($slug) . '&lang=' . $currentLang;
             }
             ?>
-            <a href="<?php echo htmlspecialchars($link); ?>" class="category-card">
-                <div class="category-card__image">
-                    <img src="<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($name); ?>" class="category-card__image-el" onerror="this.src='/img/placeholder.svg'">
+            <a href="<?php echo htmlspecialchars($link); ?>" class="catalog-card">
+                <div class="catalog-card__title-bar">
+                    <?php echo htmlspecialchars($name); ?>
                 </div>
-                <div class="category-card__content">
-                    <h3 class="category-card__title"><?php echo htmlspecialchars($name); ?></h3>
-                    <p class="category-card__desc"><?php echo htmlspecialchars($short); ?></p>
+                <div class="catalog-card__image-wrapper">
+                    <img src="<?php echo htmlspecialchars($image); ?>" 
+                         alt="<?php echo htmlspecialchars($name); ?>" 
+                         class="catalog-card__image"
+                         onerror="this.src='/img/placeholder.svg'">
                 </div>
             </a>
         <?php endforeach; ?>

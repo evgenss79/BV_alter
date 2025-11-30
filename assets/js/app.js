@@ -279,11 +279,13 @@
             shortEl.style.display = 'block';
             btn.textContent = getI18NLabel('fragrance_read_more');
             btn.dataset.expanded = 'false';
+            descBlock.classList.remove('product-card__fragrance-description--expanded');
         } else {
             fullEl.style.display = 'block';
             shortEl.style.display = 'none';
             btn.textContent = getI18NLabel('fragrance_collapse');
             btn.dataset.expanded = 'true';
+            descBlock.classList.add('product-card__fragrance-description--expanded');
         }
     }
 

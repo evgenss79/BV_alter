@@ -39,6 +39,11 @@
             "name": "Aroma Marketing",
             "short": "Ensembles évolutifs pour commerce, hôtellerie et bureaux, installation incluse.",
             "long": "Solutions de parfumerie professionnelles pour entreprises. Nous offrons le développement de parfums personnalisés, l'installation professionnelle et la maintenance continue pour les espaces commerciaux."
+        },
+        "accessories": {
+            "name": "Accessoires",
+            "short": "Complétez vos parfums d'intérieur avec des accessoires élégants.",
+            "long": "Découvrez notre collection d'accessoires pour améliorer votre expérience de parfum d'intérieur. Des plateaux décoratifs aux bâtonnets de rechange et plus encore."
         }
     }
 }

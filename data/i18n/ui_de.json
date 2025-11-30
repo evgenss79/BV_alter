@@ -48,7 +48,8 @@
         "selectVolume": "Volumen wählen",
         "noFragrance": "Kein Duft",
         "moreInfo": "Mehr Info",
-        "lessInfo": "Weniger Info"
+        "lessInfo": "Weniger Info",
+        "accessory": "Zubehör"
     },
     "nav": {
         "catalog": "Katalog",

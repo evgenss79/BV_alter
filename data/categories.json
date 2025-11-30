@@ -71,6 +71,16 @@
         "redirect": "gift-sets.php",
         "sort_order": 7
     },
+    "accessories": {
+        "id": "accessories",
+        "name_key": "category.accessories.name",
+        "short_key": "category.accessories.short",
+        "long_key": "category.accessories.long",
+        "image": "IMG_7321.jpg",
+        "volumes": [],
+        "has_fragrance": false,
+        "sort_order": 8
+    },
     "aroma_marketing": {
         "id": "aroma_marketing",
         "name_key": "category.aroma_marketing.name",
@@ -78,6 +88,6 @@
         "long_key": "category.aroma_marketing.long",
         "image": "IMG_7348.jpg",
         "redirect": "aroma-marketing.php",
-        "sort_order": 8
+        "sort_order": 9
     }
 }

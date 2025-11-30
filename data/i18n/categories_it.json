@@ -39,6 +39,11 @@
             "name": "Aroma Marketing",
             "short": "Set scalabili per retail, hospitality e uffici, installazione inclusa.",
             "long": "Soluzioni professionali di profumeria per aziende. Offriamo sviluppo di profumi personalizzati, installazione professionale e manutenzione continua per spazi commerciali."
+        },
+        "accessories": {
+            "name": "Accessori",
+            "short": "Completa i tuoi profumi per casa con accessori eleganti.",
+            "long": "Scopri la nostra collezione di accessori per migliorare la tua esperienza di profumo per casa. Dai vassoi decorativi ai bastoncini di ricambio e altro ancora."
         }
     }
 }

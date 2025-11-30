@@ -39,6 +39,11 @@
             "name": "Aroma Marketing",
             "short": "Skalierbare Sets für Retail, Hospitality und Offices inklusive Installation.",
             "long": "Professionelle Duftlösungen für Unternehmen. Wir bieten individuelle Duftentwicklung, professionelle Installation und laufende Wartung für gewerbliche Räumlichkeiten."
+        },
+        "accessories": {
+            "name": "Zubehör",
+            "short": "Ergänzen Sie Ihre Raumdüfte mit elegantem Zubehör.",
+            "long": "Entdecken Sie unsere Accessoire-Kollektion, um Ihr Raumduft-Erlebnis zu verbessern. Von dekorativen Tabletts bis zu Ersatzstäbchen und mehr."
         }
     }
 }

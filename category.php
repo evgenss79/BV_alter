@@ -35,6 +35,62 @@ $categoryShort = I18N::t('category.' . $slug . '.short', '');
 $categoryLong = I18N::t('category.' . $slug . '.long', '');
 $categoryImage = getCategoryImage($slug);
 
+// Handle accessories category specially
+if ($slug === 'accessories') {
+    include __DIR__ . '/includes/header.php';
+    ?>
+    <main class="category-page">
+    <section class="category-hero">
+        <div class="category-hero__content">
+            <h1><?php echo htmlspecialchars($categoryName); ?></h1>
+            <div class="category-hero__description-block"
+                 data-full-description="<?php echo htmlspecialchars($categoryLong ?: $categoryShort, ENT_QUOTES); ?>">
+                <p class="category-hero__description-short"></p>
+                <p class="category-hero__description-full"></p>
+                <button type="button" class="category-hero__description-toggle">
+                    <?php echo I18N::t('ui.category.read_more', 'Read more'); ?>
+                </button>
+            </div>
+        </div>
+        <div class="category-hero__image">
+            <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
+                 alt="<?php echo htmlspecialchars($categoryName); ?>" 
+                 class="category-hero__image-el" 
+                 onerror="this.src='/img/placeholder.svg'">
+        </div>
+    </section>
+
+    <section class="category-products">
+        <div class="accessories-grid">
+            <?php for ($i = 1; $i <= 8; $i++): ?>
+                <article class="catalog-card">
+                    <div class="catalog-card__title-bar">
+                        <?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>
+                    </div>
+                    <div class="catalog-card__image-wrapper">
+                        <img src="/img/placeholder.svg" 
+                             alt="<?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>" 
+                             class="catalog-card__image">
+                    </div>
+                </article>
+            <?php endfor; ?>
+        </div>
+    </section>
+    </main>
+
+    <script>
+    // Pass I18N labels for JS
+    window.I18N_LABELS = {
+        category_read_more: <?php echo json_encode(I18N::t('ui.category.read_more', 'Read more')); ?>,
+        category_collapse: <?php echo json_encode(I18N::t('ui.category.collapse', 'Collapse')); ?>
+    };
+    </script>
+
+    <?php
+    include __DIR__ . '/includes/footer.php';
+    exit;
+}
+
 // Get products for this category
 $categoryProducts = array_filter($products, function($p) use ($slug) {
     return ($p['category'] ?? '') === $slug;
@@ -45,6 +101,16 @@ $allowedFrags = allowedFragrances($slug);
 
 // Get volumes for this category
 $volumes = getVolumesForCategory($slug);
+
+// Build multilingual fragrance descriptions from i18n
+$fragranceDescriptions = [];
+foreach ($allowedFrags as $fragCode) {
+    $fragranceDescriptions[$fragCode] = [
+        'name' => I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode))),
+        'short' => I18N::t('fragrance.' . $fragCode . '.short', ''),
+        'full' => I18N::t('fragrance.' . $fragCode . '.full', '')
+    ];
+}
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -297,8 +363,8 @@ window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
     ];
 }, array_combine($allowedFrags, $allowedFrags))); ?>;
 
-// Pass fragrance descriptions from fragrance.txt
-window.FRAGRANCE_DESCRIPTIONS = <?php echo json_encode($FRAGRANCE_DESCRIPTIONS, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP); ?>;
+// Pass multilingual fragrance descriptions from i18n
+window.FRAGRANCE_DESCRIPTIONS = <?php echo json_encode($fragranceDescriptions, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP); ?>;
 
 // Pass I18N labels for JS
 window.I18N_LABELS = {
