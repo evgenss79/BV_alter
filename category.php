@@ -178,13 +178,6 @@ include __DIR__ . '/includes/header.php';
         <?php endforeach; ?>
         
         <?php if (empty($categoryProducts)): ?>
-            <?php
-            // Get the first fragrance for initial image display
-            $firstFragCode = !empty($allowedFrags) ? $allowedFrags[0] : null;
-            $displayImage = $firstFragCode 
-                ? getFragranceImagePath($firstFragCode, $fragrances) 
-                : $categoryImage;
-            ?>
             <!-- Show generic product card for categories without specific products -->
             <article class="product-card" 
                      data-product-card 
@@ -193,7 +186,14 @@ include __DIR__ . '/includes/header.php';
                      data-category="<?php echo htmlspecialchars($slug); ?>">
                 <div class="product-card__inner">
                     <div class="product-card__image">
-                        <img src="<?php echo htmlspecialchars($displayImage); ?>" 
+                        <?php 
+                        // For generic cards, use category image or first fragrance image as fallback
+                        $genericFirstFrag = !empty($allowedFrags) ? $allowedFrags[0] : null;
+                        $genericDisplayImage = $genericFirstFrag 
+                            ? getFragranceImagePath($genericFirstFrag, $fragrances) 
+                            : $categoryImage;
+                        ?>
+                        <img src="<?php echo htmlspecialchars($genericDisplayImage); ?>" 
                              alt="<?php echo htmlspecialchars($categoryName); ?>" 
                              class="product-card__image-el"
                              data-product-image
