@@ -1,44 +1,44 @@
 {
     "category": {
         "aroma_diffusers": {
-            "name": "Aroma Diffusers",
-            "short": "Frosted glass bottles with natural fibers that constantly scent rooms up to 60 m².",
-            "long": "Premium reed diffusers designed for continuous fragrance diffusion. Our aroma diffusers feature high-quality natural fiber sticks and concentrated fragrance oils that last for months.\n\nHow they work: The natural reeds absorb the fragrance oil and release it slowly into the air, providing a constant, subtle scent throughout your space.\n\nAdvantages:\n• No flames or electricity needed\n• Long-lasting (2-3 months per bottle)\n• Adjustable intensity by adding/removing sticks\n\nPerfect for living rooms, bedrooms, offices and any space where you want a lasting fragrance impression."
+            "name": "Арома-дифузори",
+            "short": "Матові скляні флакони з натуральними волокнами, що постійно ароматизують приміщення до 60 м².",
+            "long": "Преміальні дифузори з очеретяними паличками для безперервного поширення аромату. Наші арома-дифузори оснащені високоякісними паличками з натурального волокна та концентрованими ароматичними оліями, які слугують місяцями.\n\nЯк вони працюють: Натуральні очеретяні палички вбирають ароматичну олію та повільно вивільняють її в повітря, забезпечуючи постійний, тонкий аромат у всьому просторі.\n\nПереваги:\n• Не потрібен вогонь або електрика\n• Тривала дія (2-3 місяці на флакон)\n• Регульована інтенсивність шляхом додавання/видалення паличок\n\nІдеально для вітальні, спальні, офісів та будь-якого простору, де ви хочете створити стійке ароматичне враження."
         },
         "scented_candles": {
-            "name": "Scented Candles",
-            "short": "Hand-poured wax blends with three wicks and elegant ceramic vessels.",
-            "long": "Our scented candles are hand-poured using premium vegetable wax blends of coconut and soy. Each candle features multiple wicks for even burning and optimal scent throw.\n\nWithin minutes of lighting, your space fills with rich, long-lasting fragrance. The elegant vessels can be repurposed after use."
+            "name": "Ароматичні свічки",
+            "short": "Воскові суміші ручного лиття з трьома гнотами та елегантними керамічними посудинами.",
+            "long": "Наші ароматичні свічки виготовлені вручну з використанням преміальних сумішей рослинного воску з кокоса та сої. Кожна свічка оснащена кількома гнотами для рівномірного горіння та оптимального поширення аромату.\n\nЧерез кілька хвилин після запалення ваш простір наповнюється насиченим, стійким ароматом. Елегантні посудини можна використовувати повторно після використання."
         },
         "home_perfume": {
-            "name": "Home Perfume",
-            "short": "Finely atomized room and pillow sprays with instant effect.",
-            "long": "Our home perfume sprays provide instant fragrance refresh for any room. Perfect for quick scenting before guests arrive or refreshing linens and textiles."
+            "name": "Парфуми для дому",
+            "short": "Дрібнодисперсні спреї для кімнат та подушок з миттєвим ефектом.",
+            "long": "Наші спреї для дому забезпечують миттєве освіження аромату в будь-якій кімнаті. Ідеально для швидкої ароматизації перед приходом гостей або освіження постільної білизни та текстилю."
         },
         "car_perfume": {
-            "name": "Car Perfume",
-            "short": "Magnetic clips with interchangeable fragrance capsules for every drive.",
-            "long": "Transform every drive with our premium car perfume clips. The magnetic design attaches easily to any air vent, and the interchangeable capsules let you change fragrances as often as you like."
+            "name": "Автопарфуми",
+            "short": "Магнітні кліпси зі змінними ароматичними капсулами для кожної поїздки.",
+            "long": "Перетворіть кожну поїздку з нашими преміальними кліпсами автопарфуму. Магнітний дизайн легко кріпиться до будь-якого вентиляційного отвору, а змінні капсули дозволяють міняти аромати так часто, як вам хочеться."
         },
         "textile_perfume": {
-            "name": "Textile Perfume",
-            "short": "Nourishing compositions for curtains, carpets and bedding.",
-            "long": "Specially formulated for fabrics, our textile perfume sprays gently scent curtains, carpets, sofas and bedding without leaving stains or residue."
+            "name": "Текстильний парфум",
+            "short": "Поживні композиції для штор, килимів та постільної білизни.",
+            "long": "Спеціально розроблені для тканин, наші спреї для текстилю ніжно ароматизують штори, килими, дивани та постільну білизну, не залишаючи плям або залишків."
         },
         "limited_edition": {
-            "name": "Limited Edition",
-            "short": "Seasonal editions with artistic labels, numbered and available only on request.",
-            "long": "Our limited edition collection features exclusive fragrances created for special occasions. Each piece is numbered and available in limited quantities."
+            "name": "Лімітована колекція",
+            "short": "Сезонні видання з художніми етикетками, пронумеровані та доступні лише за запитом.",
+            "long": "Наша лімітована колекція представляє ексклюзивні аромати, створені для особливих випадків. Кожен екземпляр пронумерований та доступний в обмеженій кількості."
         },
         "gift_sets": {
-            "name": "Gift Sets",
-            "short": "Curated boxes with coordinated fragrances for special moments.",
-            "long": "Create the perfect gift with our customizable gift sets. Choose any three products and receive a 5% discount on the total."
+            "name": "Подарункові набори",
+            "short": "Куровані набори з узгодженими ароматами для особливих моментів.",
+            "long": "Створіть ідеальний подарунок з нашими налаштовуваними подарунковими наборами. Виберіть будь-які три продукти та отримайте знижку 5% на загальну суму."
         },
         "aroma_marketing": {
-            "name": "Aroma Marketing",
-            "short": "Scalable sets for retail, hospitality and offices including installation.",
-            "long": "Professional scenting solutions for businesses. We offer custom scent development, professional installation, and ongoing maintenance for commercial spaces."
+            "name": "Арома-маркетинг",
+            "short": "Масштабовані набори для ритейлу, готельного бізнесу та офісів, включаючи встановлення.",
+            "long": "Професійні рішення з ароматизації для бізнесу. Ми пропонуємо розробку індивідуальних ароматів, професійну установку та постійне обслуговування для комерційних приміщень."
         }
     }
 }

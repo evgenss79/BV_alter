@@ -3,42 +3,42 @@
         "aroma_diffusers": {
             "name": "Aroma-Diffusoren",
             "short": "Satinierte Glasflakons mit Naturfasern, die Räume bis zu 60 m² konstant beduften.",
-            "long": "Premium-Reediffusoren für kontinuierliche Duftverteilung."
+            "long": "Premium-Reediffusoren für kontinuierliche Duftverteilung. Unsere Aroma-Diffusoren verfügen über hochwertige Naturfaserstäbchen und konzentrierte Duftöle, die monatelang halten.\n\nSo funktionieren sie: Die natürlichen Rattan-Stäbchen absorbieren das Duftöl und geben es langsam an die Luft ab, wodurch ein konstanter, dezenter Duft in Ihrem Raum entsteht.\n\nVorteile:\n• Keine Flammen oder Strom erforderlich\n• Langanhaltend (2-3 Monate pro Flasche)\n• Einstellbare Intensität durch Hinzufügen/Entfernen von Stäbchen\n\nPerfekt für Wohnzimmer, Schlafzimmer, Büros und jeden Raum, in dem Sie einen dauerhaften Dufteindruck wünschen."
         },
         "scented_candles": {
             "name": "Duftkerzen",
             "short": "Handgegossene Wachsblends mit drei Dochten und eleganten Keramikgefässen.",
-            "long": "Unsere Duftkerzen werden von Hand gegossen."
+            "long": "Unsere Duftkerzen werden von Hand gegossen und verwenden Premium-Pflanzenwachsmischungen aus Kokos und Soja. Jede Kerze verfügt über mehrere Dochte für gleichmässiges Abbrennen und optimale Duftverteilung.\n\nInnerhalb weniger Minuten nach dem Anzünden füllt sich Ihr Raum mit reichhaltigem, langanhaltendem Duft. Die eleganten Gefässe können nach Gebrauch wiederverwendet werden."
         },
         "home_perfume": {
             "name": "Raumduft",
             "short": "Fein zerstäubte Raum- und Kissensprays mit sofortiger Wirkung.",
-            "long": "Unsere Raumduft-Sprays bieten sofortige Dufterfrischung."
+            "long": "Unsere Raumduft-Sprays bieten sofortige Dufterfrischung für jeden Raum. Perfekt zum schnellen Beduften vor dem Eintreffen von Gästen oder zum Auffrischen von Wäsche und Textilien."
         },
         "car_perfume": {
             "name": "Autoparfum",
             "short": "Magnetische Clips mit austauschbaren Duftkapseln für jede Fahrt.",
-            "long": "Transformieren Sie jede Fahrt mit unseren Premium-Autoparfum-Clips."
+            "long": "Verwandeln Sie jede Fahrt mit unseren Premium-Autoparfum-Clips. Das magnetische Design lässt sich einfach an jeder Lüftungsöffnung befestigen, und die austauschbaren Kapseln ermöglichen es Ihnen, den Duft so oft zu wechseln, wie Sie möchten."
         },
         "textile_perfume": {
             "name": "Textilspray",
             "short": "Pflegende Kompositionen für Vorhänge, Teppiche und Bettwäsche.",
-            "long": "Speziell für Stoffe formuliert."
+            "long": "Speziell für Stoffe formuliert, beduften unsere Textilspray-Parfums sanft Vorhänge, Teppiche, Sofas und Bettwäsche, ohne Flecken oder Rückstände zu hinterlassen."
         },
         "limited_edition": {
             "name": "Limitierte Kollektion",
             "short": "Saisonale Editionen mit kunstvollen Labels, nummeriert und nur auf Anfrage.",
-            "long": "Unsere limitierte Edition-Kollektion."
+            "long": "Unsere limitierte Edition-Kollektion präsentiert exklusive Düfte, die für besondere Anlässe kreiert wurden. Jedes Stück ist nummeriert und in begrenzter Stückzahl erhältlich."
         },
         "gift_sets": {
             "name": "Geschenksets",
             "short": "Kuratierte Boxen mit abgestimmten Düften für besondere Momente.",
-            "long": "Erstellen Sie das perfekte Geschenk."
+            "long": "Erstellen Sie das perfekte Geschenk mit unseren anpassbaren Geschenksets. Wählen Sie drei beliebige Produkte und erhalten Sie 5% Rabatt auf die Gesamtsumme."
         },
         "aroma_marketing": {
             "name": "Aroma Marketing",
             "short": "Skalierbare Sets für Retail, Hospitality und Offices inklusive Installation.",
-            "long": "Professionelle Duftlösungen für Unternehmen."
+            "long": "Professionelle Duftlösungen für Unternehmen. Wir bieten individuelle Duftentwicklung, professionelle Installation und laufende Wartung für gewerbliche Räumlichkeiten."
         }
     }
 }
