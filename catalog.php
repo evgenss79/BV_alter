@@ -15,6 +15,7 @@ uasort($categories, function($a, $b) {
 });
 ?>
 
+<main class="catalog-page">
 <section class="page-hero">
     <div class="page-hero__content">
         <h1 class="page-title"><?php echo I18N::t('page.catalog.title', 'Catalog'); ?></h1>
@@ -48,5 +49,6 @@ uasort($categories, function($a, $b) {
         <?php endforeach; ?>
     </div>
 </section>
+</main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

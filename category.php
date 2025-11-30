@@ -54,6 +54,7 @@ include __DIR__ . '/includes/header.php';
 $fullCategoryDescription = $categoryLong ?: $categoryShort;
 ?>
 
+<main class="category-page">
 <section class="category-hero">
     <div class="category-hero__content">
         <h1><?php echo htmlspecialchars($categoryName); ?></h1>
@@ -284,6 +285,7 @@ $fullCategoryDescription = $categoryLong ?: $categoryShort;
         <?php endif; ?>
     </div>
 </section>
+</main>
 
 <script>
 // Pass fragrance data to JavaScript with correct /img/ paths
