@@ -957,12 +957,7 @@ section {
     transition: max-height 0.3s ease;
 }
 
-.product-card__fragrance-description.expanded {
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-/* Legacy class for backwards compatibility */
+.product-card__fragrance-description.expanded,
 .product-card__fragrance-description--expanded {
     max-height: 200px;
     overflow-y: auto;
