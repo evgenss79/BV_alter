@@ -44,6 +44,7 @@ $cartCount = getCartCount();
                                 <li><a href="category.php?slug=car_perfume&lang=<?php echo $currentLang; ?>"><?php echo I18N::t('category.car_perfume.name', 'Car Perfume'); ?></a></li>
                                 <li><a href="category.php?slug=textile_perfume&lang=<?php echo $currentLang; ?>"><?php echo I18N::t('category.textile_perfume.name', 'Textile Perfume'); ?></a></li>
                                 <li><a href="category.php?slug=limited_edition&lang=<?php echo $currentLang; ?>"><?php echo I18N::t('category.limited_edition.name', 'Limited Edition'); ?></a></li>
+                                <li><a href="category.php?slug=accessories&lang=<?php echo $currentLang; ?>"><?php echo I18N::t('category.accessories.name', 'Accessories'); ?></a></li>
                             </ul>
                         </div>
                     </li>
