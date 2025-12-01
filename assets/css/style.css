@@ -606,6 +606,7 @@ section {
     align-items: center;
     justify-content: center;
     background-color: #f5eee5;
+    padding: 0;
 }
 
 .catalog-card__image,
@@ -613,19 +614,12 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
 }
 
-/* PART 3: Home Perfume, Car Perfume, Textile Perfume - show full bottles with slight zoom out */
-.catalog-card--home-perfume .catalog-card-image-wrapper img,
-.catalog-card--car-perfume .catalog-card-image-wrapper img,
-.catalog-card--textile-perfume .catalog-card-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;       /* show the whole bottle */
-    transform: scale(0.95);    /* ~5% shrink inside the same container */
-    transform-origin: center center;
-}
+/* PART 3: Removed special rules for Home Perfume, Car Perfume, Textile Perfume 
+   Now all catalog cards use the same base rule (object-fit: cover) */
 
 /* ========================================
    PRODUCT CARD
