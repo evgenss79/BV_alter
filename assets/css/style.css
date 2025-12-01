@@ -488,7 +488,6 @@ section {
     min-height: 0;
     height: 100%;
 }
-}
 
 @media (max-width: 1024px) {
     .catalog-grid {
@@ -596,20 +595,25 @@ section {
     flex-shrink: 0;
 }
 
-.catalog-card__image-wrapper {
-    flex: 1;
+/* PART 1: Common image wrapper for all catalog cards */
+.catalog-card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f3ede4;
-    min-height: 0;
-    overflow: hidden;
+    background-color: #f5eee5;
+    padding: 0;
 }
 
-.catalog-card__image {
+.catalog-card__image,
+.catalog-card-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
 }
 
@@ -622,6 +626,8 @@ section {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* Products grid (for catalog/other pages) */
@@ -629,6 +635,8 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* Accessories grid (4x2 grid similar to catalog) */
@@ -835,7 +843,7 @@ section {
     align-items: center;
     margin: 0.5rem 0;
     padding-top: 0.5rem;
-    border-top: 1px solid var(--color-line);
+    border-top: 1px солид var(--color-line);
 }
 
 .product-card__price {
@@ -907,18 +915,38 @@ section {
    CATEGORY PAGE
    ======================================== */
 .category-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem clamp(1.5rem, 4vw, 6rem) 1.5rem;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 32px clamp(1.5rem, 4vw, 6rem) 24px;
     background: #fff;
+    margin-bottom: 12px;
+    min-height: auto;
+}
+
+.category-hero-text {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-hero-image {
+    flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 900px) {
     .category-hero {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         padding: 1rem clamp(1rem, 3vw, 4rem) 0.75rem;
+    }
+    
+    .category-hero-text,
+    .category-hero-image {
+        flex: 1 1 auto;
     }
 }
 
@@ -938,30 +966,57 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: auto;
     max-width: 420px;
-    height: auto;
+    height: 100%;
     min-height: 200px;
-    overflow: visible;
+    max-height: 420px;      /* лимит сверху */
+    overflow: hidden;       /* 👈 НИЧЕГО НЕ ВЫЛЕЗАЕТ ИЗ КОНТЕЙНЕРА */
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
-    margin-left: 3rem;
+    margin-left: auto;
+    margin-right: 2vw;
     background-color: #f3ede4;
-    padding: 1rem;
+    padding: 12px;
 }
 
 /* Category hero image element - no cropping, full display with contain */
 .category-hero__image-el {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
     object-fit: contain !important;
     display: block;
-    border-radius: 12px;
+    border-radius: 6px;
+}
+
+/* Вариант B: гибкая высота, но ограниченная сверху */
+@media (min-width: 901px) {
+    .category-hero__image {
+        max-height: 420px;
+    }
+
+    .category-hero__image-el {
+        max-height: 100%;
+    }
+}
+
+/* PART 2: Home Perfume hero image – БЕЗ transform, только уменьшение */
+.hero-home-perfume {
+    width: 45%;
+    max-width: 40%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain !important;
+    display: block;
+    margin: 0 auto;
 }
 
 .category-products {
-    padding: 0.75rem clamp(1.5rem, 4vw, 6rem);
+    padding: 0 clamp(1.5rem, 4vw, 6rem) 0.75rem;
     background: var(--color-cream);
+    margin-top: 0;
 }
 
 /* Category Description Toggle */
@@ -1710,3 +1765,17 @@ section {
         flex-wrap: wrap;
     }
 }
+
+.category-hero:has(.hero-home-perfume) {
+   align-items: center; 
+   padding-right: clamp(0rem, 0vw, 0rem);  /* фактически просто 0 */
+}
+
+.category-hero__image:has(.hero-home-perfume) {
+    min-height: auto;
+    max-height: none;
+    padding-top: 6px;
+    padding-bottom: 3px;
+    margin-right: 0vw;
+}
+
