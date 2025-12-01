@@ -150,12 +150,22 @@ $cartCount = getCartCount();
             if (in_array($slug, ['home_perfume', 'car_perfume', 'textile_perfume'])) {
                 $catalogItemClass .= ' catalog-item--' . $slug;
             }
+            
+            // Determine image wrapper class for special bottle categories
+            $imageWrapperClass = 'catalog-card-image-wrapper';
+            if ($slug === 'home_perfume') {
+                $imageWrapperClass .= ' catalog-card-image-wrapper--home-perfume';
+            } elseif ($slug === 'car_perfume') {
+                $imageWrapperClass .= ' catalog-card-image-wrapper--car-perfume';
+            } elseif ($slug === 'textile_perfume') {
+                $imageWrapperClass .= ' catalog-card-image-wrapper--textile-perfume';
+            }
             ?>
             <a href="<?php echo htmlspecialchars($link); ?>" class="<?php echo htmlspecialchars($catalogItemClass); ?>" data-category-slug="<?php echo htmlspecialchars($slug); ?>">
                 <div class="catalog-card__title-bar">
                     <?php echo htmlspecialchars($name); ?>
                 </div>
-                <div class="catalog-card__image-wrapper catalog-item-image-container">
+                <div class="<?php echo htmlspecialchars($imageWrapperClass); ?>">
                     <img src="<?php echo htmlspecialchars($image); ?>" 
                          alt="<?php echo htmlspecialchars($name); ?>" 
                          class="catalog-card__image"
