@@ -629,6 +629,8 @@ section {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* Products grid (for catalog/other pages) */
@@ -636,6 +638,8 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* Accessories grid (4x2 grid similar to catalog) */
@@ -914,19 +918,38 @@ section {
    CATEGORY PAGE
    ======================================== */
 .category-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem clamp(1.5rem, 4vw, 6rem) 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 48px clamp(1.5rem, 4vw, 6rem) 32px;
     background: #fff;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
+    min-height: auto;
+}
+
+.category-hero-text {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-hero-image {
+    flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (max-width: 900px) {
     .category-hero {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         padding: 1rem clamp(1rem, 3vw, 4rem) 0.75rem;
+    }
+    
+    .category-hero-text,
+    .category-hero-image {
+        flex: 1 1 auto;
     }
 }
 
@@ -963,6 +986,7 @@ section {
 .category-hero__image-el {
     width: 100%;
     height: auto;
+    max-width: 100%;
     object-fit: contain !important;
     display: block;
     border-radius: 12px;

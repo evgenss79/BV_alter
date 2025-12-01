@@ -44,22 +44,26 @@ if ($slug === 'accessories') {
     ?>
     <main class="category-page">
     <section class="category-hero">
-        <div class="category-hero__content">
-            <h1><?php echo htmlspecialchars($categoryName); ?></h1>
-            <div class="category-hero__description-block"
-                 data-full-description="<?php echo htmlspecialchars($categoryLong ?: $categoryShort, ENT_QUOTES); ?>">
-                <p class="category-hero__description-short"></p>
-                <p class="category-hero__description-full"></p>
-                <button type="button" class="category-hero__description-toggle">
-                    <?php echo I18N::t('ui.category.read_more', 'Read more'); ?>
-                </button>
+        <div class="category-hero-text">
+            <div class="category-hero__content">
+                <h1><?php echo htmlspecialchars($categoryName); ?></h1>
+                <div class="category-hero__description-block"
+                     data-full-description="<?php echo htmlspecialchars($categoryLong ?: $categoryShort, ENT_QUOTES); ?>">
+                    <p class="category-hero__description-short"></p>
+                    <p class="category-hero__description-full"></p>
+                    <button type="button" class="category-hero__description-toggle">
+                        <?php echo I18N::t('ui.category.read_more', 'Read more'); ?>
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="category-hero__image <?php echo $heroImageClass; ?>" data-category="<?php echo htmlspecialchars($slug); ?>">
-            <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
-                 alt="<?php echo htmlspecialchars($categoryName); ?>" 
-                 class="category-hero__image-el" 
-                 onerror="this.src='/img/placeholder.svg'">
+        <div class="category-hero-image">
+            <div class="category-hero__image <?php echo $heroImageClass; ?>" data-category="<?php echo htmlspecialchars($slug); ?>">
+                <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
+                     alt="<?php echo htmlspecialchars($categoryName); ?>" 
+                     class="category-hero__image-el" 
+                     onerror="this.src='/img/placeholder.svg'">
+            </div>
         </div>
     </section>
 
@@ -125,22 +129,26 @@ $fullCategoryDescription = $categoryLong ?: $categoryShort;
 
 <main class="category-page">
 <section class="category-hero">
-    <div class="category-hero__content">
-        <h1><?php echo htmlspecialchars($categoryName); ?></h1>
-        <div class="category-hero__description-block"
-             data-full-description="<?php echo htmlspecialchars($fullCategoryDescription, ENT_QUOTES); ?>">
-            <p class="category-hero__description-short"></p>
-            <p class="category-hero__description-full"></p>
-            <button type="button" class="category-hero__description-toggle">
-                <?php echo I18N::t('ui.category.read_more', 'Read more'); ?>
-            </button>
+    <div class="category-hero-text">
+        <div class="category-hero__content">
+            <h1><?php echo htmlspecialchars($categoryName); ?></h1>
+            <div class="category-hero__description-block"
+                 data-full-description="<?php echo htmlspecialchars($fullCategoryDescription, ENT_QUOTES); ?>">
+                <p class="category-hero__description-short"></p>
+                <p class="category-hero__description-full"></p>
+                <button type="button" class="category-hero__description-toggle">
+                    <?php echo I18N::t('ui.category.read_more', 'Read more'); ?>
+                </button>
+            </div>
         </div>
     </div>
-    <div class="category-hero__image <?php echo $heroImageClass; ?>" data-category="<?php echo htmlspecialchars($slug); ?>">
-        <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
-             alt="<?php echo htmlspecialchars($categoryName); ?>" 
-             class="category-hero__image-el" 
-             onerror="this.src='/img/placeholder.svg'">
+    <div class="category-hero-image">
+        <div class="category-hero__image <?php echo $heroImageClass; ?>" data-category="<?php echo htmlspecialchars($slug); ?>">
+            <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
+                 alt="<?php echo htmlspecialchars($categoryName); ?>" 
+                 class="category-hero__image-el" 
+                 onerror="this.src='/img/placeholder.svg'">
+        </div>
     </div>
 </section>
 
