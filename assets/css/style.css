@@ -921,7 +921,6 @@ section {
     padding: 2rem clamp(1.5rem, 4vw, 6rem) 0;
     background: #fff;
     margin-bottom: 32px;
-    padding-bottom: 0;
 }
 
 @media (max-width: 900px) {
