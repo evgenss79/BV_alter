@@ -145,27 +145,29 @@ $cartCount = getCartCount();
                 $link = 'category.php?slug=' . urlencode($slug) . '&lang=' . $currentLang;
             }
             
-            // Determine catalog item class
+            // Determine catalog item class with category-specific modifiers
             $catalogItemClass = 'catalog-card';
-            if (in_array($slug, ['home_perfume', 'car_perfume', 'textile_perfume'])) {
-                $catalogItemClass .= ' catalog-item--' . $slug;
-            }
             
-            // Determine image wrapper class for special bottle categories
-            $imageWrapperClass = 'catalog-card-image-wrapper';
-            if ($slug === 'home_perfume') {
-                $imageWrapperClass .= ' catalog-card-image-wrapper--home-perfume';
+            // Add specific classes for each category
+            if ($slug === 'limited_edition') {
+                $catalogItemClass .= ' catalog-card--limited-edition';
+            } elseif ($slug === 'accessories') {
+                $catalogItemClass .= ' catalog-card--accessories';
+            } elseif ($slug === 'aroma_marketing') {
+                $catalogItemClass .= ' catalog-card--aroma-marketing';
+            } elseif ($slug === 'home_perfume') {
+                $catalogItemClass .= ' catalog-card--home-perfume';
             } elseif ($slug === 'car_perfume') {
-                $imageWrapperClass .= ' catalog-card-image-wrapper--car-perfume';
+                $catalogItemClass .= ' catalog-card--car-perfume';
             } elseif ($slug === 'textile_perfume') {
-                $imageWrapperClass .= ' catalog-card-image-wrapper--textile-perfume';
+                $catalogItemClass .= ' catalog-card--textile-perfume';
             }
             ?>
             <a href="<?php echo htmlspecialchars($link); ?>" class="<?php echo htmlspecialchars($catalogItemClass); ?>" data-category-slug="<?php echo htmlspecialchars($slug); ?>">
                 <div class="catalog-card__title-bar">
                     <?php echo htmlspecialchars($name); ?>
                 </div>
-                <div class="<?php echo htmlspecialchars($imageWrapperClass); ?>">
+                <div class="catalog-card-image-wrapper">
                     <img src="<?php echo htmlspecialchars($image); ?>" 
                          alt="<?php echo htmlspecialchars($name); ?>" 
                          class="catalog-card__image"
