@@ -71,6 +71,7 @@ $cartCount = getCartCount();
                                 <li><a href="category.php?slug=car_perfume&lang=<?php echo $currentLang; ?>"><?php echo I18N::t('category.car_perfume.name', 'Car Perfume'); ?></a></li>
                                 <li><a href="category.php?slug=textile_perfume&lang=<?php echo $currentLang; ?>"><?php echo I18N::t('category.textile_perfume.name', 'Textile Perfume'); ?></a></li>
                                 <li><a href="category.php?slug=limited_edition&lang=<?php echo $currentLang; ?>"><?php echo I18N::t('category.limited_edition.name', 'Limited Edition'); ?></a></li>
+                                <li><a href="category.php?slug=accessories&lang=<?php echo $currentLang; ?>"><?php echo I18N::t('category.accessories.name', 'Accessories'); ?></a></li>
                             </ul>
                         </div>
                     </li>
@@ -144,7 +145,7 @@ $cartCount = getCartCount();
                 $link = 'category.php?slug=' . urlencode($slug) . '&lang=' . $currentLang;
             }
             ?>
-            <a href="<?php echo htmlspecialchars($link); ?>" class="catalog-card">
+            <a href="<?php echo htmlspecialchars($link); ?>" class="catalog-card" data-category-slug="<?php echo htmlspecialchars($slug); ?>">
                 <div class="catalog-card__title-bar">
                     <?php echo htmlspecialchars($name); ?>
                 </div>

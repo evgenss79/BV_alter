@@ -613,6 +613,16 @@ section {
     display: block;
 }
 
+/* PART 3: Scale images for Home Perfume, Car Perfume, and Textile Spray on catalog page */
+.catalog-card[data-category-slug="home_perfume"] .catalog-card__image,
+.catalog-card[data-category-slug="car_perfume"] .catalog-card__image,
+.catalog-card[data-category-slug="textile_perfume"] .catalog-card__image {
+    object-fit: contain;
+    max-width: 93%;
+    max-height: 93%;
+    margin: auto;
+}
+
 /* ========================================
    PRODUCT CARD
    ======================================== */
@@ -945,7 +955,8 @@ section {
     overflow: visible;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
-    margin-left: 3rem;
+    margin-left: auto;
+    margin-right: 3vw;
     background-color: #f3ede4;
     padding: 1rem;
 }
@@ -957,6 +968,11 @@ section {
     object-fit: contain !important;
     display: block;
     border-radius: 12px;
+}
+
+/* PART 1: Reduce Home Perfume hero image by 20% */
+.category-hero__image[data-category="home_perfume"] .category-hero__image-el {
+    transform: scale(0.8);
 }
 
 .category-products {
