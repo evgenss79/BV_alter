@@ -596,7 +596,8 @@ section {
     flex-shrink: 0;
 }
 
-.catalog-card__image-wrapper {
+/* PART 1: Common image wrapper for all catalog cards */
+.catalog-card-image-wrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 3 / 4;
@@ -604,22 +605,25 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f3ede4;
+    background-color: #f5eee5;
 }
 
-.catalog-card__image {
+.catalog-card__image,
+.catalog-card-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-/* PART 1B: Show full bottles for Home/Car/Textile Perfume categories */
-.catalog-card-image-wrapper--home-perfume img,
-.catalog-card-image-wrapper--car-perfume img,
-.catalog-card-image-wrapper--textile-perfume img {
+/* PART 3: Home Perfume, Car Perfume, Textile Perfume - show full bottles with slight zoom out */
+.catalog-card--home-perfume .catalog-card-image-wrapper img,
+.catalog-card--car-perfume .catalog-card-image-wrapper img,
+.catalog-card--textile-perfume .catalog-card-image-wrapper img {
     object-fit: contain;
-    padding: 8px;
+    width: 95%;
+    height: 95%;
+    margin: auto;
 }
 
 /* ========================================
