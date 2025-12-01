@@ -405,7 +405,7 @@ function getCategoryImage(string $category): string {
         'scented_candles' => 'Candels category.jpg',
         'home_perfume' => 'home pefume.jpg',
         'car_perfume' => 'AutoParf.jpg',
-        'textile_perfume' => 'Textil-spray.jpg',
+        'textile_perfume' => 'Textile-hero.jpg',
         'limited_edition' => '3 velas.jpg',
         'gift_sets' => 'ETSY-foto.jpg',
         'accessories' => 'ETSY-foto.jpg',
