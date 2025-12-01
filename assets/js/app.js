@@ -219,6 +219,7 @@
 
     /**
      * Update fragrance description in product card
+     * Uses 'short' directly from FRAGRANCE_DESCRIPTIONS (from i18n)
      */
     function updateFragranceDescription(card, fragranceCode) {
         const descData = window.FRAGRANCE_DESCRIPTIONS || {};
@@ -233,7 +234,7 @@
 
         if (!shortEl || !fullEl || !toggleBtn) return;
 
-        if (!info || !info.full) {
+        if (!info || (!info.short && !info.full)) {
             shortEl.textContent = '';
             fullEl.textContent = '';
             toggleBtn.style.display = 'none';
@@ -241,8 +242,9 @@
             return;
         }
 
-        const full = info.full;
-        const short = getShortText(full, 2); // show 2 lines by default
+        // Use 'short' from i18n directly (already translated)
+        const short = info.short || '';
+        const full = info.full || '';
 
         shortEl.textContent = short;
         fullEl.textContent = full;

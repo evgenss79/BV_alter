@@ -173,7 +173,7 @@ ul, ol {
 
 .site-header__logo {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #fff;
@@ -373,9 +373,11 @@ main {
 
 /* Catalog page layout - no scroll on desktop */
 .catalog-page {
-    min-height: calc(100vh - 100px);
+    min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 /* Category page layout */
@@ -411,7 +413,7 @@ section {
    PAGE HERO
    ======================================== */
 .page-hero {
-    padding: 1.5rem clamp(1.5rem, 4vw, 6rem) 1rem;
+    padding: 1rem clamp(1.5rem, 4vw, 6rem) 0.75rem;
     background: #fff;
 }
 
@@ -441,11 +443,13 @@ section {
    CATALOG GRID
    ======================================== */
 .catalog-section {
-    padding: 1.25rem clamp(1.5rem, 4vw, 6rem) 1.5rem;
+    padding: 0.75rem clamp(1.5rem, 4vw, 6rem) 1rem;
     background: var(--color-cream);
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .catalog-grid {
@@ -453,7 +457,8 @@ section {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: 1rem;
+    min-height: 0;
 }
 
 @media (max-width: 1024px) {
@@ -552,10 +557,10 @@ section {
 }
 
 .catalog-card__title-bar {
-    padding: 0.6rem 0.8rem;
+    padding: 0.5rem 0.75rem;
     background-color: rgba(255,255,255,0.95);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-family: 'Playfair Display', serif;
     text-align: center;
 }
@@ -566,7 +571,8 @@ section {
     align-items: center;
     justify-content: center;
     background-color: #f3ede4;
-    min-height: 120px;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .catalog-card__image {
@@ -621,12 +627,12 @@ section {
 /* Product Card - New horizontal layout */
 .product-card {
     background: #fff;
-    padding: 1.25rem 1.75rem;
+    padding: 1rem 1.5rem;
     border-radius: var(--radius-card);
     border: 1px solid var(--color-line);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     transition: transform var(--transition), box-shadow var(--transition);
-    max-height: 420px;
+    max-height: 380px;
     overflow: hidden;
     position: relative;
 }
@@ -638,7 +644,7 @@ section {
 
 .product-card__inner {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.25rem;
     align-items: stretch;
     height: 100%;
 }
@@ -651,7 +657,7 @@ section {
     background-color: #f3ede4;
     border-radius: 12px;
     overflow: hidden;
-    max-height: 260px;
+    max-height: 240px;
 }
 
 .product-card__image-el {
@@ -670,7 +676,7 @@ section {
 }
 
 .product-card__header {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
 }
 
 .product-card__category-tag {
@@ -683,8 +689,8 @@ section {
 
 .product-card__title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    margin-bottom: 0.35rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
 }
 
 .product-card__description {
@@ -713,20 +719,20 @@ section {
 
 /* Product Selectors */
 .product-card__selectors {
-    margin-top: 0.5rem;
+    margin-top: 0.35rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .product-card__select {
     width: 100%;
-    padding: 0.45rem 0.6rem;
+    padding: 0.4rem 0.5rem;
     border-radius: 8px;
     border: 1px solid var(--color-line);
     background-color: #fff;
     font-family: inherit;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     cursor: pointer;
 }
 
@@ -773,7 +779,7 @@ section {
 
 /* Price Row */
 .product-card__price-row {
-    margin-top: 0.5rem;
+    margin-top: 0.35rem;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -809,10 +815,10 @@ section {
 
 /* Add to Cart Button */
 .product-card__add-to-cart {
-    margin-top: 0.5rem;
+    margin-top: 0.35rem;
     align-self: flex-start;
-    padding: 0.6rem 1.25rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
 }
 
 /* Responsive: stack image and content on small screens */
@@ -864,9 +870,9 @@ section {
 .category-hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
     align-items: center;
-    padding: 1.25rem clamp(1.5rem, 4vw, 6rem) 0.75rem;
+    padding: 1rem clamp(1.5rem, 4vw, 6rem) 0.5rem;
     background: #fff;
 }
 
@@ -878,8 +884,8 @@ section {
 }
 
 .category-hero__content h1 {
-    margin-bottom: 0.5rem;
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.35rem;
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
 }
 
 .category-hero__desc {
@@ -893,8 +899,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 420px;
-    max-height: 280px;
+    max-width: 380px;
+    max-height: 220px;
     overflow: hidden;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
@@ -913,7 +919,7 @@ section {
 }
 
 .category-products {
-    padding: 1.25rem clamp(1.5rem, 4vw, 6rem);
+    padding: 0.75rem clamp(1.5rem, 4vw, 6rem);
     background: var(--color-cream);
 }
 
@@ -948,25 +954,25 @@ section {
 
 /* Fragrance Description in Product Card */
 .product-card__fragrance-description {
-    margin-top: 0.35rem;
-    padding: 0.5rem 0.6rem;
+    margin-top: 0.25rem;
+    padding: 0.4rem 0.5rem;
     background: var(--color-sand);
     border-radius: 6px;
-    max-height: 120px;
+    max-height: 80px;
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
 
 .product-card__fragrance-description.expanded,
 .product-card__fragrance-description--expanded {
-    max-height: 200px;
+    max-height: 160px;
     overflow-y: auto;
 }
 
 .product-card__fragrance-text {
     color: var(--color-muted);
-    font-size: 0.8rem;
-    line-height: 1.4;
+    font-size: 0.75rem;
+    line-height: 1.35;
     white-space: pre-line;
     margin: 0;
     display: -webkit-box;
@@ -985,9 +991,9 @@ section {
     border: none;
     color: var(--color-gold);
     cursor: pointer;
-    font-size: 0.75rem;
-    padding: 0.25rem 0;
-    margin-top: 0.2rem;
+    font-size: 0.7rem;
+    padding: 0.15rem 0;
+    margin-top: 0.15rem;
     font-family: inherit;
     text-decoration: underline;
 }

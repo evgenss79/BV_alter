@@ -2,123 +2,123 @@
     "fragrance": {
         "cherry_blossom": {
             "name": "Cherry Blossom",
-            "short": "A sweet and spicy aroma of rich cherry liqueur and spring flowers.",
-            "full": "An intensely saturated fragrance that enhances the entire atmosphere of the room. The top notes of cherry and bitter almond evolve into a vibrant, tangy cherry liqueur scent. Rose and jasmine accords blend into a soft floral trail, enriched with a sweet touch of vanilla.\n\nYou'll fall in love with CHERRY BLOSSOM if you enjoy delicate, sweet fragrances and the scent of ripe, juicy cherries.\n\nOlfactory Pyramid:\nTop notes: Cherry, Liqueur, Bitter almond\nHeart notes: Cherry, Turkish rose, Jasmine sambac, Plum\nBase notes: Peru balsam, Tonka beans, Sandalwood, Vetiver, Vanilla"
+            "short": "Солодкий та пряний аромат насиченого вишневого лікеру та весняних квітів.",
+            "full": "Інтенсивно насичений аромат, який підсилює всю атмосферу кімнати. Верхні ноти вишні та гіркого мигдалю переходять у яскравий, терпкий аромат вишневого лікеру. Акорди троянди та жасмину зливаються в м'який квітковий шлейф, збагачений солодким дотиком ванілі.\n\nВи закохаєтесь у CHERRY BLOSSOM, якщо вам подобаються ніжні, солодкі аромати та запах стиглої, соковитої вишні.\n\nОльфакторна піраміда:\nВерхні ноти: Вишня, Лікер, Гіркий мигдаль\nСерцеві ноти: Вишня, Турецька троянда, Жасмин самбак, Слива\nБазові ноти: Перуанський бальзам, Боби тонка, Сандал, Ветивер, Ваніль"
         },
         "bellini": {
             "name": "Bellini",
-            "short": "A velvety scent of juicy peach and intense rum.",
-            "full": "This powdery fragrance, rich in aromatic compounds, quickly fills your space with playful notes of sweet peach, blood orange and vanilla. The bitter-spicy accords of cognac, rum and cashmere add a subtle edge and deepen its character.\n\nBELLINI is perfect if you want to maintain a festive, celebratory atmosphere.\n\nOlfactory Pyramid:\nTop Notes: Peach, Blood Orange, Cardamom, Heliotrope\nHeart Notes: Rum, Cognac, Davana, Jasmine\nBase Notes: Patchouli, Sandalwood, Vanilla, Tonka Bean"
+            "short": "Оксамитовий аромат соковитого персика та насиченого рому.",
+            "full": "Цей пудровий аромат, багатий на ароматичні сполуки, швидко наповнює ваш простір грайливими нотами солодкого персика, кривавого апельсина та ванілі. Гірко-пряні акорди коньяку, рому та кашеміру додають тонку грань і поглиблюють характер.\n\nBELLINI ідеальний, якщо ви хочете підтримувати святкову, урочисту атмосферу.\n\nОльфакторна піраміда:\nВерхні ноти: Персик, Кривавий апельсин, Кардамон, Геліотроп\nСерцеві ноти: Ром, Коньяк, Давана, Жасмин\nБазові ноти: Пачулі, Сандал, Ваніль, Боби тонка"
         },
         "eden": {
             "name": "Eden",
-            "short": "A fruity fragrance with a soft floral trail.",
-            "full": "Intense and vibrant, this aroma fills the entire space. Passion fruit and raspberry notes unfold into a juicy, fresh scent of ripe fruits and berries. Sweetness is enhanced by lily and vanilla accords.\n\nOlfactory Pyramid:\nTop notes: Passion fruit, Peach, Pear, Raspberry\nHeart notes: Lily\nBase notes: Vanilla, Musk, Sandalwood"
+            "short": "Фруктовий аромат з м'яким квітковим шлейфом.",
+            "full": "Інтенсивний та яскравий, цей аромат наповнює весь простір. Ноти маракуї та малини розкриваються у соковитий, свіжий запах стиглих фруктів та ягід. Солодкість підсилюється акордами лілії та ванілі.\n\nОльфакторна піраміда:\nВерхні ноти: Маракуя, Персик, Груша, Малина\nСерцеві ноти: Лілія\nБазові ноти: Ваніль, Мускус, Сандал"
         },
         "rosso": {
             "name": "Rosso",
-            "short": "A lush aroma of ripe red grapes and juicy berries.",
-            "full": "This fragrance fills the entire space with a vegetal scent of raspberry and birch bark. The dominant accord of juicy red grapes permeates the room with the penetrating aroma of dry wine.\n\nOlfactory Pyramid:\nTop notes: Orange, Violet, Magnolia\nHeart notes: Plum, Strawberry, Wild berries\nBase notes: Dry wood, Birch"
+            "short": "Розкішний аромат стиглого червоного винограду та соковитих ягід.",
+            "full": "Цей аромат наповнює весь простір рослинним запахом малини та берестової кори. Домінуючий акорд соковитого червоного винограду пронизує кімнату проникливим ароматом сухого вина.\n\nОльфакторна піраміда:\nВерхні ноти: Апельсин, Фіалка, Магнолія\nСерцеві ноти: Слива, Полуниця, Дикі ягоди\nБазові ноти: Сухе дерево, Береза"
         },
         "salted_caramel": {
             "name": "Salted Caramel",
-            "short": "A bright composition with notes of wheat and vanilla.",
-            "full": "Notes of wheat and vanilla fill the fragrance with sweetness and a delicious, mouthwatering trail. Caramel and salt blend into a rich, enveloping scent familiar from childhood.\n\nOlfactory Pyramid:\nTop notes: Sea salt\nHeart notes: Pear, Vanilla, Powdery notes, Wheat\nBase notes: Toffee, Brown sugar"
+            "short": "Яскрава композиція з нотами пшениці та ванілі.",
+            "full": "Ноти пшениці та ванілі наповнюють аромат солодкістю та смачним, апетитним шлейфом. Карамель та сіль зливаються в насичений, обволікаючий запах, знайомий з дитинства.\n\nОльфакторна піраміда:\nВерхні ноти: Морська сіль\nСерцеві ноти: Груша, Ваніль, Пудрові ноти, Пшениця\nБазові ноти: Тофі, Коричневий цукор"
         },
         "santal": {
             "name": "Santal",
-            "short": "A powdery fragrance with leather, cardamom, and oriental sandalwood.",
-            "full": "This aromatic scent diffuses slowly and gently throughout the space. Emerging notes of cardamom and sandalwood blend with strong accords of iris and amber.\n\nOlfactory Pyramid:\nTop notes: Sandalwood, Papyrus, Leather\nHeart notes: Virginia cedar, Cardamom, Violet\nBase notes: Iris, Amber"
+            "short": "Пудровий аромат зі шкірою, кардамоном та східним сандалом.",
+            "full": "Цей ароматичний запах повільно та ніжно поширюється простором. Ноти кардамону та сандалу, що з'являються, змішуються з сильними акордами ірису та амбри.\n\nОльфакторна піраміда:\nВерхні ноти: Сандал, Папірус, Шкіра\nСерцеві ноти: Вірджинський кедр, Кардамон, Фіалка\nБазові ноти: Ірис, Амбра"
         },
         "lime_basil": {
             "name": "Lime Basil",
-            "short": "A fresh citrus scent of juicy lime and aromatic basil.",
-            "full": "This intensely saturated fragrance quickly unfolds in the air. Notes of lime and ripe mandarin create a slightly sweet aroma, while spicy basil and thyme accords dissolve into pleasant bitterness.\n\nOlfactory Pyramid:\nTop notes: Mandarin, Bergamot\nHeart notes: Basil, Iris, Lilac, Thyme\nBase notes: Lime, Patchouli, Vetiver"
+            "short": "Свіжий цитрусовий аромат соковитого лайма та ароматичного базиліка.",
+            "full": "Цей інтенсивно насичений аромат швидко розкривається в повітрі. Ноти лайму та стиглого мандарина створюють злегка солодкий аромат, тоді як пряні акорди базиліка та чебрецю розчиняються в приємній гіркоті.\n\nОльфакторна піраміда:\nВерхні ноти: Мандарин, Бергамот\nСерцеві ноти: Базилік, Ірис, Бузок, Чебрець\nБазові ноти: Лайм, Пачулі, Ветивер"
         },
         "bamboo": {
             "name": "Bamboo",
-            "short": "A green, fresh scent of spring flowers and bamboo stalks.",
-            "full": "This moderately intense fragrance gently fills your space without overpowering it. Top notes of bergamot and bamboo create a delicate vegetal mist.\n\nOlfactory Pyramid:\nTop Notes: Bamboo, Bergamot\nHeart Notes: Ylang-ylang, Lily, Orange Blossom\nBase Notes: Vanilla, Sandalwood, Amber"
+            "short": "Зелений, свіжий аромат весняних квітів та бамбукових стебел.",
+            "full": "Цей помірно інтенсивний аромат ніжно наповнює ваш простір, не переповнюючи його. Верхні ноти бергамота та бамбука створюють делікатний рослинний серпанок.\n\nОльфакторна піраміда:\nВерхні ноти: Бамбук, Бергамот\nСерцеві ноти: Іланг-іланг, Лілія, Квіти апельсина\nБазові ноти: Ваніль, Сандал, Амбра"
         },
         "tobacco_vanilla": {
             "name": "Tobacco Vanilla",
-            "short": "A warm and smooth scent of tobacco leaves and sweet vanilla.",
-            "full": "Notes of spices and tobacco leaves gradually unfold into a rich, delicate vanilla and cocoa scent. The trail is revealed with light woody bark and dried fruit notes.\n\nOlfactory Pyramid:\nTop notes: Tobacco leaves, Spices\nHeart notes: Tonka beans, Vanilla, Cocoa, Tobacco flower\nBase notes: Woody notes, Dried fruits"
+            "short": "Теплий та м'який аромат тютюнового листя та солодкої ванілі.",
+            "full": "Ноти спецій та тютюнового листя поступово розкриваються в насичений, ніжний ванільно-какаовий запах. Шлейф виявляється легкими деревними нотами кори та сухофруктів.\n\nОльфакторна піраміда:\nВерхні ноти: Тютюнове листя, Спеції\nСерцеві ноти: Боби тонка, Ваніль, Какао, Квітка тютюну\nБазові ноти: Деревні ноти, Сухофрукти"
         },
         "salty_water": {
             "name": "Salty Water",
-            "short": "A fresh scent of salty water and ancient minerals.",
-            "full": "This is a light-intensity fragrance, the most delicate of the entire line. Marine salt and amber dissolve into a refreshing salty dew aroma.\n\nOlfactory Pyramid:\nTop notes: Amber, Sea salt\nHeart notes: Sage\nBase notes: Grapefruit, Seaweed"
+            "short": "Свіжий аромат солоної води та древніх мінералів.",
+            "full": "Це аромат легкої інтенсивності, найделікатніший з усієї лінійки. Морська сіль та амбра розчиняються в освіжаючому аромат солоної роси.\n\nОльфакторна піраміда:\nВерхні ноти: Амбра, Морська сіль\nСерцеві ноти: Шавлія\nБазові ноти: Грейпфрут, Морські водорості"
         },
         "christmas_tree": {
             "name": "Christmas Tree",
-            "short": "A soft and festive scent of Christmas pine and juicy tangerines.",
-            "full": "This is a medium-intensity fragrance that gently fills the room. The bright and sweet tangerine note unfolds into a familiar and nostalgic aroma.\n\nOlfactory Pyramid:\nTop notes: Vanilla\nHeart notes: Orange, Cinnamon\nBase notes: Pine, Tangerine"
+            "short": "М'який та святковий аромат різдвяної сосни та соковитих мандаринів.",
+            "full": "Це аромат середньої інтенсивності, який ніжно наповнює кімнату. Яскрава та солодка мандаринова нота розкривається у знайомий та ностальгічний аромат.\n\nОльфакторна піраміда:\nВерхні ноти: Ваніль\nСерцеві ноти: Апельсин, Кориця\nБазові ноти: Сосна, Мандарин"
         },
         "fleur": {
             "name": "Fleur",
-            "short": "A cool, juicy, floral-fruity aroma.",
-            "full": "The composition opens with bright notes of bergamot, lychee, and peach, leading into a floral heart of orange blossom, jasmine, and peony.\n\nOlfactory Pyramid:\nTop notes: Bergamot, Lychee, Peach\nHeart notes: Orange blossom, Jasmine, Peony\nBase notes: Woody notes, Moss, Musk"
+            "short": "Прохолодний, соковитий, квітково-фруктовий аромат.",
+            "full": "Композиція відкривається яскравими нотами бергамота, лічі та персика, переходячи у квіткове серце з апельсинового цвіту, жасмину та півонії.\n\nОльфакторна піраміда:\nВерхні ноти: Бергамот, Лічі, Персик\nСерцеві ноти: Апельсиновий цвіт, Жасмин, Півонія\nБазові ноти: Деревні ноти, Мох, Мускус"
         },
         "blanc": {
             "name": "Blanc",
-            "short": "A soft, fresh fragrance of white cotton and purity.",
-            "full": "This moderately concentrated scent blends light floral accords with bright aldehydes, evoking the aroma of a crisp white shirt and freshly laundered sheets.\n\nOlfactory Pyramid:\nTop Notes: Aldehydes, Rose, Pink Pepper\nHeart Notes: Peony, Violet, Orange Blossom\nBase Notes: White Musk, Woody Notes, Sandalwood"
+            "short": "М'який, свіжий аромат білої бавовни та чистоти.",
+            "full": "Цей помірно концентрований запах поєднує легкі квіткові акорди з яскравими альдегідами, викликаючи аромат хрусткої білої сорочки та свіжовипраної білизни.\n\nОльфакторна піраміда:\nВерхні ноти: Альдегіди, Троянда, Рожевий перець\nСерцеві ноти: Півонія, Фіалка, Апельсиновий цвіт\nБазові ноти: Білий мускус, Деревні ноти, Сандал"
         },
         "green_mango": {
             "name": "Green Mango",
-            "short": "A juicy fragrance of fresh mango and crisp pineapple.",
-            "full": "This highly concentrated scent fills the entire space with bright and fresh aroma of freshly cut fruits.\n\nOlfactory Pyramid:\nTop notes: Mango, Melon\nHeart notes: Peach, Pineapple\nBase notes: Mango peel, Pine needles"
+            "short": "Соковитий аромат свіжого манго та хрусткого ананаса.",
+            "full": "Цей високо концентрований запах наповнює весь простір яскравим та свіжим ароматом щойно нарізаних фруктів.\n\nОльфакторна піраміда:\nВерхні ноти: Манго, Диня\nСерцеві ноти: Персик, Ананас\nБазові ноти: Шкірка манго, Хвоя"
         },
         "carolina": {
             "name": "Carolina",
-            "short": "A delicate, light aroma of sweet cappuccino and spring blooms.",
-            "full": "Coffee and almond notes dissolve into a warm, enveloping sweet-bitter accord. Jasmine, iris and bergamot create fresh floral highlights.\n\nOlfactory Pyramid:\nTop Notes: Almond, Coffee, Bergamot, Lemon\nHeart Notes: Jasmine sambac, Tuberose, Iris, Bulgarian Rose\nBase Notes: Tonka Bean, Cocoa, Sandalwood, Vanilla"
+            "short": "Ніжний, легкий аромат солодкого капучино та весняних квітів.",
+            "full": "Ноти кави та мигдалю розчиняються в теплому, обволікаючому солодко-гіркому акорді. Жасмин, ірис та бергамот створюють свіжі квіткові відтінки.\n\nОльфакторна піраміда:\nВерхні ноти: Мигдаль, Кава, Бергамот, Лимон\nСерцеві ноти: Жасмин самбак, Тубероза, Ірис, Болгарська троянда\nБазові ноти: Боби тонка, Какао, Сандал, Ваніль"
         },
         "sugar": {
             "name": "Sugar",
-            "short": "A sweet and sticky scent of burnt sugar and woody resin.",
-            "full": "Pronounced notes of saffron and jasmine melt into a sweet and spicy aroma. The main woody amber accord envelops the air with sweetness.\n\nOlfactory Pyramid:\nTop notes: Jasmine, Saffron\nHeart notes: Woody amber\nBase notes: White cedar, Pine resin"
+            "short": "Солодкий та липкий аромат паленого цукру та деревної смоли.",
+            "full": "Виражені ноти шафрану та жасмину тануть у солодкому та пряному аромат. Основний деревно-амбровий акорд огортає повітря солодкістю.\n\nОльфакторна піраміда:\nВерхні ноти: Жасмин, Шафран\nСерцеві ноти: Деревна амбра\nБазові ноти: Білий кедр, Соснова смола"
         },
         "dubai": {
             "name": "Dubai",
-            "short": "A rich oriental fragrance of Damask rose and oud wood.",
-            "full": "An intense and highly concentrated aroma. Notes of geranium and violet gently envelop the space with a slightly bitter floral scent.\n\nOlfactory Pyramid:\nTop notes: Geranium, Violet\nHeart notes: Cinnamon, Damask rose, Turkish rose\nBase notes: Oud, Vanilla"
+            "short": "Насичений східний аромат дамаської троянди та удового дерева.",
+            "full": "Інтенсивний та високо концентрований аромат. Ноти герані та фіалки ніжно огортають простір злегка гірким квітковим запахом.\n\nОльфакторна піраміда:\nВерхні ноти: Герань, Фіалка\nСерцеві ноти: Кориця, Дамаська троянда, Турецька троянда\nБазові ноти: Уд, Ваніль"
         },
         "africa": {
             "name": "Africa",
-            "short": "A warm, spicy scent of cardamom wood and soft leather.",
-            "full": "This intensely concentrated fragrance fills the entire room. Bright notes of bergamot and musk are enhanced by a luminous woody nuance.\n\nOlfactory Pyramid:\nTop Notes: Bergamot, Vetiver, Geranium\nHeart Notes: Cardamom, Leather, Musk\nBase Notes: Patchouli, Cumin, Oud, Saffron"
+            "short": "Теплий, пряний аромат кардамонового дерева та м'якої шкіри.",
+            "full": "Цей інтенсивно концентрований аромат наповнює всю кімнату. Яскраві ноти бергамота та мускусу підсилюються сяючим деревним нюансом.\n\nОльфакторна піраміда:\nВерхні ноти: Бергамот, Ветивер, Герань\nСерцеві ноти: Кардамон, Шкіра, Мускус\nБазові ноти: Пачулі, Кмин, Уд, Шафран"
         },
         "dune": {
             "name": "Dune",
-            "short": "A bold and spicy scent of blazing sun and hot pepper.",
-            "full": "Citrus notes of orange and grapefruit add a pleasantly sweet trail. Distinct pepper accords dissolve into a bright, fiery aroma.\n\nOlfactory Pyramid:\nTop notes: Orange, Grapefruit\nHeart notes: Pepper, Pink Pepper\nBase notes: Vetiver, Cedar, Patchouli, Benzoin"
+            "short": "Сміливий та пряний аромат палючого сонця та гострого перцю.",
+            "full": "Цитрусові ноти апельсина та грейпфрута додають приємно солодкий шлейф. Виразні акорди перцю розчиняються в яскравому, вогненному аромат.\n\nОльфакторна піраміда:\nВерхні ноти: Апельсин, Грейпфрут\nСерцеві ноти: Перець, Рожевий перець\nБазові ноти: Ветивер, Кедр, Пачулі, Бензоїн"
         },
         "valencia": {
             "name": "Valencia",
-            "short": "An airy fragrance of fresh citrus and delicate jasmine.",
-            "full": "Notes of lemon and bergamot fill the space with a fresh citrus scent. The main accords of jasmine and rose melt into a sweet floral composition.\n\nOlfactory Pyramid:\nTop notes: Bergamot, Lemon\nHeart notes: Jasmine, White Acacia, Rose\nBase notes: Woody notes, Musk"
+            "short": "Повітряний аромат свіжих цитрусів та ніжного жасмину.",
+            "full": "Ноти лимона та бергамота наповнюють простір свіжим цитрусовим запахом. Основні акорди жасмину та троянди тануть у солодкій квітковій композиції.\n\nОльфакторна піраміда:\nВерхні ноти: Бергамот, Лимон\nСерцеві ноти: Жасмин, Біла акація, Троянда\nБазові ноти: Деревні ноти, Мускус"
         },
         "etna": {
             "name": "Etna",
-            "short": "A spicy and warm aroma of leather, tobacco, and caramel.",
-            "full": "Strong leather and black pepper notes emerge instantly, while clove, sage, and honey blend into an intense composition.\n\nOlfactory Pyramid:\nTop notes: Leather, Saffron, Black pepper\nHeart notes: Honey, Clove, Iris, Sage\nBase notes: Tobacco, Oud, Caramel, Patchouli"
+            "short": "Пряний та теплий аромат шкіри, тютюну та карамелі.",
+            "full": "Сильні ноти шкіри та чорного перцю виникають миттєво, тоді як гвоздика, шавлія та мед зливаються в інтенсивну композицію.\n\nОльфакторна піраміда:\nВерхні ноти: Шкіра, Шафран, Чорний перець\nСерцеві ноти: Мед, Гвоздика, Ірис, Шавлія\nБазові ноти: Тютюн, Уд, Карамель, Пачулі"
         },
         "new_york": {
             "name": "New York",
-            "short": "A vibrant party, sharp cocktails, and spicy freshness.",
-            "full": "Your night will be remembered by the scent of dark wood, smoky amber, and bold citrus notes.\n\nVolume: 270 ml\nBurn time: approx. 40 hours"
+            "short": "Яскрава вечірка, гострі коктейлі та пряна свіжість.",
+            "full": "Вашу ніч запам'ятає аромат темного дерева, димчастої амбри та сміливих цитрусових нот.\n\nОб'єм: 270 мл\nЧас горіння: приблизно 40 годин"
         },
         "abu_dhabi": {
             "name": "Abu Dhabi",
-            "short": "Embracing warm nights under a starlit sky.",
-            "full": "Rich spicy notes blend with gentle lavender and a lush bouquet of florals.\n\nVolume: 270 ml\nBurn time: approx. 40 hours"
+            "short": "Обіймаючи теплі ночі під зоряним небом.",
+            "full": "Насичені пряні ноти змішуються з ніжною лавандою та пишним букетом квітів.\n\nОб'єм: 270 мл\nЧас горіння: приблизно 40 годин"
         },
         "palermo": {
             "name": "Palermo",
-            "short": "Gentle rays of sunshine and refreshing coastal breeze.",
-            "full": "Radiant notes of mandarin and bitter orange blend with the soft scent of peonies and vibrant basil.\n\nVolume: 270 ml\nBurn time: approx. 40 hours"
+            "short": "Ніжні промені сонця та освіжаючий прибережний бриз.",
+            "full": "Сяючі ноти мандарина та гіркого апельсина змішуються з м'яким ароматом півоній та яскравого базиліка.\n\nОб'єм: 270 мл\nЧас горіння: приблизно 40 годин"
         }
     }
 }
