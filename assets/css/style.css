@@ -953,7 +953,6 @@ section {
 /* Category hero image element - no cropping, full display with contain */
 .category-hero__image-el {
     width: 100%;
-    max-width: 420px;
     height: auto;
     object-fit: contain !important;
     display: block;
