@@ -52,7 +52,7 @@ if ($slug === 'accessories') {
                 </button>
             </div>
         </div>
-        <div class="category-hero__image" data-category="<?php echo htmlspecialchars($slug); ?>">
+        <div class="category-hero__image <?php echo $slug === 'home_perfume' ? 'hero-home-perfume' : ''; ?>" data-category="<?php echo htmlspecialchars($slug); ?>">
             <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
                  alt="<?php echo htmlspecialchars($categoryName); ?>" 
                  class="category-hero__image-el" 
@@ -133,7 +133,7 @@ $fullCategoryDescription = $categoryLong ?: $categoryShort;
             </button>
         </div>
     </div>
-    <div class="category-hero__image" data-category="<?php echo htmlspecialchars($slug); ?>">
+    <div class="category-hero__image <?php echo $slug === 'home_perfume' ? 'hero-home-perfume' : ''; ?>" data-category="<?php echo htmlspecialchars($slug); ?>">
         <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
              alt="<?php echo htmlspecialchars($categoryName); ?>" 
              class="category-hero__image-el" 
