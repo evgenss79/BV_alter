@@ -661,8 +661,8 @@ section {
     border: 1px solid var(--color-line);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     transition: transform var(--transition), box-shadow var(--transition);
-    max-height: 380px;
-    overflow: hidden;
+    max-height: none;
+    overflow: visible;
     position: relative;
 }
 
@@ -679,23 +679,25 @@ section {
 }
 
 .product-card__image {
-    flex: 0 0 30%;
+    flex: 0 0 280px;
+    width: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f3ede4;
     border-radius: 12px;
     overflow: hidden;
-    max-height: 240px;
+    min-height: 300px;
+    max-height: 400px;
+    padding: 0.5rem;
 }
 
 .product-card__image-el {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
+    width: 100%;
     height: auto;
     object-fit: contain !important;
     display: block;
+    border-radius: 12px;
 }
 
 .product-card__content {
@@ -858,11 +860,19 @@ section {
 
     .product-card__image {
         flex: 0 0 auto;
-        min-height: 200px;
+        width: 100%;
+        min-height: 250px;
+        max-height: 350px;
     }
     
     .product-card__add-to-cart {
         width: 100%;
+    }
+    
+    .category-hero__image {
+        margin-left: 0;
+        margin-top: 1rem;
+        max-width: 100%;
     }
 }
 
@@ -898,10 +908,10 @@ section {
    ======================================== */
 .category-hero {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     align-items: center;
-    padding: 1rem clamp(1.5rem, 4vw, 6rem) 0.5rem;
+    gap: 2rem;
+    padding: 2rem clamp(1.5rem, 4vw, 6rem) 1.5rem;
     background: #fff;
 }
 
@@ -928,23 +938,25 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 380px;
-    max-height: 220px;
-    overflow: hidden;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    min-height: 200px;
+    overflow: visible;
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
     margin-left: 3rem;
     background-color: #f3ede4;
+    padding: 1rem;
 }
 
-/* Category hero image element - no cropping */
+/* Category hero image element - no cropping, full display with contain */
 .category-hero__image-el {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
+    width: 100%;
     height: auto;
     object-fit: contain !important;
     display: block;
+    border-radius: 12px;
 }
 
 .category-products {
@@ -983,18 +995,18 @@ section {
 
 /* Fragrance Description in Product Card */
 .product-card__fragrance-description {
-    margin-top: 0.25rem;
-    padding: 0.4rem 0.5rem;
+    margin-top: 0.75rem;
     background: var(--color-sand);
-    border-radius: 6px;
-    max-height: 80px;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    max-height: 120px;
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
 
 .product-card__fragrance-description.expanded,
 .product-card__fragrance-description--expanded {
-    max-height: 160px;
+    max-height: 200px;
     overflow-y: auto;
 }
 
