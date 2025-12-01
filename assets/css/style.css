@@ -939,7 +939,7 @@ section {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 420px;
     height: auto;
     min-height: 200px;
     overflow: visible;
@@ -952,11 +952,11 @@ section {
 
 /* Category hero image element - no cropping, full display with contain */
 .category-hero__image-el {
-    max-width: 100%;
     width: 100%;
     height: auto;
     object-fit: contain !important;
     display: block;
+    border-radius: 12px;
 }
 
 .category-products {
