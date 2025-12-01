@@ -48,7 +48,8 @@
         "selectVolume": "Volumen wählen",
         "noFragrance": "Kein Duft",
         "moreInfo": "Mehr Info",
-        "lessInfo": "Weniger Info"
+        "lessInfo": "Weniger Info",
+        "accessory": "Zubehör"
     },
     "nav": {
         "catalog": "Katalog",
@@ -65,7 +66,7 @@
             "content": "NicheHome.ch präsentiert eine sorgfältig kuratierte Auswahl an Raumdüften, die für anspruchsvolle Wohn- und Hospitality-Konzepte entwickelt wurden. Jede Kreation entspringt einer Leidenschaft für aussergewöhnliche Akkorde und langanhaltende Performance.\n\nUnsere Boutique beliefert Interior Designer, Boutiquen und Privatkunden in der gesamten Schweiz mit flexiblen Konditionen, massgeschneiderter Beratung und sofort einsatzbereiten Kollektionen.\n\nBy Velcheva verbindet Eleganz und Wärme in einem raffinierten Format. Perfekt für alle, die Premium-Düfte suchen, die jeden Raum in ein sinnliches Erlebnis verwandeln."
         },
         "catalog": {
-            "title": "Unsere Kollektionen",
+            "title": "Katalog",
             "subtitle": "Entdecken Sie unsere Premium-Duftkategorien"
         },
         "contacts": {

@@ -408,6 +408,7 @@ function getCategoryImage(string $category): string {
         'textile_perfume' => 'Textil-spray.jpg',
         'limited_edition' => '3 velas.jpg',
         'gift_sets' => 'ETSY-foto.jpg',
+        'accessories' => 'ETSY-foto.jpg',
         'aroma_marketing' => 'ETSY-foto.jpg'
     ];
     

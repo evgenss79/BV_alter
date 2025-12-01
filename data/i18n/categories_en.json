@@ -39,6 +39,11 @@
             "name": "Aroma Marketing",
             "short": "Scalable sets for retail, hospitality and offices including installation.",
             "long": "Professional scenting solutions for businesses. We offer custom scent development, professional installation, and ongoing maintenance for commercial spaces."
+        },
+        "accessories": {
+            "name": "Accessories",
+            "short": "Complement your home fragrance with elegant accessories.",
+            "long": "Discover our collection of accessories to enhance your home fragrance experience. From decorative trays to replacement sticks and more."
         }
     }
 }
