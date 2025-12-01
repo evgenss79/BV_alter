@@ -614,11 +614,34 @@ section {
     padding: 10px;
 }
 
-/* PART 3: Scale images for Home Perfume, Car Perfume, and Textile Spray on catalog page */
+/* Catalog item image container */
+.catalog-item-image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.catalog-item-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* PART 1: Scale images for Home Perfume, Car Perfume, and Textile Spray on catalog page */
+.catalog-item--home-perfume img,
+.catalog-item--car-perfume img,
+.catalog-item--textile-perfume img {
+    transform: scale(0.90);
+}
+
+/* Legacy support for existing structure */
 .catalog-card[data-category-slug="home_perfume"] .catalog-card__image,
 .catalog-card[data-category-slug="car_perfume"] .catalog-card__image,
 .catalog-card[data-category-slug="textile_perfume"] .catalog-card__image {
-    transform: scale(0.93);
+    transform: scale(0.90);
 }
 
 /* ========================================
@@ -966,6 +989,12 @@ section {
     object-fit: contain !important;
     display: block;
     border-radius: 12px;
+}
+
+/* PART 2: Home Perfume hero image - 20% reduction */
+.hero-home-perfume {
+    transform: scale(0.80);
+    transform-origin: top right;
 }
 
 .category-products {

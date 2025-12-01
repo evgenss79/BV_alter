@@ -144,12 +144,18 @@ $cartCount = getCartCount();
             } else {
                 $link = 'category.php?slug=' . urlencode($slug) . '&lang=' . $currentLang;
             }
+            
+            // Determine catalog item class
+            $catalogItemClass = 'catalog-card';
+            if (in_array($slug, ['home_perfume', 'car_perfume', 'textile_perfume'])) {
+                $catalogItemClass .= ' catalog-item--' . $slug;
+            }
             ?>
-            <a href="<?php echo htmlspecialchars($link); ?>" class="catalog-card" data-category-slug="<?php echo htmlspecialchars($slug); ?>">
+            <a href="<?php echo htmlspecialchars($link); ?>" class="<?php echo htmlspecialchars($catalogItemClass); ?>" data-category-slug="<?php echo htmlspecialchars($slug); ?>">
                 <div class="catalog-card__title-bar">
                     <?php echo htmlspecialchars($name); ?>
                 </div>
-                <div class="catalog-card__image-wrapper">
+                <div class="catalog-card__image-wrapper catalog-item-image-container">
                     <img src="<?php echo htmlspecialchars($image); ?>" 
                          alt="<?php echo htmlspecialchars($name); ?>" 
                          class="catalog-card__image"

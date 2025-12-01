@@ -35,6 +35,9 @@ $categoryShort = I18N::t('category.' . $slug . '.short', '');
 $categoryLong = I18N::t('category.' . $slug . '.long', '');
 $categoryImage = getCategoryImage($slug);
 
+// Determine if this is Home Perfume category for hero image scaling
+$heroImageClass = $slug === 'home_perfume' ? 'hero-home-perfume' : '';
+
 // Handle accessories category specially
 if ($slug === 'accessories') {
     include __DIR__ . '/includes/header.php';
@@ -52,7 +55,7 @@ if ($slug === 'accessories') {
                 </button>
             </div>
         </div>
-        <div class="category-hero__image" data-category="<?php echo htmlspecialchars($slug); ?>">
+        <div class="category-hero__image <?php echo $heroImageClass; ?>" data-category="<?php echo htmlspecialchars($slug); ?>">
             <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
                  alt="<?php echo htmlspecialchars($categoryName); ?>" 
                  class="category-hero__image-el" 
@@ -133,7 +136,7 @@ $fullCategoryDescription = $categoryLong ?: $categoryShort;
             </button>
         </div>
     </div>
-    <div class="category-hero__image" data-category="<?php echo htmlspecialchars($slug); ?>">
+    <div class="category-hero__image <?php echo $heroImageClass; ?>" data-category="<?php echo htmlspecialchars($slug); ?>">
         <img src="<?php echo htmlspecialchars($categoryImage); ?>" 
              alt="<?php echo htmlspecialchars($categoryName); ?>" 
              class="category-hero__image-el" 
