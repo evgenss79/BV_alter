@@ -618,8 +618,7 @@ section {
     display: block;
 }
 
-/* PART 3: Removed special rules for Home Perfume, Car Perfume, Textile Perfume 
-   Now all catalog cards use the same base rule (object-fit: cover) */
+/* All catalog cards now use the same base styling (object-fit: cover) */
 
 /* ========================================
    PRODUCT CARD
