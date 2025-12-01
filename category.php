@@ -205,7 +205,9 @@ $fullCategoryDescription = $categoryLong ?: $categoryShort;
                         <header class="product-card__header">
                             <p class="product-card__category-tag"><?php echo htmlspecialchars($categoryName); ?></p>
                             <h2 class="product-card__title"><?php echo htmlspecialchars($productName); ?></h2>
-                            <p class="product-card__description"><?php echo htmlspecialchars($productDesc); ?></p>
+                            <?php if ($slug !== 'limited_edition'): ?>
+                                <p class="product-card__description"><?php echo htmlspecialchars($productDesc); ?></p>
+                            <?php endif; ?>
                         </header>
                         
                         <div class="product-card__selectors">
