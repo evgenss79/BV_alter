@@ -662,7 +662,6 @@ section {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     transition: transform var(--transition), box-shadow var(--transition);
     max-height: none;
-    height: auto;
     overflow: visible;
     position: relative;
 }
@@ -985,7 +984,7 @@ section {
 /* Fragrance Description in Product Card */
 .product-card__fragrance-description {
     margin-top: 0.75rem;
-    background-color: #f7efe4;
+    background-color: var(--color-sand);
     padding: 0.75rem 1rem;
     border-radius: 8px;
     max-height: 120px;
