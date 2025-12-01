@@ -371,13 +371,35 @@ main {
     min-height: 60vh;
 }
 
+/* Catalog page body - no scroll, fit viewport */
+.body--catalog {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.body--catalog .utility-bar {
+    padding: 0.2rem 1rem;
+    font-size: 0.75rem;
+}
+
+.body--catalog .site-header__main {
+    padding: 0.5rem clamp(1rem, 3vw, 4rem);
+}
+
+.body--catalog .page-title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
 /* Catalog page layout - no scroll on desktop */
 .catalog-page {
-    min-height: 100vh;
-    max-height: 100vh;
+    flex: 1;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    min-height: 0;
 }
 
 /* Category page layout */
@@ -417,6 +439,11 @@ section {
     background: #fff;
 }
 
+/* Catalog hero - compact for fitting in viewport */
+.catalog-hero {
+    padding: 0.25rem clamp(1.5rem, 4vw, 6rem) 0.15rem;
+}
+
 .page-hero__content {
     max-width: 800px;
     margin: 0 auto;
@@ -443,7 +470,7 @@ section {
    CATALOG GRID
    ======================================== */
 .catalog-section {
-    padding: 0.75rem clamp(1.5rem, 4vw, 6rem) 1rem;
+    padding: 0.25rem clamp(1.5rem, 4vw, 6rem) 0.35rem;
     background: var(--color-cream);
     flex: 1;
     display: flex;
@@ -455,10 +482,12 @@ section {
 .catalog-grid {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
     min-height: 0;
+    height: 100%;
+}
 }
 
 @media (max-width: 1024px) {
@@ -539,7 +568,7 @@ section {
    ======================================== */
 .catalog-card {
     position: relative;
-    border-radius: 16px;
+    border-radius: 12px;
     background-color: #fff;
     box-shadow: 0 10px 30px rgba(0,0,0,0.04);
     overflow: hidden;
@@ -548,6 +577,7 @@ section {
     text-decoration: none;
     color: var(--color-charcoal);
     transition: transform var(--transition), box-shadow var(--transition);
+    min-height: 0;
 }
 
 .catalog-card:hover {
@@ -557,12 +587,13 @@ section {
 }
 
 .catalog-card__title-bar {
-    padding: 0.5rem 0.75rem;
+    padding: 0.3rem 0.5rem;
     background-color: rgba(255,255,255,0.95);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     font-family: 'Playfair Display', serif;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .catalog-card__image-wrapper {
@@ -576,11 +607,9 @@ section {
 }
 
 .catalog-card__image {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
