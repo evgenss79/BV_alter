@@ -595,6 +595,12 @@ section {
     flex-shrink: 0;
 }
 
+.catalog-card__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 /* PART 1: Common image wrapper for all catalog cards */
 .catalog-card-image-wrapper {
     position: relative;

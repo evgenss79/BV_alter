@@ -104,7 +104,7 @@ if ($slug === 'accessories') {
                          data-product-id="<?php echo htmlspecialchars($productId); ?>"
                          data-product-name="<?php echo htmlspecialchars($productName); ?>"
                          data-category="<?php echo htmlspecialchars($slug); ?>">
-                    <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo htmlspecialchars($currentLang); ?>" class="catalog-card__link" style="text-decoration: none; color: inherit; display: block;">
+                    <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo htmlspecialchars($currentLang); ?>" class="catalog-card__link">
                         <div class="catalog-card__title-bar">
                             <?php echo htmlspecialchars($productName); ?>
                         </div>
