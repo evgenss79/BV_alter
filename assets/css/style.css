@@ -1932,32 +1932,32 @@ section {
     max-width: 960px;
     margin: 0 auto;
     padding: 60px 20px 80px;
-    background-color: #f8f6f3; /* теплый off-white фон */
+    background-color: #f8f6f3; /* warm off-white background */
 }
 
-/* Внутренний блок, чтобы текст не прилипал к краям */
+/* Inner block to keep text from touching edges */
 .about-page__inner {
     max-width: 780px;
     margin: 0 auto;
 }
 
-/* Общий базовый текст */
+/* Base text styling */
 .about-page--premium p {
-    font-family: "Georgia", "Times New Roman", serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 17px;
     line-height: 1.8;
     color: #2b2a29;
     margin-bottom: 18px;
 }
 
-/* Удлинённые абзацы с чуть более мягким цветом */
+/* Extended paragraphs with softer color */
 .about-page--premium p + p {
     color: #3a3937;
 }
 
-/* Основной заголовок */
+/* Main heading */
 .about-page--premium h1 {
-    font-family: "Playfair Display", "Georgia", serif;
+    font-family: 'Playfair Display', 'Georgia', serif;
     font-size: 32px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1966,9 +1966,9 @@ section {
     color: #111111;
 }
 
-/* Подзаголовки секций */
+/* Section subheadings */
 .about-page--premium h2 {
-    font-family: "Playfair Display", "Georgia", serif;
+    font-family: 'Playfair Display', 'Georgia', serif;
     font-size: 22px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -1977,17 +1977,17 @@ section {
     color: #141414;
 }
 
-/* Мелкий разделительный акцент под H1 */
+/* Decorative accent line under H1 */
 .about-page--premium h1::after {
     content: "";
     display: block;
     width: 60px;
     height: 1px;
     margin: 16px auto 0;
-    background-color: #c4b59f; /* тонкая бежевая линия */
+    background-color: #c4b59f; /* thin beige line */
 }
 
-/* Лёгкий "карточный" эффект для текста */
+/* Light card effect for text */
 .about-page__section {
     background-color: #fdfbf7;
     border: 1px solid #e3ddd2;
@@ -1995,7 +1995,7 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
-/* На больших экранах чуть больше воздуха */
+/* More breathing room on larger screens */
 @media (min-width: 1024px) {
     .about-page--premium {
         padding-top: 80px;
@@ -2015,7 +2015,7 @@ section {
     }
 }
 
-/* Лёгкое выделение ключевых фраз (например, бренда) */
+/* Light emphasis for key phrases (e.g., brand name) */
 .about-page--premium em,
 .about-page--premium strong {
     font-style: normal;
@@ -2023,7 +2023,7 @@ section {
     color: #111111;
 }
 
-/* Ссылки в тексте About – тонкие, не кричащие */
+/* Links in About text - subtle, not loud */
 .about-page--premium a {
     color: #222222;
     text-decoration: none;
