@@ -104,54 +104,31 @@ if ($slug === 'accessories') {
                          data-product-id="<?php echo htmlspecialchars($productId); ?>"
                          data-product-name="<?php echo htmlspecialchars($productName); ?>"
                          data-category="<?php echo htmlspecialchars($slug); ?>">
-                    <div class="catalog-card__title-bar">
-                        <?php echo htmlspecialchars($productName); ?>
-                    </div>
-                    <div class="catalog-card__image-wrapper">
-                        <img src="<?php echo htmlspecialchars($displayImage); ?>" 
-                             alt="<?php echo htmlspecialchars($productName); ?>" 
-                             class="catalog-card__image"
-                             data-product-image
-                             data-product-id="<?php echo htmlspecialchars($productId); ?>"
-                             data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
-                             <?php if ($hoverImagePath): ?>
-                             data-hover-image="<?php echo htmlspecialchars($hoverImagePath); ?>"
-                             <?php endif; ?>
-                             onerror="this.src='/img/placeholder.svg'">
-                    </div>
-                    <div class="catalog-card__content">
-                        <div class="product-card__selectors">
-                            <?php if (!empty($aromaSasheFragrances)): ?>
-                                <div class="product-card__field">
-                                    <label><?php echo I18N::t('common.fragrance', 'Fragrance'); ?></label>
-                                    <select class="product-card__select product-card__select--fragrance" 
-                                            data-fragrance-select
-                                            data-product-id="<?php echo htmlspecialchars($productId); ?>">
-                                        <?php foreach ($aromaSasheFragrances as $fragCode): ?>
-                                            <?php
-                                            $fragName = I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode)));
-                                            ?>
-                                            <option value="<?php echo htmlspecialchars($fragCode); ?>"
-                                                    data-image="<?php echo htmlspecialchars(getFragranceImage($fragCode)); ?>">
-                                                <?php echo htmlspecialchars($fragName); ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            <?php endif; ?>
+                    <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo htmlspecialchars($currentLang); ?>" class="catalog-card__link" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="catalog-card__title-bar">
+                            <?php echo htmlspecialchars($productName); ?>
                         </div>
-                        
-                        <div class="product-card__price-row">
-                            <span class="product-card__price-label"><?php echo I18N::t('common.price', 'Price'); ?></span>
-                            <span class="product-card__price-value" data-price-display>
-                                CHF <?php echo number_format($defaultPrice, 2); ?>
-                            </span>
+                        <div class="catalog-card__image-wrapper">
+                            <img src="<?php echo htmlspecialchars($displayImage); ?>" 
+                                 alt="<?php echo htmlspecialchars($productName); ?>" 
+                                 class="catalog-card__image"
+                                 data-product-image
+                                 data-product-id="<?php echo htmlspecialchars($productId); ?>"
+                                 data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
+                                 <?php if ($hoverImagePath): ?>
+                                 data-hover-image="<?php echo htmlspecialchars($hoverImagePath); ?>"
+                                 <?php endif; ?>
+                                 onerror="this.src='/img/placeholder.svg'">
                         </div>
-                        
-                        <button type="button" class="btn btn--gold product-card__add-to-cart" data-add-to-cart>
-                            <?php echo I18N::t('common.addToCart', 'Add to cart'); ?>
-                        </button>
-                    </div>
+                        <div class="catalog-card__content">
+                            <div class="product-card__price-row">
+                                <span class="product-card__price-label"><?php echo I18N::t('common.price', 'Price'); ?></span>
+                                <span class="product-card__price-value" data-price-display>
+                                    CHF <?php echo number_format($defaultPrice, 2); ?>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
                 </article>
             <?php endif; ?>
             
