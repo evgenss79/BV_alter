@@ -207,6 +207,11 @@
         "limited_palermo": {
             "name": "Palermo Limited Edition",
             "desc": "Gentle rays of sunshine and refreshing coastal breeze with citrus notes."
-        }
+        },
+        "aroma_sashe": {
+            "name": "Aroma Sashé",
+            "desc": "Portable scent sachets for wardrobes, drawers and small spaces. Long-lasting fragrance that keeps your belongings fresh. Perfect for travel and storage."
+        },
+        "recommended": "You might also like"
     }
 }

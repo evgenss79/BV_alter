@@ -54,10 +54,10 @@ include __DIR__ . '/includes/header.php';
         <h1><?php echo htmlspecialchars($productName); ?></h1>
         <p class="category-hero__desc"><?php echo nl2br(htmlspecialchars($productDesc)); ?></p>
     </div>
-    <img src="assets/img/<?php echo htmlspecialchars($productImage); ?>" 
+    <img src="img/<?php echo htmlspecialchars($productImage); ?>" 
          alt="<?php echo htmlspecialchars($productName); ?>" 
          class="category-hero__image"
-         onerror="this.src='assets/img/placeholder.jpg'">
+         onerror="this.src='img/placeholder.svg'">
 </section>
 
 <section class="catalog-section">
@@ -113,7 +113,17 @@ include __DIR__ . '/includes/header.php';
                 </div>
                 
                 <div class="product-card__meta">
-                    <span><?php echo I18N::t('common.price', 'Price'); ?></span>
+                    <?php
+                    // For accessories, show package info in price label
+                    $priceLabel = I18N::t('common.price', 'Price');
+                    if ($categorySlug === 'accessories' && !empty($productVariants)) {
+                        $volume = $productVariants[0]['volume'] ?? '';
+                        if ($volume && $volume !== 'standard') {
+                            $priceLabel .= ' (' . htmlspecialchars($volume) . ')';
+                        }
+                    }
+                    ?>
+                    <span><?php echo $priceLabel; ?></span>
                     <span class="product-card__price" data-price-display>
                         CHF <?php echo number_format($defaultPrice, 2); ?>
                     </span>
@@ -147,10 +157,10 @@ include __DIR__ . '/includes/header.php';
                 $recPrice = !empty($recVariants) ? ($recVariants[0]['priceCHF'] ?? 0) : 0;
             ?>
                 <a href="product.php?id=<?php echo htmlspecialchars($recId); ?>&lang=<?php echo $currentLang; ?>" class="product-card" style="text-decoration: none;">
-                    <img src="assets/img/<?php echo htmlspecialchars($recImage); ?>" 
+                    <img src="img/<?php echo htmlspecialchars($recImage); ?>" 
                          alt="<?php echo htmlspecialchars($recName); ?>" 
                          class="product-card__image"
-                         onerror="this.src='assets/img/placeholder.jpg'">
+                         onerror="this.src='img/placeholder.svg'">
                     <h3 class="product-card__title"><?php echo htmlspecialchars($recName); ?></h3>
                     <div class="product-card__meta">
                         <span class="product-card__price">CHF <?php echo number_format($recPrice, 2); ?></span>

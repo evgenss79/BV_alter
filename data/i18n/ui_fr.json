@@ -207,6 +207,11 @@
         "limited_palermo": {
             "name": "Palermo Limited Edition",
             "desc": "Gentle rays of sunshine and refreshing coastal breeze with citrus notes."
-        }
+        },
+        "aroma_sashe": {
+            "name": "Aroma Sashé",
+            "desc": "Sachets parfumés portables pour armoires, tiroirs et petits espaces. Parfum longue durée qui garde vos affaires fraîches. Parfait pour les voyages et le rangement."
+        },
+        "recommended": "Vous pourriez aussi aimer"
     }
 }

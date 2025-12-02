@@ -207,6 +207,11 @@
         "limited_palermo": {
             "name": "Palermo Limited Edition",
             "desc": "Gentle rays of sunshine and refreshing coastal breeze with citrus notes."
-        }
+        },
+        "aroma_sashe": {
+            "name": "Aroma Sashé",
+            "desc": "Sacchetti profumati portatili per armadi, cassetti e piccoli spazi. Fragranza duratura che mantiene freschi i tuoi oggetti. Perfetto per viaggi e conservazione."
+        },
+        "recommended": "Potrebbe piacerti anche"
     }
 }

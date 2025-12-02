@@ -182,6 +182,11 @@
         "limited_palermo": {
             "name": "Palermo Limited Edition",
             "desc": "Sanfte Sonnenstrahlen und erfrischende Küstenbrise mit Zitrusnoten."
-        }
+        },
+        "aroma_sashe": {
+            "name": "Aroma Sashé",
+            "desc": "Tragbare Duftsäckchen für Schränke, Schubladen und kleine Räume. Langanhaltender Duft, der Ihre Sachen frisch hält. Perfekt für Reisen und Lagerung."
+        },
+        "recommended": "Das könnte Ihnen auch gefallen"
     }
 }

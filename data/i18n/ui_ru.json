@@ -207,6 +207,11 @@
         "limited_palermo": {
             "name": "Palermo Limited Edition",
             "desc": "Gentle rays of sunshine and refreshing coastal breeze with citrus notes."
-        }
+        },
+        "aroma_sashe": {
+            "name": "Аромасаше",
+            "desc": "Портативные ароматические мешочки для шкафов, ящиков и небольших помещений. Долговечный аромат сохраняет ваши вещи свежими. Идеально для путешествий и хранения."
+        },
+        "recommended": "Вам также может понравиться"
     }
 }
