@@ -207,6 +207,11 @@
         "limited_palermo": {
             "name": "Palermo Limited Edition",
             "desc": "Gentle rays of sunshine and refreshing coastal breeze with citrus notes."
-        }
+        },
+        "aroma_sashe": {
+            "name": "Aroma Sashé",
+            "desc": "I nostri profumi per la casa si presentano sotto forma di deodoranti solidi. Li abbiamo creati concisi ed estetici. Pertanto, questo prodotto sarà un'aggiunta molto piacevole alla tua casa. La fragranza del deodorante solido è più delicata di quella di un normale profumo per la casa. Questo tipo di prodotto non si farà sentire così forte. Ma può sottolineare in modo sottile ed efficace i singoli dettagli. In altre parole, hai l'opportunità di profumare selettivamente qualsiasi oggetto semplicemente posizionando o appendendo un deodorante aromatico. Ad esempio, puoi posizionarlo in un armadio con i vestiti. Ogni volta che apri le porte del tuo armadio, sentirai una leggera traccia del tuo profumo preferito.\n\n*C'è una regola: più piccola è l'area di distribuzione, più dura la fragranza."
+        },
+        "recommended": "Potrebbe piacerti anche"
     }
 }

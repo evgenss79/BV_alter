@@ -93,5 +93,16 @@
             {"volume": "270ml", "priceCHF": 39.90}
         ],
         "active": true
+    },
+    "aroma_sashe": {
+        "id": "aroma_sashe",
+        "category": "accessories",
+        "name_key": "product.aroma_sashe.name",
+        "desc_key": "product.aroma_sashe.desc",
+        "image": "2-Sashe.jpg",
+        "variants": [
+            {"volume": "2st/box", "priceCHF": 11.90}
+        ],
+        "active": true
     }
 }
