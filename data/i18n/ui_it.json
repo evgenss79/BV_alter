@@ -177,16 +177,16 @@
     },
     "product": {
         "diffuser_classic": {
-            "name": "Aroma Diffuser Classic",
-            "desc": "Premium reed diffuser with natural fiber sticks for continuous fragrance diffusion."
+            "name": "Aroma Diffuser",
+            "desc": ""
         },
         "candle_classic": {
-            "name": "Scented Candle Classic",
-            "desc": "Hand-poured candles with premium vegetable wax blend and long-lasting fragrance."
+            "name": "Scented Candle",
+            "desc": ""
         },
         "home_spray": {
-            "name": "Home Perfume Spray",
-            "desc": "Fine mist room spray for instant fragrance refresh."
+            "name": "Interior Spray",
+            "desc": ""
         },
         "car_clip": {
             "name": "Car Perfume",
@@ -194,7 +194,7 @@
         },
         "textile_spray": {
             "name": "Textile Perfume Spray",
-            "desc": "Gentle fragrance spray for curtains, carpets and bedding."
+            "desc": "A gentle scented spray for curtains, carpets, furniture and bedding."
         },
         "limited_new_york": {
             "name": "New York Limited Edition",

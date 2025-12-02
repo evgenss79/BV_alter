@@ -152,24 +152,24 @@
     },
     "product": {
         "diffuser_classic": {
-            "name": "Aroma-Diffusor Klassik",
-            "desc": "Premium-Reediffusor mit natürlichen Faserstäbchen für kontinuierliche Duftverteilung."
+            "name": "Aroma Diffuser",
+            "desc": ""
         },
         "candle_classic": {
-            "name": "Duftkerze Klassik",
-            "desc": "Handgegossene Kerzen mit Premium-Pflanzenwachsmischung."
+            "name": "Scented Candle",
+            "desc": ""
         },
         "home_spray": {
-            "name": "Raumduft-Spray",
-            "desc": "Feiner Nebel-Raumspray für sofortige Dufterfrischung."
+            "name": "Interior Spray",
+            "desc": ""
         },
         "car_clip": {
             "name": "Car Perfume",
             "desc": ""
         },
         "textile_spray": {
-            "name": "Textil-Parfum-Spray",
-            "desc": "Sanfter Duftspray für Vorhänge, Teppiche und Bettwäsche."
+            "name": "Textile Perfume Spray",
+            "desc": "A gentle scented spray for curtains, carpets, furniture and bedding."
         },
         "limited_new_york": {
             "name": "New York Limited Edition",

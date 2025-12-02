@@ -203,7 +203,6 @@ $fullCategoryDescription = $categoryLong ?: $categoryShort;
                     
                     <div class="product-card__content">
                         <header class="product-card__header">
-                            <p class="product-card__category-tag"><?php echo htmlspecialchars($categoryName); ?></p>
                             <h2 class="product-card__title"><?php echo htmlspecialchars($productName); ?></h2>
                             <?php if ($slug !== 'limited_edition' && $slug !== 'car_perfume'): ?>
                                 <p class="product-card__description"><?php echo htmlspecialchars($productDesc); ?></p>
@@ -299,7 +298,6 @@ $fullCategoryDescription = $categoryLong ?: $categoryShort;
                     
                     <div class="product-card__content">
                         <header class="product-card__header">
-                            <p class="product-card__category-tag"><?php echo htmlspecialchars($categoryName); ?></p>
                             <h2 class="product-card__title"><?php echo htmlspecialchars($categoryName); ?></h2>
                             <p class="product-card__description"><?php echo htmlspecialchars($categoryShort); ?></p>
                         </header>
