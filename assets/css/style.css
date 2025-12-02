@@ -1941,6 +1941,17 @@ section {
     margin: 0 auto;
 }
 
+/* Content paragraphs with preserved line breaks */
+.about-page__content {
+    white-space: pre-line;
+}
+
+/* Call-to-action section */
+.about-page__cta {
+    margin-top: 3rem;
+    text-align: center;
+}
+
 /* Base text styling */
 .about-page--premium p {
     font-family: 'Georgia', 'Times New Roman', serif;

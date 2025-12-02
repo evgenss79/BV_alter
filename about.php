@@ -51,11 +51,11 @@ Our products suit those who appreciate beautiful interiors, refined atmospheres,
             <h1><?php echo htmlspecialchars($pageTitle); ?></h1>
             <p><em><?php echo htmlspecialchars($pageSubtitle); ?></em></p>
             
-            <p style="white-space: pre-line;">
+            <p class="about-page__content">
                 <?php echo nl2br(htmlspecialchars($pageContent)); ?>
             </p>
             
-            <div style="margin-top: 3rem; text-align: center;">
+            <div class="about-page__cta">
                 <a href="catalog.php?lang=<?php echo I18N::getLanguage(); ?>" class="btn btn--gold">
                     <?php echo I18N::t('nav.catalog', 'View Catalog'); ?>
                 </a>
