@@ -92,7 +92,10 @@
         },
         car_perfume: 14.90,
         textile_perfume: 19.90,
-        limited_edition: 39.90
+        limited_edition: 39.90,
+        accessories: {
+            'standard': 11.90  // Default price for accessories (can be overridden per product)
+        }
     };
 
     // ========================================
@@ -874,6 +877,90 @@
     }
 
     // ========================================
+    // PRODUCT IMAGE GALLERY/SLIDER
+    // ========================================
+    
+    function initProductGallery() {
+        const gallery = document.querySelector('[data-product-gallery]');
+        if (!gallery) return;
+        
+        const images = gallery.querySelectorAll('[data-gallery-image]');
+        const thumbs = gallery.querySelectorAll('[data-gallery-thumb]');
+        const prevBtn = gallery.querySelector('[data-gallery-prev]');
+        const nextBtn = gallery.querySelector('[data-gallery-next]');
+        
+        if (images.length <= 1) return; // No need for gallery with single image
+        
+        let currentIndex = 0;
+        
+        function showImage(index) {
+            // Ensure index is within bounds
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+            
+            currentIndex = index;
+            
+            // Update active image
+            images.forEach((img, i) => {
+                if (i === index) {
+                    img.classList.add('is-active');
+                } else {
+                    img.classList.remove('is-active');
+                }
+            });
+            
+            // Update active thumbnail
+            thumbs.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('is-active');
+                } else {
+                    thumb.classList.remove('is-active');
+                }
+            });
+        }
+        
+        // Previous button
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                showImage(currentIndex - 1);
+            });
+        }
+        
+        // Next button
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                showImage(currentIndex + 1);
+            });
+        }
+        
+        // Thumbnail clicks
+        thumbs.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                showImage(index);
+            });
+        });
+        
+        // Keyboard navigation - only when not in input fields
+        document.addEventListener('keydown', (e) => {
+            // Don't trigger if user is typing in an input, textarea, or select
+            const activeElement = document.activeElement;
+            if (activeElement && (
+                activeElement.tagName === 'INPUT' ||
+                activeElement.tagName === 'TEXTAREA' ||
+                activeElement.tagName === 'SELECT'
+            )) {
+                return;
+            }
+            
+            if (e.key === 'ArrowLeft') {
+                showImage(currentIndex - 1);
+            } else if (e.key === 'ArrowRight') {
+                showImage(currentIndex + 1);
+            }
+        });
+    }
+
+    // ========================================
     // INITIALIZATION
     // ========================================
     
@@ -883,6 +970,7 @@
         initCheckoutForm();
         initBackInStock();
         initNewsletter();
+        initProductGallery(); // Initialize image gallery/slider
         updateCartCount();
         // Initialize category and fragrance descriptions
         initCategoryDescriptions();

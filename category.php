@@ -40,16 +40,25 @@ $heroImageClass = $slug === 'home_perfume' ? 'hero-home-perfume' : '';
 
 // Handle accessories category specially
 if ($slug === 'accessories') {
-    // Get Aroma Sashe product
-    $aromaSashe = $products['aroma_sashe'] ?? null;
-    $aromaSasheFragrances = [];
-    if ($aromaSashe && isset($aromaSashe['allowed_fragrances'])) {
-        $aromaSasheFragrances = $aromaSashe['allowed_fragrances'];
-    }
+    // Load accessories from accessories.json
+    $accessoriesData = loadJSON('accessories.json');
     
-    // Build multilingual fragrance descriptions for Aroma Sashe
+    // Filter only active accessories
+    $activeAccessories = array_filter($accessoriesData, function($item) {
+        return ($item['active'] ?? false) === true;
+    });
+    
+    // Build multilingual fragrance descriptions for all fragrances
+    $allFragranceCodes = [];
+    foreach ($activeAccessories as $acc) {
+        if (!empty($acc['allowed_fragrances'])) {
+            $allFragranceCodes = array_merge($allFragranceCodes, $acc['allowed_fragrances']);
+        }
+    }
+    $allFragranceCodes = array_unique($allFragranceCodes);
+    
     $fragranceDescriptions = [];
-    foreach ($aromaSasheFragrances as $fragCode) {
+    foreach ($allFragranceCodes as $fragCode) {
         $fragranceDescriptions[$fragCode] = [
             'name' => I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode))),
             'short' => I18N::t('fragrance.' . $fragCode . '.short', ''),
@@ -86,18 +95,16 @@ if ($slug === 'accessories') {
 
     <section class="category-products">
         <div class="accessories-grid">
-            <?php if ($aromaSashe): ?>
+            <?php foreach ($activeAccessories as $productId => $accessory): ?>
                 <?php
-                $productId = 'aroma_sashe';
-                $productName = I18N::t('product.aroma_sashe.name', 'Aroma Sashé');
-                $productDesc = I18N::t('product.aroma_sashe.desc', '');
-                $productImage = $aromaSashe['image'] ?? '';
-                $hoverImage = $aromaSashe['hover_image'] ?? '';
-                $productVariants = $aromaSashe['variants'] ?? [];
-                $defaultPrice = !empty($productVariants) ? ($productVariants[0]['priceCHF'] ?? 0) : 0;
-                $firstFragCode = !empty($aromaSasheFragrances) ? $aromaSasheFragrances[0] : null;
-                $displayImage = $productImage ? '/img/' . rawurlencode($productImage) : '/img/placeholder.svg';
-                $hoverImagePath = $hoverImage ? '/img/' . rawurlencode($hoverImage) : '';
+                $productName = I18N::t($accessory['name_key'] ?? '', $productId);
+                $productDesc = I18N::t($accessory['desc_key'] ?? '', '');
+                $images = $accessory['images'] ?? [];
+                $defaultPrice = $accessory['priceCHF'] ?? 0;
+                
+                // Use first image as main display, second as hover if available
+                $displayImage = !empty($images) ? '/img/' . rawurlencode($images[0]) : '/img/placeholder.svg';
+                $hoverImagePath = (isset($images[1]) && !empty($images[1])) ? '/img/' . rawurlencode($images[1]) : '';
                 ?>
                 <article class="catalog-card" 
                          data-product-card 
@@ -130,33 +137,20 @@ if ($slug === 'accessories') {
                         </div>
                     </a>
                 </article>
-            <?php endif; ?>
-            
-            <?php for ($i = 1; $i <= 7; $i++): ?>
-                <article class="catalog-card">
-                    <div class="catalog-card__title-bar">
-                        <?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>
-                    </div>
-                    <div class="catalog-card__image-wrapper">
-                        <img src="/img/placeholder.svg" 
-                             alt="<?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>" 
-                             class="catalog-card__image">
-                    </div>
-                </article>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </section>
     </main>
 
     <script>
-    // Pass fragrance data to JavaScript for Aroma Sashe
+    // Pass fragrance data to JavaScript
     window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
         return [
             'name' => I18N::t('fragrance.' . $code . '.name', ucfirst(str_replace('_', ' ', $code))),
             'short' => I18N::t('fragrance.' . $code . '.short', ''),
             'image' => getFragranceImage($code)
         ];
-    }, array_combine($aromaSasheFragrances, $aromaSasheFragrances))); ?>;
+    }, array_combine($allFragranceCodes, $allFragranceCodes))); ?>;
     
     // Pass multilingual fragrance descriptions from i18n
     window.FRAGRANCE_DESCRIPTIONS = <?php echo json_encode($fragranceDescriptions, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP); ?>;

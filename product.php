@@ -12,6 +12,7 @@ $currentLang = I18N::getLanguage();
 $products = loadJSON('products.json');
 $categories = loadJSON('categories.json');
 $fragrances = loadJSON('fragrances.json');
+$accessoriesData = loadJSON('accessories.json');
 
 if (!isset($products[$productId])) {
     header('Location: catalog.php?lang=' . $currentLang);
@@ -28,9 +29,36 @@ $categoryName = I18N::t('category.' . $categorySlug . '.name', ucfirst(str_repla
 $productImage = $product['image'] ?? '';
 $productVariants = $product['variants'] ?? [];
 
+// Check if this is an accessory with multiple images
+$productImages = [];
+$isAccessory = false;
+if ($categorySlug === 'accessories' && isset($accessoriesData[$productId])) {
+    $isAccessory = true;
+    $accessoryData = $accessoriesData[$productId];
+    if (isset($accessoryData['images']) && is_array($accessoryData['images'])) {
+        $productImages = $accessoryData['images'];
+    }
+    // Override price from accessories.json if available
+    if (isset($accessoryData['priceCHF'])) {
+        $defaultPrice = $accessoryData['priceCHF'];
+    }
+}
+
+// Fallback to single image if no images in accessories
+if (empty($productImages) && $productImage) {
+    $productImages = [$productImage];
+}
+
+// Ensure we have at least a placeholder if no images at all
+if (empty($productImages)) {
+    $productImages = ['placeholder.jpg'];
+}
+
 // Get allowed fragrances and volumes
-// For accessories category (aroma_sashe), use product's allowed_fragrances if available
-if ($categorySlug === 'accessories' && isset($product['allowed_fragrances'])) {
+// For accessories, use data from accessories.json if available
+if ($isAccessory && isset($accessoryData['allowed_fragrances'])) {
+    $allowedFrags = $accessoryData['allowed_fragrances'];
+} elseif ($categorySlug === 'accessories' && isset($product['allowed_fragrances'])) {
     $allowedFrags = $product['allowed_fragrances'];
 } else {
     $allowedFrags = allowedFragrances($categorySlug);
@@ -41,9 +69,11 @@ $volumes = getVolumesForCategory($categorySlug);
 $isLimitedWithFixed = ($categorySlug === 'limited_edition' && isset($product['fragrance']));
 
 // Get default price
-$defaultPrice = 0;
-if (!empty($productVariants)) {
-    $defaultPrice = $productVariants[0]['priceCHF'] ?? 0;
+if (!isset($defaultPrice)) {
+    $defaultPrice = 0;
+    if (!empty($productVariants)) {
+        $defaultPrice = $productVariants[0]['priceCHF'] ?? 0;
+    }
 }
 
 include __DIR__ . '/includes/header.php';
@@ -59,10 +89,43 @@ include __DIR__ . '/includes/header.php';
         <h1><?php echo htmlspecialchars($productName); ?></h1>
         <p class="category-hero__desc"><?php echo nl2br(htmlspecialchars($productDesc)); ?></p>
     </div>
-    <img src="assets/img/<?php echo htmlspecialchars($productImage); ?>" 
-         alt="<?php echo htmlspecialchars($productName); ?>" 
-         class="category-hero__image"
-         onerror="this.src='assets/img/placeholder.jpg'">
+    
+    <?php if (count($productImages) > 1): ?>
+        <!-- Image Gallery/Slider for multiple images -->
+        <div class="product-gallery" data-product-gallery>
+            <div class="product-gallery__main">
+                <?php foreach ($productImages as $index => $imgFile): ?>
+                    <img 
+                        src="assets/img/<?php echo htmlspecialchars($imgFile); ?>"
+                        alt="<?php echo htmlspecialchars($productName); ?>"
+                        class="product-gallery__image <?php echo $index === 0 ? 'is-active' : ''; ?>"
+                        data-gallery-image="<?php echo $index; ?>"
+                        onerror="this.src='assets/img/placeholder.jpg'">
+                <?php endforeach; ?>
+            </div>
+            <div class="product-gallery__nav">
+                <button type="button" class="product-gallery__prev" data-gallery-prev aria-label="Previous image">&lt;</button>
+                <button type="button" class="product-gallery__next" data-gallery-next aria-label="Next image">&gt;</button>
+            </div>
+            <div class="product-gallery__thumbs">
+                <?php foreach ($productImages as $index => $imgFile): ?>
+                    <img
+                        src="assets/img/<?php echo htmlspecialchars($imgFile); ?>"
+                        alt="<?php echo htmlspecialchars($productName); ?>"
+                        class="product-gallery__thumb <?php echo $index === 0 ? 'is-active' : ''; ?>"
+                        data-gallery-thumb="<?php echo $index; ?>"
+                        onerror="this.src='assets/img/placeholder.jpg'">
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php else: ?>
+        <!-- Single image display -->
+        <?php $singleImagePath = !empty($productImages) ? $productImages[0] : 'placeholder.jpg'; ?>
+        <img src="assets/img/<?php echo htmlspecialchars($singleImagePath); ?>" 
+             alt="<?php echo htmlspecialchars($productName); ?>" 
+             class="category-hero__image"
+             onerror="this.src='assets/img/placeholder.jpg'">
+    <?php endif; ?>
 </section>
 
 <section class="catalog-section">
