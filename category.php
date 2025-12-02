@@ -40,6 +40,23 @@ $heroImageClass = $slug === 'home_perfume' ? 'hero-home-perfume' : '';
 
 // Handle accessories category specially
 if ($slug === 'accessories') {
+    // Get Aroma Sashe product
+    $aromaSashe = $products['aroma_sashe'] ?? null;
+    $aromaSasheFragrances = [];
+    if ($aromaSashe && isset($aromaSashe['allowed_fragrances'])) {
+        $aromaSasheFragrances = $aromaSashe['allowed_fragrances'];
+    }
+    
+    // Build multilingual fragrance descriptions for Aroma Sashe
+    $fragranceDescriptions = [];
+    foreach ($aromaSasheFragrances as $fragCode) {
+        $fragranceDescriptions[$fragCode] = [
+            'name' => I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode))),
+            'short' => I18N::t('fragrance.' . $fragCode . '.short', ''),
+            'full' => I18N::t('fragrance.' . $fragCode . '.full', '')
+        ];
+    }
+    
     include __DIR__ . '/includes/header.php';
     ?>
     <main class="category-page">
@@ -69,7 +86,76 @@ if ($slug === 'accessories') {
 
     <section class="category-products">
         <div class="accessories-grid">
-            <?php for ($i = 1; $i <= 8; $i++): ?>
+            <?php if ($aromaSashe): ?>
+                <?php
+                $productId = 'aroma_sashe';
+                $productName = I18N::t('product.aroma_sashe.name', 'Aroma Sashé');
+                $productDesc = I18N::t('product.aroma_sashe.desc', '');
+                $productImage = $aromaSashe['image'] ?? '';
+                $hoverImage = $aromaSashe['hover_image'] ?? '';
+                $productVariants = $aromaSashe['variants'] ?? [];
+                $defaultPrice = !empty($productVariants) ? ($productVariants[0]['priceCHF'] ?? 0) : 0;
+                $firstFragCode = !empty($aromaSasheFragrances) ? $aromaSasheFragrances[0] : null;
+                $displayImage = $productImage ? '/img/' . rawurlencode($productImage) : '/img/placeholder.svg';
+                $hoverImagePath = $hoverImage ? '/img/' . rawurlencode($hoverImage) : '';
+                ?>
+                <article class="catalog-card product-card" 
+                         data-product-card 
+                         data-product-id="<?php echo htmlspecialchars($productId); ?>"
+                         data-product-name="<?php echo htmlspecialchars($productName); ?>"
+                         data-category="<?php echo htmlspecialchars($slug); ?>">
+                    <div class="catalog-card__title-bar product-card__inner">
+                        <?php echo htmlspecialchars($productName); ?>
+                    </div>
+                    <div class="catalog-card__image-wrapper product-card__image">
+                        <img src="<?php echo htmlspecialchars($displayImage); ?>" 
+                             alt="<?php echo htmlspecialchars($productName); ?>" 
+                             class="catalog-card__image product-card__image-el"
+                             data-product-image
+                             data-product-id="<?php echo htmlspecialchars($productId); ?>"
+                             data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
+                             <?php if ($hoverImagePath): ?>
+                             data-hover-image="<?php echo htmlspecialchars($hoverImagePath); ?>"
+                             <?php endif; ?>
+                             onerror="this.src='/img/placeholder.svg'">
+                    </div>
+                    <div class="product-card__content" style="padding: 1rem;">
+                        <div class="product-card__selectors">
+                            <?php if (!empty($aromaSasheFragrances)): ?>
+                                <div class="product-card__field">
+                                    <label><?php echo I18N::t('common.fragrance', 'Fragrance'); ?></label>
+                                    <select class="product-card__select product-card__select--fragrance" 
+                                            data-fragrance-select
+                                            data-product-id="<?php echo htmlspecialchars($productId); ?>">
+                                        <?php foreach ($aromaSasheFragrances as $fragCode): ?>
+                                            <?php
+                                            $fragName = I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode)));
+                                            ?>
+                                            <option value="<?php echo htmlspecialchars($fragCode); ?>"
+                                                    data-image="<?php echo htmlspecialchars(getFragranceImage($fragCode)); ?>">
+                                                <?php echo htmlspecialchars($fragName); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        
+                        <div class="product-card__price-row">
+                            <span class="product-card__price-label"><?php echo I18N::t('common.price', 'Price'); ?></span>
+                            <span class="product-card__price-value" data-price-display>
+                                CHF <?php echo number_format($defaultPrice, 2); ?>
+                            </span>
+                        </div>
+                        
+                        <button type="button" class="btn btn--gold product-card__add-to-cart" data-add-to-cart>
+                            <?php echo I18N::t('common.addToCart', 'Add to cart'); ?>
+                        </button>
+                    </div>
+                </article>
+            <?php endif; ?>
+            
+            <?php for ($i = 1; $i <= 7; $i++): ?>
                 <article class="catalog-card">
                     <div class="catalog-card__title-bar">
                         <?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>
@@ -86,11 +172,42 @@ if ($slug === 'accessories') {
     </main>
 
     <script>
+    // Pass fragrance data to JavaScript for Aroma Sashe
+    window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
+        return [
+            'name' => I18N::t('fragrance.' . $code . '.name', ucfirst(str_replace('_', ' ', $code))),
+            'short' => I18N::t('fragrance.' . $code . '.short', ''),
+            'image' => getFragranceImage($code)
+        ];
+    }, array_combine($aromaSasheFragrances, $aromaSasheFragrances))); ?>;
+    
+    // Pass multilingual fragrance descriptions from i18n
+    window.FRAGRANCE_DESCRIPTIONS = <?php echo json_encode($fragranceDescriptions, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP); ?>;
+    
     // Pass I18N labels for JS
     window.I18N_LABELS = {
+        fragrance_read_more: <?php echo json_encode(I18N::t('ui.fragrance.read_more', 'Read more')); ?>,
+        fragrance_collapse: <?php echo json_encode(I18N::t('ui.fragrance.collapse', 'Collapse')); ?>,
         category_read_more: <?php echo json_encode(I18N::t('ui.category.read_more', 'Read more')); ?>,
         category_collapse: <?php echo json_encode(I18N::t('ui.category.collapse', 'Collapse')); ?>
     };
+    
+    // Add hover effect for Aroma Sashe
+    document.addEventListener('DOMContentLoaded', function() {
+        const aromaSasheImg = document.querySelector('[data-product-id="aroma_sashe"] .product-card__image-el');
+        if (aromaSasheImg && aromaSasheImg.dataset.hoverImage) {
+            const defaultImg = aromaSasheImg.src;
+            const hoverImg = aromaSasheImg.dataset.hoverImage;
+            
+            aromaSasheImg.addEventListener('mouseenter', function() {
+                this.src = hoverImg;
+            });
+            
+            aromaSasheImg.addEventListener('mouseleave', function() {
+                this.src = defaultImg;
+            });
+        }
+    });
     </script>
 
     <?php
