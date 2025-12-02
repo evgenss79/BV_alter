@@ -147,7 +147,7 @@ ul, ol {
     justify-content: center;
     gap: 2rem;
     padding: 0.35rem 1rem;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     letter-spacing: 0.05em;
 }
 
@@ -161,19 +161,19 @@ ul, ol {
     z-index: 50;
     background: var(--color-charcoal);
     color: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 }
 
 .site-header__main {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    padding: 1rem clamp(1rem, 3vw, 4rem);
+    padding: 0.5rem clamp(1rem, 3vw, 3rem);
 }
 
 .site-header__logo {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #fff;
@@ -219,7 +219,7 @@ ul, ol {
 .primary-nav__link {
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
     border: none;
     background: transparent;
