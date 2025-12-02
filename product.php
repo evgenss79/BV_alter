@@ -49,6 +49,11 @@ if (empty($productImages) && $productImage) {
     $productImages = [$productImage];
 }
 
+// Ensure we have at least a placeholder if no images at all
+if (empty($productImages)) {
+    $productImages = ['placeholder.jpg'];
+}
+
 // Get allowed fragrances and volumes
 // For accessories, use data from accessories.json if available
 if ($isAccessory && isset($accessoryData['allowed_fragrances'])) {
@@ -115,7 +120,8 @@ include __DIR__ . '/includes/header.php';
         </div>
     <?php else: ?>
         <!-- Single image display -->
-        <img src="assets/img/<?php echo htmlspecialchars($productImages[0] ?? $productImage); ?>" 
+        <?php $singleImagePath = !empty($productImages) ? $productImages[0] : 'placeholder.jpg'; ?>
+        <img src="assets/img/<?php echo htmlspecialchars($singleImagePath); ?>" 
              alt="<?php echo htmlspecialchars($productName); ?>" 
              class="category-hero__image"
              onerror="this.src='assets/img/placeholder.jpg'">

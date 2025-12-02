@@ -72,8 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 // Create or update accessory
                 $accessories[$id] = [
                     'id' => $id,
-                    'name_key' => sanitize($name_key),
-                    'desc_key' => sanitize($desc_key),
+                    'name_key' => $name_key,
+                    'desc_key' => $desc_key,
                     'images' => $images,
                     'priceCHF' => $priceCHF,
                     'active' => $active,

@@ -940,8 +940,18 @@
             });
         });
         
-        // Keyboard navigation
+        // Keyboard navigation - only when not in input fields
         document.addEventListener('keydown', (e) => {
+            // Don't trigger if user is typing in an input, textarea, or select
+            const activeElement = document.activeElement;
+            if (activeElement && (
+                activeElement.tagName === 'INPUT' ||
+                activeElement.tagName === 'TEXTAREA' ||
+                activeElement.tagName === 'SELECT'
+            )) {
+                return;
+            }
+            
             if (e.key === 'ArrowLeft') {
                 showImage(currentIndex - 1);
             } else if (e.key === 'ArrowRight') {
