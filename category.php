@@ -99,18 +99,18 @@ if ($slug === 'accessories') {
                 $displayImage = $productImage ? '/img/' . rawurlencode($productImage) : '/img/placeholder.svg';
                 $hoverImagePath = $hoverImage ? '/img/' . rawurlencode($hoverImage) : '';
                 ?>
-                <article class="catalog-card product-card" 
+                <article class="catalog-card" 
                          data-product-card 
                          data-product-id="<?php echo htmlspecialchars($productId); ?>"
                          data-product-name="<?php echo htmlspecialchars($productName); ?>"
                          data-category="<?php echo htmlspecialchars($slug); ?>">
-                    <div class="catalog-card__title-bar product-card__inner">
+                    <div class="catalog-card__title-bar">
                         <?php echo htmlspecialchars($productName); ?>
                     </div>
-                    <div class="catalog-card__image-wrapper product-card__image">
+                    <div class="catalog-card__image-wrapper">
                         <img src="<?php echo htmlspecialchars($displayImage); ?>" 
                              alt="<?php echo htmlspecialchars($productName); ?>" 
-                             class="catalog-card__image product-card__image-el"
+                             class="catalog-card__image"
                              data-product-image
                              data-product-id="<?php echo htmlspecialchars($productId); ?>"
                              data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
@@ -119,7 +119,7 @@ if ($slug === 'accessories') {
                              <?php endif; ?>
                              onerror="this.src='/img/placeholder.svg'">
                     </div>
-                    <div class="product-card__content" style="padding: 1rem;">
+                    <div class="catalog-card__content">
                         <div class="product-card__selectors">
                             <?php if (!empty($aromaSasheFragrances)): ?>
                                 <div class="product-card__field">
