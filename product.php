@@ -29,7 +29,12 @@ $productImage = $product['image'] ?? '';
 $productVariants = $product['variants'] ?? [];
 
 // Get allowed fragrances and volumes
-$allowedFrags = allowedFragrances($categorySlug);
+// For accessories category (aroma_sashe), use product's allowed_fragrances if available
+if ($categorySlug === 'accessories' && isset($product['allowed_fragrances'])) {
+    $allowedFrags = $product['allowed_fragrances'];
+} else {
+    $allowedFrags = allowedFragrances($categorySlug);
+}
 $volumes = getVolumesForCategory($categorySlug);
 
 // Check if limited edition with fixed fragrance
