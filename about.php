@@ -44,18 +44,14 @@ Why Choose NicheHome.ch
 Our products suit those who appreciate beautiful interiors, refined atmospheres, and high-end sensory experiences.');
 ?>
 
-<section class="page-hero">
-    <div class="page-hero__content">
-        <p class="section-heading__label"><?php echo I18N::t('nav.about', 'About Us'); ?></p>
-        <h1 class="page-hero__title"><?php echo htmlspecialchars($pageTitle); ?></h1>
-        <p class="page-hero__subtitle"><?php echo htmlspecialchars($pageSubtitle); ?></p>
-    </div>
-</section>
-
-<section class="catalog-section">
-    <div class="container">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <p style="white-space: pre-line; line-height: 1.8; color: var(--color-text);">
+<main class="about-page about-page--premium">
+    <section class="about-page__section">
+        <div class="about-page__inner">
+            <p class="section-heading__label"><?php echo I18N::t('nav.about', 'About Us'); ?></p>
+            <h1><?php echo htmlspecialchars($pageTitle); ?></h1>
+            <p><em><?php echo htmlspecialchars($pageSubtitle); ?></em></p>
+            
+            <p style="white-space: pre-line;">
                 <?php echo nl2br(htmlspecialchars($pageContent)); ?>
             </p>
             
@@ -65,7 +61,7 @@ Our products suit those who appreciate beautiful interiors, refined atmospheres,
                 </a>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
