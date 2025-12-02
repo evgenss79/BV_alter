@@ -93,5 +93,42 @@
             {"volume": "270ml", "priceCHF": 39.90}
         ],
         "active": true
+    },
+    "aroma_sashe": {
+        "id": "aroma_sashe",
+        "category": "accessories",
+        "name_key": "product.aroma_sashe.name",
+        "desc_key": "product.aroma_sashe.desc",
+        "image": "2-Sashe.jpg",
+        "hover_image": "sashe_ward.jpg",
+        "variants": [
+            {"volume": "standard", "priceCHF": 11.90}
+        ],
+        "active": true,
+        "allowed_fragrances": [
+            "cherry_blossom",
+            "bellini",
+            "eden",
+            "rosso",
+            "santal",
+            "lime_basil",
+            "bamboo",
+            "tobacco_vanilla",
+            "salty_water",
+            "christmas_tree",
+            "fleur",
+            "blanc",
+            "green_mango",
+            "carolina",
+            "sugar",
+            "dubai",
+            "africa",
+            "dune",
+            "valencia",
+            "etna",
+            "new_york",
+            "abu_dhabi",
+            "palermo"
+        ]
     }
 }
