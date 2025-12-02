@@ -192,21 +192,21 @@ if ($slug === 'accessories') {
         category_collapse: <?php echo json_encode(I18N::t('ui.category.collapse', 'Collapse')); ?>
     };
     
-    // Add hover effect for Aroma Sashe
+    // Add hover effect for products with hover images
     document.addEventListener('DOMContentLoaded', function() {
-        const aromaSasheImg = document.querySelector('[data-product-id="aroma_sashe"] .product-card__image-el');
-        if (aromaSasheImg && aromaSasheImg.dataset.hoverImage) {
-            const defaultImg = aromaSasheImg.src;
-            const hoverImg = aromaSasheImg.dataset.hoverImage;
+        const productsWithHover = document.querySelectorAll('[data-hover-image]');
+        productsWithHover.forEach(function(img) {
+            const defaultImg = img.src;
+            const hoverImg = img.dataset.hoverImage;
             
-            aromaSasheImg.addEventListener('mouseenter', function() {
+            img.addEventListener('mouseenter', function() {
                 this.src = hoverImg;
             });
             
-            aromaSasheImg.addEventListener('mouseleave', function() {
+            img.addEventListener('mouseleave', function() {
                 this.src = defaultImg;
             });
-        }
+        });
     });
     </script>
 
