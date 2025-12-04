@@ -139,66 +139,101 @@ include __DIR__ . '/includes/header.php';
 
 <section class="catalog-section">
     <div class="container">
-        <div style="max-width: 600px; margin: 0 auto;">
+        <div class="product-card-wrapper">
             <article class="product-card" 
                      data-product-card 
                      data-product-id="<?php echo htmlspecialchars($productId); ?>"
                      data-product-name="<?php echo htmlspecialchars($productName); ?>"
                      data-category="<?php echo htmlspecialchars($categorySlug); ?>">
-                
-                <div class="product-card__options">
-                    <?php if (!empty($volumes)): ?>
-                        <div class="product-card__field">
-                            <label><?php echo I18N::t('common.volume', 'Volume'); ?></label>
-                            <select data-volume-select>
-                                <?php foreach ($volumes as $vol): ?>
-                                    <option value="<?php echo htmlspecialchars($vol); ?>">
-                                        <?php echo htmlspecialchars($vol); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                    <?php endif; ?>
+                <div class="product-card__inner">
+                    <?php 
+                    // Get first fragrance for initial image display
+                    $firstFragCode = !empty($allowedFrags) ? $allowedFrags[0] : null;
+                    if ($isLimitedWithFixed) {
+                        $firstFragCode = $product['fragrance'];
+                    }
                     
-                    <?php if (!$isLimitedWithFixed && !empty($allowedFrags)): ?>
-                        <div class="product-card__field">
-                            <label><?php echo I18N::t('common.fragrance', 'Fragrance'); ?></label>
-                            <select data-fragrance-select>
-                                <option value="none"><?php echo I18N::t('common.selectFragrance', 'Select fragrance'); ?></option>
-                                <?php foreach ($allowedFrags as $fragCode): ?>
-                                    <?php
-                                    $fragName = I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode)));
-                                    ?>
-                                    <option value="<?php echo htmlspecialchars($fragCode); ?>">
-                                        <?php echo htmlspecialchars($fragName); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
+                    // Determine the image to show - use fragrance image from /img/ folder
+                    $displayImage = '/img/placeholder.svg';
+                    if ($firstFragCode) {
+                        $displayImage = getFragranceImage($firstFragCode);
+                    } elseif ($productImage) {
+                        $displayImage = '/img/' . rawurlencode($productImage);
+                    }
+                    ?>
+                    <div class="product-card__image">
+                        <img src="<?php echo htmlspecialchars($displayImage); ?>" 
+                             alt="<?php echo htmlspecialchars($productName); ?>" 
+                             class="product-card__image-el"
+                             data-product-image
+                             data-product-id="<?php echo htmlspecialchars($productId); ?>"
+                             data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
+                             onerror="this.src='/img/placeholder.svg'">
+                    </div>
+                    
+                    <div class="product-card__content">
+                        <header class="product-card__header">
+                            <h2 class="product-card__title"><?php echo htmlspecialchars($productName); ?></h2>
+                        </header>
+                        
+                        <div class="product-card__selectors">
+                            <?php if (!empty($volumes)): ?>
+                                <div class="product-card__field">
+                                    <label><?php echo I18N::t('common.volume', 'Volume'); ?></label>
+                                    <select class="product-card__select product-card__select--volume" data-volume-select>
+                                        <?php foreach ($volumes as $vol): ?>
+                                            <option value="<?php echo htmlspecialchars($vol); ?>">
+                                                <?php echo htmlspecialchars($vol); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            <?php endif; ?>
+                            
+                            <?php if (!$isLimitedWithFixed && !empty($allowedFrags)): ?>
+                                <div class="product-card__field">
+                                    <label><?php echo I18N::t('common.fragrance', 'Fragrance'); ?></label>
+                                    <select class="product-card__select product-card__select--fragrance" 
+                                            data-fragrance-select
+                                            data-product-id="<?php echo htmlspecialchars($productId); ?>">
+                                        <?php foreach ($allowedFrags as $fragCode): ?>
+                                            <?php
+                                            $fragName = I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode)));
+                                            ?>
+                                            <option value="<?php echo htmlspecialchars($fragCode); ?>"
+                                                    data-image="<?php echo htmlspecialchars(getFragranceImage($fragCode)); ?>">
+                                                <?php echo htmlspecialchars($fragName); ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            <?php elseif ($isLimitedWithFixed): ?>
+                                <input type="hidden" data-fragrance-select value="<?php echo htmlspecialchars($product['fragrance']); ?>">
+                            <?php endif; ?>
                         </div>
-                    <?php elseif ($isLimitedWithFixed): ?>
-                        <input type="hidden" data-fragrance-select value="<?php echo htmlspecialchars($product['fragrance']); ?>">
-                        <p><strong><?php echo I18N::t('common.fragrance', 'Fragrance'); ?>:</strong> 
-                           <?php echo htmlspecialchars(I18N::t('fragrance.' . $product['fragrance'] . '.name', $product['fragrance'])); ?>
-                        </p>
-                    <?php endif; ?>
+                        
+                        <!-- Fragrance Description Block -->
+                        <div class="product-card__fragrance-description"
+                             data-product-id="<?php echo htmlspecialchars($productId); ?>">
+                            <p class="product-card__fragrance-text product-card__fragrance-text--short"></p>
+                            <p class="product-card__fragrance-text product-card__fragrance-text--full"></p>
+                            <button type="button" class="product-card__fragrance-toggle">
+                                <?php echo I18N::t('ui.fragrance.read_more', 'Read more'); ?>
+                            </button>
+                        </div>
+                        
+                        <div class="product-card__price-row">
+                            <span class="product-card__price-label"><?php echo I18N::t('common.price', 'Price'); ?></span>
+                            <span class="product-card__price-value" data-price-display>
+                                CHF <?php echo number_format($defaultPrice, 2); ?>
+                            </span>
+                        </div>
+                        
+                        <button type="button" class="btn btn--gold product-card__add-to-cart" data-add-to-cart>
+                            <?php echo I18N::t('common.addToCart', 'Add to cart'); ?>
+                        </button>
+                    </div>
                 </div>
-                
-                <div class="fragrance-info" data-fragrance-info style="display: none;">
-                    <img src="" alt="" class="fragrance-info__image" data-fragrance-image>
-                    <p class="fragrance-info__name" data-fragrance-name></p>
-                    <p class="fragrance-info__desc" data-fragrance-desc></p>
-                </div>
-                
-                <div class="product-card__meta">
-                    <span><?php echo I18N::t('common.price', 'Price'); ?></span>
-                    <span class="product-card__price" data-price-display>
-                        CHF <?php echo number_format($defaultPrice, 2); ?>
-                    </span>
-                </div>
-                
-                <button class="btn btn--gold" data-add-to-cart style="width: 100%;">
-                    <?php echo I18N::t('common.addToCart', 'Add to cart'); ?>
-                </button>
             </article>
         </div>
     </div>
@@ -246,6 +281,25 @@ window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
         'image' => getFragranceImage($code)
     ];
 }, array_combine($allowedFrags, $allowedFrags))); ?>;
+
+// Pass multilingual fragrance descriptions from i18n
+window.FRAGRANCE_DESCRIPTIONS = <?php 
+$fragranceDescriptions = [];
+foreach ($allowedFrags as $fragCode) {
+    $fragranceDescriptions[$fragCode] = [
+        'name' => I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode))),
+        'short' => I18N::t('fragrance.' . $fragCode . '.short', ''),
+        'full' => I18N::t('fragrance.' . $fragCode . '.full', '')
+    ];
+}
+echo json_encode($fragranceDescriptions, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP); 
+?>;
+
+// Pass I18N labels for JS
+window.I18N_LABELS = {
+    fragrance_read_more: <?php echo json_encode(I18N::t('ui.fragrance.read_more', 'Read more')); ?>,
+    fragrance_collapse: <?php echo json_encode(I18N::t('ui.fragrance.collapse', 'Collapse')); ?>
+};
 </script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
