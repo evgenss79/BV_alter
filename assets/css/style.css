@@ -2102,3 +2102,9 @@ section {
     font-size: 15px;
     line-height: 1.35;
 }
+
+/* Link wrapper for accessories cards (no underline, inherit color) */
+.accessories-card-link {
+    text-decoration: none;
+    color: inherit;
+}

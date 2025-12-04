@@ -105,7 +105,7 @@ if ($slug === 'accessories') {
                 // Use first image as main display
                 $displayImage = !empty($images) ? '/img/' . rawurlencode($images[0]) : '/img/placeholder.svg';
                 ?>
-                <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo htmlspecialchars($currentLang); ?>" style="text-decoration: none; color: inherit;">
+                <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo htmlspecialchars($currentLang); ?>" class="accessories-card-link">
                     <article class="product-card" 
                              data-product-card 
                              data-product-id="<?php echo htmlspecialchars($productId); ?>"
