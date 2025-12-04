@@ -1929,7 +1929,7 @@ section {
 ======================================= */
 
 .about-page--premium {
-    max-width: 960px;
+    width: 100%;
     margin: 0 auto;
     padding: 60px 20px 80px;
     background-color: #f8f6f3; /* warm off-white background */
@@ -1937,8 +1937,9 @@ section {
 
 /* Inner block to keep text from touching edges */
 .about-page__inner {
-    max-width: 780px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Content paragraphs with preserved line breaks */
