@@ -1967,7 +1967,7 @@ section {
 .about-page--premium p {
     font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 17px;
-    line-height: 1.15 !important;
+    line-height: 1.15 !important; /* Override default line-height per design requirements */
     color: #2b2a29;
     margin-bottom: 18px;
 }
@@ -1975,7 +1975,7 @@ section {
 /* Extended paragraphs with softer color */
 .about-page--premium p + p {
     color: #3a3937;
-    margin-top: 32px !important;
+    margin-top: 32px !important; /* Two-line spacing between paragraphs per design requirements */
 }
 
 /* Main heading */

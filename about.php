@@ -56,7 +56,11 @@ Our products suit those who appreciate beautiful interiors, refined atmospheres,
             <p><em><?php echo htmlspecialchars($pageSubtitle); ?></em></p>
             
             <p class="about-page__content">
-                <?php echo nl2br($pageContent); ?>
+                <?php 
+                // Note: Content comes from i18n JSON files (not user input) and includes HTML for formatting
+                // This is safe because i18n files are controlled by site administrators
+                echo nl2br($pageContent); 
+                ?>
             </p>
             
             <div class="about-page__cta">
