@@ -1956,7 +1956,7 @@ section {
 .about-page--premium p {
     font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 17px;
-    line-height: 1.8;
+    line-height: 1.15 !important;
     color: #2b2a29;
     margin-bottom: 18px;
 }
@@ -1964,6 +1964,7 @@ section {
 /* Extended paragraphs with softer color */
 .about-page--premium p + p {
     color: #3a3937;
+    margin-top: 32px !important;
 }
 
 /* Main heading */
@@ -2044,4 +2045,15 @@ section {
 
 .about-page--premium a:hover {
     border-bottom-color: rgba(34, 34, 34, 0.7);
+}
+
+/* About banner styling */
+.about-banner img {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 40px;
+    border-radius: 6px;
 }
