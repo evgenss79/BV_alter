@@ -54,6 +54,10 @@ if (empty($productImages)) {
     $productImages = ['placeholder.jpg'];
 }
 
+// Determine image paths based on category
+$imgPrefix = ($isAccessory) ? 'img/' : 'assets/img/';
+$errorPlaceholder = ($isAccessory) ? 'img/placeholder.svg' : 'assets/img/placeholder.jpg';
+
 // Get allowed fragrances and volumes
 // For accessories, use data from accessories.json if available
 if ($isAccessory && isset($accessoryData['allowed_fragrances'])) {
@@ -95,11 +99,6 @@ include __DIR__ . '/includes/header.php';
         <div class="product-gallery" data-product-gallery>
             <div class="product-gallery__main">
                 <?php foreach ($productImages as $index => $imgFile): ?>
-                    <?php 
-                    // For accessories, use img/ folder; for others, use assets/img/
-                    $imgPrefix = ($isAccessory) ? 'img/' : 'assets/img/';
-                    $errorPlaceholder = ($isAccessory) ? 'img/placeholder.svg' : 'assets/img/placeholder.jpg';
-                    ?>
                     <img 
                         src="<?php echo $imgPrefix . htmlspecialchars($imgFile); ?>"
                         alt="<?php echo htmlspecialchars($productName); ?>"
@@ -114,11 +113,6 @@ include __DIR__ . '/includes/header.php';
             </div>
             <div class="product-gallery__thumbs">
                 <?php foreach ($productImages as $index => $imgFile): ?>
-                    <?php 
-                    // For accessories, use img/ folder; for others, use assets/img/
-                    $imgPrefix = ($isAccessory) ? 'img/' : 'assets/img/';
-                    $errorPlaceholder = ($isAccessory) ? 'img/placeholder.svg' : 'assets/img/placeholder.jpg';
-                    ?>
                     <img
                         src="<?php echo $imgPrefix . htmlspecialchars($imgFile); ?>"
                         alt="<?php echo htmlspecialchars($productName); ?>"
@@ -130,12 +124,7 @@ include __DIR__ . '/includes/header.php';
         </div>
     <?php else: ?>
         <!-- Single image display -->
-        <?php 
-        $singleImagePath = !empty($productImages) ? $productImages[0] : 'placeholder.jpg';
-        // For accessories, use img/ folder; for others, use assets/img/
-        $imgPrefix = ($isAccessory) ? 'img/' : 'assets/img/';
-        $errorPlaceholder = ($isAccessory) ? 'img/placeholder.svg' : 'assets/img/placeholder.jpg';
-        ?>
+        <?php $singleImagePath = !empty($productImages) ? $productImages[0] : 'placeholder.jpg'; ?>
         <img src="<?php echo $imgPrefix . htmlspecialchars($singleImagePath); ?>" 
              alt="<?php echo htmlspecialchars($productName); ?>" 
              class="category-hero__image"
