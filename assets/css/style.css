@@ -1931,7 +1931,7 @@ section {
 .about-page--premium {
     width: 100%;
     margin: 0 auto;
-    padding: 60px 20px 80px;
+    padding: 6px 20px 80px;
     background-color: #f8f6f3; /* warm off-white background */
 }
 
@@ -1964,7 +1964,7 @@ section {
 /* Extended paragraphs with softer color */
 .about-page--premium p + p {
     color: #3a3937;
-    margin-top: 32px !important;
+    margin-top: 2.3em !important; /* approximately two lines at line-height 1.15 */
 }
 
 /* Main heading */
@@ -2010,7 +2010,7 @@ section {
 /* More breathing room on larger screens */
 @media (min-width: 1024px) {
     .about-page--premium {
-        padding-top: 80px;
+        padding-top: 6px;
         padding-bottom: 100px;
     }
 
@@ -2032,6 +2032,14 @@ section {
 .about-page--premium strong {
     font-style: normal;
     font-weight: 500;
+    color: #111111;
+}
+
+/* Bold italic for nested strong+em combinations (key phrases) */
+.about-page--premium strong em,
+.about-page--premium em strong {
+    font-style: italic;
+    font-weight: bold;
     color: #111111;
 }
 
