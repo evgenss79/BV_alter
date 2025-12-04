@@ -2065,3 +2065,40 @@ section {
     margin-bottom: 40px;
     border-radius: 6px;
 }
+
+/* ========================================
+   PRODUCT PAGE – ACCESSORIES OPTIMIZATION
+   ======================================== */
+.product-page--accessories .category-hero__image {
+    max-width: 380px !important;
+    max-height: 380px !important;
+    object-fit: cover;
+}
+
+.product-page--accessories .category-hero__content {
+    max-width: 420px;
+}
+
+.product-page--accessories .product-gallery__image {
+    max-width: 360px !important;
+    max-height: 360px !important;
+    object-fit: cover;
+}
+
+.product-page--accessories .product-gallery {
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.product-page--accessories .category-hero {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.product-page--accessories .category-hero__content p {
+    font-size: 15px;
+    line-height: 1.35;
+}

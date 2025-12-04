@@ -83,7 +83,7 @@ if (!isset($defaultPrice)) {
 include __DIR__ . '/includes/header.php';
 ?>
 
-<section class="category-hero">
+<section class="category-hero <?php echo ($categorySlug === 'accessories' ? 'product-page--accessories' : ''); ?>">
     <div class="category-hero__content">
         <p class="section-heading__label">
             <a href="category.php?slug=<?php echo htmlspecialchars($categorySlug); ?>&lang=<?php echo $currentLang; ?>">
