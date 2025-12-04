@@ -94,7 +94,7 @@ if ($slug === 'accessories') {
     </section>
 
     <section class="category-products">
-        <div class="accessories-grid">
+        <div class="products-list">
             <?php foreach ($activeAccessories as $productId => $accessory): ?>
                 <?php
                 $productName = I18N::t($accessory['name_key'] ?? '', $productId);
@@ -102,41 +102,42 @@ if ($slug === 'accessories') {
                 $images = $accessory['images'] ?? [];
                 $defaultPrice = $accessory['priceCHF'] ?? 0;
                 
-                // Use first image as main display, second as hover if available
+                // Use first image as main display
                 $displayImage = !empty($images) ? '/img/' . rawurlencode($images[0]) : '/img/placeholder.svg';
-                $hoverImagePath = (isset($images[1]) && !empty($images[1])) ? '/img/' . rawurlencode($images[1]) : '';
                 ?>
-                <article class="catalog-card" 
-                         data-product-card 
-                         data-product-id="<?php echo htmlspecialchars($productId); ?>"
-                         data-product-name="<?php echo htmlspecialchars($productName); ?>"
-                         data-category="<?php echo htmlspecialchars($slug); ?>">
-                    <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo htmlspecialchars($currentLang); ?>" class="catalog-card__link">
-                        <div class="catalog-card__title-bar">
-                            <?php echo htmlspecialchars($productName); ?>
-                        </div>
-                        <div class="catalog-card__image-wrapper">
-                            <img src="<?php echo htmlspecialchars($displayImage); ?>" 
-                                 alt="<?php echo htmlspecialchars($productName); ?>" 
-                                 class="catalog-card__image"
-                                 data-product-image
-                                 data-product-id="<?php echo htmlspecialchars($productId); ?>"
-                                 data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
-                                 <?php if ($hoverImagePath): ?>
-                                 data-hover-image="<?php echo htmlspecialchars($hoverImagePath); ?>"
-                                 <?php endif; ?>
-                                 onerror="this.src='/img/placeholder.svg'">
-                        </div>
-                        <div class="catalog-card__content">
-                            <div class="product-card__price-row">
-                                <span class="product-card__price-label"><?php echo I18N::t('common.price', 'Price'); ?></span>
-                                <span class="product-card__price-value" data-price-display>
-                                    CHF <?php echo number_format($defaultPrice, 2); ?>
-                                </span>
+                <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo htmlspecialchars($currentLang); ?>" class="accessories-card-link">
+                    <article class="product-card" 
+                             data-product-card 
+                             data-product-id="<?php echo htmlspecialchars($productId); ?>"
+                             data-product-name="<?php echo htmlspecialchars($productName); ?>"
+                             data-category="<?php echo htmlspecialchars($slug); ?>">
+                        <div class="product-card__inner">
+                            <div class="product-card__image">
+                                <img src="<?php echo htmlspecialchars($displayImage); ?>" 
+                                     alt="<?php echo htmlspecialchars($productName); ?>" 
+                                     class="product-card__image-el"
+                                     data-product-image
+                                     data-product-id="<?php echo htmlspecialchars($productId); ?>"
+                                     data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
+                                     onerror="this.src='/img/placeholder.svg'">
+                            </div>
+                            
+                            <div class="product-card__content">
+                                <header class="product-card__header">
+                                    <h2 class="product-card__title"><?php echo htmlspecialchars($productName); ?></h2>
+                                    <p class="product-card__description"><?php echo htmlspecialchars($productDesc); ?></p>
+                                </header>
+                                
+                                <div class="product-card__price-row">
+                                    <span class="product-card__price-label"><?php echo I18N::t('common.price', 'Price'); ?></span>
+                                    <span class="product-card__price-value" data-price-display>
+                                        CHF <?php echo number_format($defaultPrice, 2); ?>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </a>
-                </article>
+                    </article>
+                </a>
             <?php endforeach; ?>
         </div>
     </section>
@@ -162,23 +163,6 @@ if ($slug === 'accessories') {
         category_read_more: <?php echo json_encode(I18N::t('ui.category.read_more', 'Read more')); ?>,
         category_collapse: <?php echo json_encode(I18N::t('ui.category.collapse', 'Collapse')); ?>
     };
-    
-    // Add hover effect for products with hover images
-    document.addEventListener('DOMContentLoaded', function() {
-        const productsWithHover = document.querySelectorAll('[data-hover-image]');
-        productsWithHover.forEach(function(img) {
-            const defaultImg = img.src;
-            const hoverImg = img.dataset.hoverImage;
-            
-            img.addEventListener('mouseenter', function() {
-                this.src = hoverImg;
-            });
-            
-            img.addEventListener('mouseleave', function() {
-                this.src = defaultImg;
-            });
-        });
-    });
     </script>
 
     <?php
