@@ -40,6 +40,12 @@ $heroImageClass = $slug === 'home_perfume' ? 'hero-home-perfume' : '';
 
 // Handle accessories category specially
 if ($slug === 'accessories') {
+    // Load accessories data
+    $accessories = loadJSON('accessories.json');
+    $activeAccessories = array_filter($accessories, function($item) {
+        return !empty($item['active']);
+    });
+    
     include __DIR__ . '/includes/header.php';
     ?>
     <main class="category-page">
@@ -69,18 +75,43 @@ if ($slug === 'accessories') {
 
     <section class="category-products">
         <div class="accessories-grid">
-            <?php for ($i = 1; $i <= 4; $i++): ?>
-                <article class="catalog-card">
-                    <div class="catalog-card__title-bar">
-                        <?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>
-                    </div>
-                    <div class="catalog-card-image-wrapper">
-                        <img src="/img/placeholder.svg"
-                             alt="<?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>"
-                             class="catalog-card__image">
-                    </div>
+            <?php foreach ($activeAccessories as $accessoryId => $accessory): ?>
+                <?php
+                $productId   = $accessory['id'] ?? $accessoryId;
+                $productName = I18N::t($accessory['name_key'] ?? '', $productId);
+                $price       = $accessory['priceCHF'] ?? 0;
+                $images      = $accessory['images'] ?? [];
+                $mainImage   = !empty($images) ? '/img/' . rawurlencode($images[0]) : '/img/placeholder.svg';
+                ?>
+                <article class="catalog-card"
+                         data-product-card
+                         data-product-id="<?php echo htmlspecialchars($productId); ?>"
+                         data-product-name="<?php echo htmlspecialchars($productName); ?>"
+                         data-category="<?php echo htmlspecialchars($slug); ?>">
+                    <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo $currentLang; ?>"
+                       class="catalog-card__link" style="text-decoration: none; color: inherit;">
+                        <div class="catalog-card__title-bar">
+                            <?php echo htmlspecialchars($productName); ?>
+                        </div>
+                        <div class="catalog-card__image-wrapper">
+                            <img src="<?php echo htmlspecialchars($mainImage); ?>"
+                                 alt="<?php echo htmlspecialchars($productName); ?>"
+                                 class="catalog-card__image"
+                                 onerror="this.src='/img/placeholder.svg'">
+                        </div>
+                        <div class="catalog-card__content">
+                            <div class="product-card__price-row">
+                                <span class="product-card__price-label">
+                                    <?php echo I18N::t('common.price', 'Price'); ?>
+                                </span>
+                                <span class="product-card__price-value">
+                                    CHF <?php echo number_format($price, 2); ?>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
                 </article>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </section>
     </main>
