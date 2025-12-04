@@ -95,12 +95,17 @@ include __DIR__ . '/includes/header.php';
         <div class="product-gallery" data-product-gallery>
             <div class="product-gallery__main">
                 <?php foreach ($productImages as $index => $imgFile): ?>
+                    <?php 
+                    // For accessories, use img/ folder; for others, use assets/img/
+                    $imgPrefix = ($isAccessory) ? 'img/' : 'assets/img/';
+                    $errorPlaceholder = ($isAccessory) ? 'img/placeholder.svg' : 'assets/img/placeholder.jpg';
+                    ?>
                     <img 
-                        src="assets/img/<?php echo htmlspecialchars($imgFile); ?>"
+                        src="<?php echo $imgPrefix . htmlspecialchars($imgFile); ?>"
                         alt="<?php echo htmlspecialchars($productName); ?>"
                         class="product-gallery__image <?php echo $index === 0 ? 'is-active' : ''; ?>"
                         data-gallery-image="<?php echo $index; ?>"
-                        onerror="this.src='assets/img/placeholder.jpg'">
+                        onerror="this.src='<?php echo $errorPlaceholder; ?>'">
                 <?php endforeach; ?>
             </div>
             <div class="product-gallery__nav">
@@ -109,22 +114,32 @@ include __DIR__ . '/includes/header.php';
             </div>
             <div class="product-gallery__thumbs">
                 <?php foreach ($productImages as $index => $imgFile): ?>
+                    <?php 
+                    // For accessories, use img/ folder; for others, use assets/img/
+                    $imgPrefix = ($isAccessory) ? 'img/' : 'assets/img/';
+                    $errorPlaceholder = ($isAccessory) ? 'img/placeholder.svg' : 'assets/img/placeholder.jpg';
+                    ?>
                     <img
-                        src="assets/img/<?php echo htmlspecialchars($imgFile); ?>"
+                        src="<?php echo $imgPrefix . htmlspecialchars($imgFile); ?>"
                         alt="<?php echo htmlspecialchars($productName); ?>"
                         class="product-gallery__thumb <?php echo $index === 0 ? 'is-active' : ''; ?>"
                         data-gallery-thumb="<?php echo $index; ?>"
-                        onerror="this.src='assets/img/placeholder.jpg'">
+                        onerror="this.src='<?php echo $errorPlaceholder; ?>'">
                 <?php endforeach; ?>
             </div>
         </div>
     <?php else: ?>
         <!-- Single image display -->
-        <?php $singleImagePath = !empty($productImages) ? $productImages[0] : 'placeholder.jpg'; ?>
-        <img src="assets/img/<?php echo htmlspecialchars($singleImagePath); ?>" 
+        <?php 
+        $singleImagePath = !empty($productImages) ? $productImages[0] : 'placeholder.jpg';
+        // For accessories, use img/ folder; for others, use assets/img/
+        $imgPrefix = ($isAccessory) ? 'img/' : 'assets/img/';
+        $errorPlaceholder = ($isAccessory) ? 'img/placeholder.svg' : 'assets/img/placeholder.jpg';
+        ?>
+        <img src="<?php echo $imgPrefix . htmlspecialchars($singleImagePath); ?>" 
              alt="<?php echo htmlspecialchars($productName); ?>" 
              class="category-hero__image"
-             onerror="this.src='assets/img/placeholder.jpg'">
+             onerror="this.src='<?php echo $errorPlaceholder; ?>'">
     <?php endif; ?>
 </section>
 
@@ -231,11 +246,10 @@ include __DIR__ . '/includes/header.php';
 
 <script>
 window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
-    $fragrances = loadJSON('fragrances.json');
     return [
         'name' => I18N::t('fragrance.' . $code . '.name', ucfirst(str_replace('_', ' ', $code))),
         'short' => I18N::t('fragrance.' . $code . '.short', ''),
-        'image' => $fragrances[$code]['image'] ?? ''
+        'image' => getFragranceImage($code)
     ];
 }, array_combine($allowedFrags, $allowedFrags))); ?>;
 </script>
