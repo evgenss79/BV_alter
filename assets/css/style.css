@@ -1928,6 +1928,17 @@ section {
    Inspired by niche fragrance brands
 ======================================= */
 
+/* About page banner */
+.about-banner img {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 40px;
+    border-radius: 6px;
+}
+
 .about-page--premium {
     width: 100%;
     margin: 0 auto;
@@ -1956,7 +1967,7 @@ section {
 .about-page--premium p {
     font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 17px;
-    line-height: 1.8;
+    line-height: 1.15 !important;
     color: #2b2a29;
     margin-bottom: 18px;
 }
@@ -1964,6 +1975,7 @@ section {
 /* Extended paragraphs with softer color */
 .about-page--premium p + p {
     color: #3a3937;
+    margin-top: 32px !important;
 }
 
 /* Main heading */
@@ -2027,10 +2039,21 @@ section {
 }
 
 /* Light emphasis for key phrases (e.g., brand name) */
-.about-page--premium em,
+.about-page--premium em {
+    font-style: italic;
+    font-weight: normal;
+    color: #111111;
+}
+
 .about-page--premium strong {
-    font-style: normal;
-    font-weight: 500;
+    font-weight: bold;
+    color: #111111;
+}
+
+.about-page--premium strong em,
+.about-page--premium em strong {
+    font-style: italic;
+    font-weight: bold;
     color: #111111;
 }
 

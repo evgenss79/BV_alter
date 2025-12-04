@@ -11,17 +11,17 @@ $pageSubtitle = I18N::t('page.about.subtitle', 'Official Swiss destination for B
 $pageContent = I18N::t('page.about.content', 'Welcome to NicheHome.ch, the official Swiss destination for premium home fragrances by the boutique brand By Velcheva.
 We specialize in elegant aroma diffusers, scented candles, interior perfumes, textile sprays, and luxury car fragrances, designed to transform any living space into a refined sensory experience.
 
-Our philosophy is simple:
+<strong><em>Our philosophy is simple:</em></strong>
 A home fragrance is not just a scent — it is atmosphere, emotion, and interior design in its purest form.
 
-About the Brand – By Velcheva
+<strong><em>About the Brand – By Velcheva</em></strong>
 
 By Velcheva is an international premium brand known for its sophisticated aromatic compositions and stylish aesthetic. Each product is crafted with high-quality fragrance oils, clean ingredients, and long-lasting diffusion technology.
 The brand\'s collection ranges from warm, cozy notes to fresh botanical accords and vibrant fruity signatures, making it suitable for every home and lifestyle.
 
 Every candle, diffuser, and spray is created with meticulous attention to detail — from the formula to the minimalistic packaging — reflecting the brand\'s core values: elegance, purity, and sensory harmony.
 
-Our Mission in Switzerland
+<strong><em>Our Mission in Switzerland</em></strong>
 
 At NicheHome.ch, we bring the world of luxury home perfumery to Switzerland. We provide fast delivery, exclusive limited editions, and premium customer service for:
 
@@ -33,7 +33,7 @@ At NicheHome.ch, we bring the world of luxury home perfumery to Switzerland. We 
 
 Whether you\'re scenting a home, office, showroom, or gifting something special, we offer premium solutions tailored to elevate every environment.
 
-Why Choose NicheHome.ch
+<strong><em>Why Choose NicheHome.ch</em></strong>
 
 ✔ Official Swiss platform for By Velcheva
 ✔ Long-lasting and high-quality fragrances
@@ -45,6 +45,10 @@ Our products suit those who appreciate beautiful interiors, refined atmospheres,
 ?>
 
 <main class="about-page about-page--premium">
+    <div class="about-banner">
+        <img src="/img/about_banner.jpg" alt="About NicheHome Banner">
+    </div>
+    
     <section class="about-page__section">
         <div class="about-page__inner">
             <p class="section-heading__label"><?php echo I18N::t('nav.about', 'About Us'); ?></p>
@@ -52,7 +56,7 @@ Our products suit those who appreciate beautiful interiors, refined atmospheres,
             <p><em><?php echo htmlspecialchars($pageSubtitle); ?></em></p>
             
             <p class="about-page__content">
-                <?php echo nl2br(htmlspecialchars($pageContent)); ?>
+                <?php echo nl2br($pageContent); ?>
             </p>
             
             <div class="about-page__cta">
