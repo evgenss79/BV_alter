@@ -83,53 +83,58 @@ if (!isset($defaultPrice)) {
 include __DIR__ . '/includes/header.php';
 ?>
 
-<section class="category-hero <?php echo ($categorySlug === 'accessories' ? 'product-page--accessories' : ''); ?>">
-    <div class="category-hero__content">
-        <p class="section-heading__label">
-            <a href="category.php?slug=<?php echo htmlspecialchars($categorySlug); ?>&lang=<?php echo $currentLang; ?>">
-                <?php echo htmlspecialchars($categoryName); ?>
-            </a>
-        </p>
-        <h1><?php echo htmlspecialchars($productName); ?></h1>
-        <p class="category-hero__desc"><?php echo nl2br(htmlspecialchars($productDesc)); ?></p>
-    </div>
-    
-    <?php if (count($productImages) > 1): ?>
-        <!-- Image Gallery/Slider for multiple images -->
-        <div class="product-gallery" data-product-gallery>
-            <div class="product-gallery__main">
-                <?php foreach ($productImages as $index => $imgFile): ?>
-                    <img 
-                        src="<?php echo $imgPrefix . htmlspecialchars($imgFile); ?>"
-                        alt="<?php echo htmlspecialchars($productName); ?>"
-                        class="product-gallery__image <?php echo $index === 0 ? 'is-active' : ''; ?>"
-                        data-gallery-image="<?php echo $index; ?>"
-                        onerror="this.src='<?php echo $errorPlaceholder; ?>'">
-                <?php endforeach; ?>
-            </div>
-            <div class="product-gallery__nav">
-                <button type="button" class="product-gallery__prev" data-gallery-prev aria-label="Previous image">&lt;</button>
-                <button type="button" class="product-gallery__next" data-gallery-next aria-label="Next image">&gt;</button>
-            </div>
-            <div class="product-gallery__thumbs">
-                <?php foreach ($productImages as $index => $imgFile): ?>
-                    <img
-                        src="<?php echo $imgPrefix . htmlspecialchars($imgFile); ?>"
-                        alt="<?php echo htmlspecialchars($productName); ?>"
-                        class="product-gallery__thumb <?php echo $index === 0 ? 'is-active' : ''; ?>"
-                        data-gallery-thumb="<?php echo $index; ?>"
-                        onerror="this.src='<?php echo $errorPlaceholder; ?>'">
-                <?php endforeach; ?>
-            </div>
+<section class="category-hero">
+    <div class="category-hero-text">
+        <div class="category-hero__content">
+            <p class="section-heading__label">
+                <a href="category.php?slug=<?php echo htmlspecialchars($categorySlug); ?>&lang=<?php echo $currentLang; ?>">
+                    <?php echo htmlspecialchars($categoryName); ?>
+                </a>
+            </p>
+            <h1><?php echo htmlspecialchars($productName); ?></h1>
+            <p class="category-hero__desc"><?php echo nl2br(htmlspecialchars($productDesc)); ?></p>
         </div>
-    <?php else: ?>
-        <!-- Single image display -->
-        <?php $singleImagePath = !empty($productImages) ? $productImages[0] : 'placeholder.jpg'; ?>
-        <img src="<?php echo $imgPrefix . htmlspecialchars($singleImagePath); ?>" 
-             alt="<?php echo htmlspecialchars($productName); ?>" 
-             class="category-hero__image"
-             onerror="this.src='<?php echo $errorPlaceholder; ?>'">
-    <?php endif; ?>
+    </div>
+    <div class="category-hero-image">
+        <?php if (count($productImages) > 1): ?>
+            <!-- Image Gallery/Slider for multiple images -->
+            <div class="product-gallery" data-product-gallery>
+                <div class="product-gallery__main">
+                    <?php foreach ($productImages as $index => $imgFile): ?>
+                        <img 
+                            src="<?php echo $imgPrefix . htmlspecialchars($imgFile); ?>"
+                            alt="<?php echo htmlspecialchars($productName); ?>"
+                            class="product-gallery__image <?php echo $index === 0 ? 'is-active' : ''; ?>"
+                            data-gallery-image="<?php echo $index; ?>"
+                            onerror="this.src='<?php echo $errorPlaceholder; ?>'">
+                    <?php endforeach; ?>
+                </div>
+                <div class="product-gallery__nav">
+                    <button type="button" class="product-gallery__prev" data-gallery-prev aria-label="Previous image">&lt;</button>
+                    <button type="button" class="product-gallery__next" data-gallery-next aria-label="Next image">&gt;</button>
+                </div>
+                <div class="product-gallery__thumbs">
+                    <?php foreach ($productImages as $index => $imgFile): ?>
+                        <img
+                            src="<?php echo $imgPrefix . htmlspecialchars($imgFile); ?>"
+                            alt="<?php echo htmlspecialchars($productName); ?>"
+                            class="product-gallery__thumb <?php echo $index === 0 ? 'is-active' : ''; ?>"
+                            data-gallery-thumb="<?php echo $index; ?>"
+                            onerror="this.src='<?php echo $errorPlaceholder; ?>'">
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php else: ?>
+            <!-- Single image display -->
+            <?php $singleImagePath = !empty($productImages) ? $productImages[0] : 'placeholder.jpg'; ?>
+            <div class="category-hero__image" data-category="<?php echo htmlspecialchars($categorySlug); ?>">
+                <img src="<?php echo $imgPrefix . htmlspecialchars($singleImagePath); ?>" 
+                     alt="<?php echo htmlspecialchars($productName); ?>" 
+                     class="category-hero__image-el"
+                     onerror="this.src='<?php echo $errorPlaceholder; ?>'">
+            </div>
+        <?php endif; ?>
+    </div>
 </section>
 
 <section class="catalog-section">

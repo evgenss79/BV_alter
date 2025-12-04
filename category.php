@@ -40,32 +40,6 @@ $heroImageClass = $slug === 'home_perfume' ? 'hero-home-perfume' : '';
 
 // Handle accessories category specially
 if ($slug === 'accessories') {
-    // Load accessories from accessories.json
-    $accessoriesData = loadJSON('accessories.json');
-    
-    // Filter only active accessories
-    $activeAccessories = array_filter($accessoriesData, function($item) {
-        return ($item['active'] ?? false) === true;
-    });
-    
-    // Build multilingual fragrance descriptions for all fragrances
-    $allFragranceCodes = [];
-    foreach ($activeAccessories as $acc) {
-        if (!empty($acc['allowed_fragrances'])) {
-            $allFragranceCodes = array_merge($allFragranceCodes, $acc['allowed_fragrances']);
-        }
-    }
-    $allFragranceCodes = array_unique($allFragranceCodes);
-    
-    $fragranceDescriptions = [];
-    foreach ($allFragranceCodes as $fragCode) {
-        $fragranceDescriptions[$fragCode] = [
-            'name' => I18N::t('fragrance.' . $fragCode . '.name', ucfirst(str_replace('_', ' ', $fragCode))),
-            'short' => I18N::t('fragrance.' . $fragCode . '.short', ''),
-            'full' => I18N::t('fragrance.' . $fragCode . '.full', '')
-        ];
-    }
-    
     include __DIR__ . '/includes/header.php';
     ?>
     <main class="category-page">
@@ -94,72 +68,26 @@ if ($slug === 'accessories') {
     </section>
 
     <section class="category-products">
-        <div class="products-list">
-            <?php foreach ($activeAccessories as $productId => $accessory): ?>
-                <?php
-                $productName = I18N::t($accessory['name_key'] ?? '', $productId);
-                $productDesc = I18N::t($accessory['desc_key'] ?? '', '');
-                $images = $accessory['images'] ?? [];
-                $defaultPrice = $accessory['priceCHF'] ?? 0;
-                
-                // Use first image as main display
-                $displayImage = !empty($images) ? '/img/' . rawurlencode($images[0]) : '/img/placeholder.svg';
-                ?>
-                <a href="product.php?id=<?php echo htmlspecialchars($productId); ?>&lang=<?php echo htmlspecialchars($currentLang); ?>" class="accessories-card-link">
-                    <article class="product-card" 
-                             data-product-card 
-                             data-product-id="<?php echo htmlspecialchars($productId); ?>"
-                             data-product-name="<?php echo htmlspecialchars($productName); ?>"
-                             data-category="<?php echo htmlspecialchars($slug); ?>">
-                        <div class="product-card__inner">
-                            <div class="product-card__image">
-                                <img src="<?php echo htmlspecialchars($displayImage); ?>" 
-                                     alt="<?php echo htmlspecialchars($productName); ?>" 
-                                     class="product-card__image-el"
-                                     data-product-image
-                                     data-product-id="<?php echo htmlspecialchars($productId); ?>"
-                                     data-default-image="<?php echo htmlspecialchars($displayImage); ?>"
-                                     onerror="this.src='/img/placeholder.svg'">
-                            </div>
-                            
-                            <div class="product-card__content">
-                                <header class="product-card__header">
-                                    <h2 class="product-card__title"><?php echo htmlspecialchars($productName); ?></h2>
-                                    <p class="product-card__description"><?php echo htmlspecialchars($productDesc); ?></p>
-                                </header>
-                                
-                                <div class="product-card__price-row">
-                                    <span class="product-card__price-label"><?php echo I18N::t('common.price', 'Price'); ?></span>
-                                    <span class="product-card__price-value" data-price-display>
-                                        CHF <?php echo number_format($defaultPrice, 2); ?>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </a>
-            <?php endforeach; ?>
+        <div class="accessories-grid">
+            <?php for ($i = 1; $i <= 4; $i++): ?>
+                <article class="catalog-card">
+                    <div class="catalog-card__title-bar">
+                        <?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>
+                    </div>
+                    <div class="catalog-card-image-wrapper">
+                        <img src="/img/placeholder.svg"
+                             alt="<?php echo I18N::t('common.accessory', 'Accessory') . ' ' . $i; ?>"
+                             class="catalog-card__image">
+                    </div>
+                </article>
+            <?php endfor; ?>
         </div>
     </section>
     </main>
 
     <script>
-    // Pass fragrance data to JavaScript
-    window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
-        return [
-            'name' => I18N::t('fragrance.' . $code . '.name', ucfirst(str_replace('_', ' ', $code))),
-            'short' => I18N::t('fragrance.' . $code . '.short', ''),
-            'image' => getFragranceImage($code)
-        ];
-    }, array_combine($allFragranceCodes, $allFragranceCodes))); ?>;
-    
-    // Pass multilingual fragrance descriptions from i18n
-    window.FRAGRANCE_DESCRIPTIONS = <?php echo json_encode($fragranceDescriptions, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP); ?>;
-    
     // Pass I18N labels for JS
     window.I18N_LABELS = {
-        fragrance_read_more: <?php echo json_encode(I18N::t('ui.fragrance.read_more', 'Read more')); ?>,
-        fragrance_collapse: <?php echo json_encode(I18N::t('ui.fragrance.collapse', 'Collapse')); ?>,
         category_read_more: <?php echo json_encode(I18N::t('ui.category.read_more', 'Read more')); ?>,
         category_collapse: <?php echo json_encode(I18N::t('ui.category.collapse', 'Collapse')); ?>
     };

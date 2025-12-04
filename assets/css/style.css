@@ -922,7 +922,7 @@ section {
    ======================================== */
 .category-hero {
     display: flex;
-    align-items: stretch;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 32px clamp(1.5rem, 4vw, 6rem) 24px;
     background: #fff;
@@ -961,6 +961,11 @@ section {
     font-size: clamp(1.4rem, 2.5vw, 1.8rem);
 }
 
+.category-hero__content p {
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
 .category-hero__desc {
     color: var(--color-muted);
     line-height: 1.5;
@@ -989,10 +994,10 @@ section {
 /* Category hero image element - no cropping, full display with contain */
 .category-hero__image-el {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 420px;
     width: auto;
     height: auto;
-    object-fit: contain !important;
+    object-fit: cover;
     display: block;
     border-radius: 6px;
 }
