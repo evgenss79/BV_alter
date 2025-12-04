@@ -1922,3 +1922,126 @@ section {
         height: 50px;
     }
 }
+
+/* =======================================
+   ABOUT PAGE – Premium Styling
+   Inspired by niche fragrance brands
+======================================= */
+
+.about-page--premium {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+    background-color: #f8f6f3; /* warm off-white background */
+}
+
+/* Inner block to keep text from touching edges */
+.about-page__inner {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+/* Content paragraphs with preserved line breaks */
+.about-page__content {
+    white-space: pre-line;
+}
+
+/* Call-to-action section */
+.about-page__cta {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+/* Base text styling */
+.about-page--premium p {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #2b2a29;
+    margin-bottom: 18px;
+}
+
+/* Extended paragraphs with softer color */
+.about-page--premium p + p {
+    color: #3a3937;
+}
+
+/* Main heading */
+.about-page--premium h1 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 32px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 28px;
+    color: #111111;
+}
+
+/* Section subheadings */
+.about-page--premium h2 {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-top: 40px;
+    margin-bottom: 18px;
+    color: #141414;
+}
+
+/* Decorative accent line under H1 */
+.about-page--premium h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    margin: 16px auto 0;
+    background-color: #c4b59f; /* thin beige line */
+}
+
+/* Light card effect for text */
+.about-page__section {
+    background-color: #fdfbf7;
+    border: 1px solid #e3ddd2;
+    padding: 40px 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+/* More breathing room on larger screens */
+@media (min-width: 1024px) {
+    .about-page--premium {
+        padding-top: 80px;
+        padding-bottom: 100px;
+    }
+
+    .about-page__section {
+        padding: 48px 40px;
+    }
+
+    .about-page--premium h1 {
+        font-size: 36px;
+    }
+
+    .about-page--premium p {
+        font-size: 18px;
+    }
+}
+
+/* Light emphasis for key phrases (e.g., brand name) */
+.about-page--premium em,
+.about-page--premium strong {
+    font-style: normal;
+    font-weight: 500;
+    color: #111111;
+}
+
+/* Links in About text - subtle, not loud */
+.about-page--premium a {
+    color: #222222;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(34, 34, 34, 0.35);
+    padding-bottom: 2px;
+}
+
+.about-page--premium a:hover {
+    border-bottom-color: rgba(34, 34, 34, 0.7);
+}
