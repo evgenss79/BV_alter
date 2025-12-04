@@ -55,7 +55,7 @@ Our products suit those who appreciate beautiful interiors, refined atmospheres,
             <p><em><?php echo htmlspecialchars($pageSubtitle); ?></em></p>
             
             <p class="about-page__content">
-                <?php echo nl2br(htmlspecialchars($pageContent)); ?>
+                <?php echo nl2br(strip_tags($pageContent, '<strong><em><br>')); ?>
             </p>
             
             <div class="about-page__cta">
