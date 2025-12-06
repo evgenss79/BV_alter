@@ -81,13 +81,10 @@
         },
         "support": {
             "title": "Support & FAQ",
-            "subtitle": "Frequently asked questions",
-            "shippingTitle": "Shipping & Delivery",
-            "shippingContent": "We offer free shipping on all orders over CHF 80. Standard delivery takes 1-3 business days within Switzerland.",
-            "returnsTitle": "Returns & Refunds",
-            "returnsContent": "We accept returns within 14 days of delivery. Items must be unused and in original packaging.",
-            "paymentTitle": "Payment Methods",
-            "paymentContent": "We currently accept TWINT for payments. Credit card and PayPal coming soon."
+            "subtitle": "Trouvez des réponses aux questions courantes",
+            "moreQuestions": "Vous avez d'autres questions?",
+            "privacyContent": "Nous nous engageons à protéger votre vie privée. Vos informations personnelles ne sont utilisées que pour traiter votre commande et améliorer votre expérience d'achat. Nous ne partageons pas vos données avec des tiers sauf si cela est nécessaire pour exécuter votre commande.",
+            "termsContent": "En passant une commande sur NicheHome.ch, vous acceptez nos conditions générales. Tous les produits sont soumis à disponibilité. Les prix sont en francs suisses (CHF) et incluent la TVA."
         },
         "cart": {
             "title": "Shopping Cart",
@@ -148,13 +145,6 @@
             "formMessage": "Tell us about your needs",
             "formSubmit": "Send request",
             "formSuccess": "Thank you for your inquiry. Our team will contact you within 24 hours."
-        },
-        "support": {
-            "title": "Support & FAQ",
-            "subtitle": "Trouvez des réponses aux questions courantes",
-            "moreQuestions": "Vous avez d'autres questions?",
-            "privacyContent": "Nous nous engageons à protéger votre vie privée. Vos informations personnelles ne sont utilisées que pour traiter votre commande et améliorer votre expérience d'achat. Nous ne partageons pas vos données avec des tiers sauf si cela est nécessaire pour exécuter votre commande.",
-            "termsContent": "En passant une commande sur NicheHome.ch, vous acceptez nos conditions générales. Tous les produits sont soumis à disponibilité. Les prix sont en francs suisses (CHF) et incluent la TVA."
         }
     },
     "footer": {
@@ -211,6 +201,9 @@
         "aroma_sashe": {
             "name": "Aroma Sashé",
             "desc": "Nos parfums d'intérieur se présentent sous forme de désodorisants solides. Nous les avons créés concis et esthétiques.\n\nPar conséquent, ce produit sera un ajout très agréable à votre maison. Le parfum du désodorisant solide est plus délicat que celui d'un parfum d'intérieur classique.\n\nCe type de produit ne se fera pas remarquer aussi fort. Mais il peut subtilement et efficacement mettre en valeur des détails individuels.\n\nEn d'autres termes, vous avez la possibilité de parfumer sélectivement n'importe quel objet en y plaçant ou suspendant simplement un désodorisant aromatique. Par exemple, vous pouvez le placer dans une armoire avec des vêtements. Chaque fois que vous ouvrirez les portes de votre armoire, vous sentirez une légère trace de votre parfum préféré.\n\nIl y a une règle : plus la zone de diffusion est petite, plus le parfum dure longtemps."
+        },
+        "christ_toy": {
+            "name": "Jouet pour Sapin"
         }
     }
 }
