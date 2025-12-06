@@ -10,6 +10,80 @@ if (!isAdminLoggedIn()) {
     exit;
 }
 
+/**
+ * Load accessory descriptions from i18n JSON files
+ */
+function loadAccessoryDescriptions(string $productId): array {
+    $langs = ['en', 'de', 'fr', 'it', 'ru', 'ukr'];
+    $result = [];
+    foreach ($langs as $lang) {
+        $path = __DIR__ . '/../data/i18n/ui_' . $lang . '.json';
+        if (!file_exists($path)) continue;
+        
+        $content = file_get_contents($path);
+        if ($content === false) continue;
+        
+        $data = json_decode($content, true);
+        if (!is_array($data)) continue;
+        
+        if (isset($data['product'][$productId]['desc'])) {
+            $result[$lang] = $data['product'][$productId]['desc'];
+        }
+    }
+    return $result;
+}
+
+/**
+ * Save accessory descriptions to i18n JSON files
+ * Note: If a product name is not set in the i18n file, it will be initialized with the product ID
+ */
+function saveAccessoryDescriptions(string $productId, array $descriptions): void {
+    $langs = ['en', 'de', 'fr', 'it', 'ru', 'ukr'];
+    foreach ($langs as $lang) {
+        $desc = $descriptions[$lang] ?? '';
+        if ($desc === '') {
+            // Skip empty descriptions to avoid overwriting existing ones
+            continue;
+        }
+        $path = __DIR__ . '/../data/i18n/ui_' . $lang . '.json';
+        if (!file_exists($path)) {
+            continue;
+        }
+        
+        $content = file_get_contents($path);
+        if ($content === false) {
+            error_log("Failed to read i18n file: $path");
+            continue;
+        }
+        
+        $data = json_decode($content, true);
+        if (!is_array($data)) {
+            error_log("Failed to decode JSON from i18n file: $path");
+            $data = [];
+        }
+        
+        if (!isset($data['product'])) {
+            $data['product'] = [];
+        }
+        if (!isset($data['product'][$productId])) {
+            $data['product'][$productId] = [];
+        }
+        $data['product'][$productId]['desc'] = $desc;
+        
+        // Initialize name field if not present (for consistency in i18n files)
+        if (empty($data['product'][$productId]['name'])) {
+            $data['product'][$productId]['name'] = $productId;
+        }
+
+        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        $result = file_put_contents($path, $json);
+        
+        if ($result === false) {
+            error_log("Failed to write i18n file: $path");
+        }
+    }
+}
+
 $accessories = loadJSON('accessories.json');
 $fragrances = loadJSON('fragrances.json');
 
@@ -22,6 +96,10 @@ $success = '';
 $error = '';
 $editingId = $_GET['edit'] ?? '';
 $editingItem = $editingId && isset($accessories[$editingId]) ? $accessories[$editingId] : null;
+$currentDescriptions = [];
+if ($editingId) {
+    $currentDescriptions = loadAccessoryDescriptions($editingId);
+}
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
@@ -81,9 +159,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 ];
                 
                 if (saveJSON('accessories.json', $accessories)) {
+                    // Save descriptions to i18n files
+                    $descriptions = [
+                        'en'  => trim($_POST['description_en'] ?? ''),
+                        'de'  => trim($_POST['description_de'] ?? ''),
+                        'fr'  => trim($_POST['description_fr'] ?? ''),
+                        'it'  => trim($_POST['description_it'] ?? ''),
+                        'ru'  => trim($_POST['description_ru'] ?? ''),
+                        'ukr' => trim($_POST['description_ukr'] ?? ''),
+                    ];
+                    saveAccessoryDescriptions($id, $descriptions);
+                    
                     $success = 'Accessory saved successfully!';
                     $editingId = '';
                     $editingItem = null;
+                    $currentDescriptions = [];
                     // Reload data
                     $accessories = loadJSON('accessories.json');
                 } else {
@@ -264,6 +354,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                                required 
                                value="<?php echo $editingItem ? htmlspecialchars($editingItem['desc_key']) : ''; ?>">
                         <div class="help-text">Translation key, e.g. product.aroma_sashe.desc</div>
+                    </div>
+                    
+                    <!-- Description Fields for all languages -->
+                    <div class="form-group">
+                        <label for="description_en">Description (EN)</label>
+                        <textarea id="description_en" 
+                                  name="description_en" 
+                                  rows="4"><?php echo htmlspecialchars($currentDescriptions['en'] ?? ''); ?></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description_de">Description (DE)</label>
+                        <textarea id="description_de" 
+                                  name="description_de" 
+                                  rows="4"><?php echo htmlspecialchars($currentDescriptions['de'] ?? ''); ?></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description_fr">Description (FR)</label>
+                        <textarea id="description_fr" 
+                                  name="description_fr" 
+                                  rows="4"><?php echo htmlspecialchars($currentDescriptions['fr'] ?? ''); ?></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description_it">Description (IT)</label>
+                        <textarea id="description_it" 
+                                  name="description_it" 
+                                  rows="4"><?php echo htmlspecialchars($currentDescriptions['it'] ?? ''); ?></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description_ru">Description (RU)</label>
+                        <textarea id="description_ru" 
+                                  name="description_ru" 
+                                  rows="4"><?php echo htmlspecialchars($currentDescriptions['ru'] ?? ''); ?></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description_ukr">Description (UKR)</label>
+                        <textarea id="description_ukr" 
+                                  name="description_ukr" 
+                                  rows="4"><?php echo htmlspecialchars($currentDescriptions['ukr'] ?? ''); ?></textarea>
                     </div>
                     
                     <div class="form-group">
