@@ -11,11 +11,11 @@ if (!isAdminLoggedIn()) {
 }
 
 /**
- * Load accessory descriptions from i18n JSON files
+ * Load accessory names and descriptions from i18n JSON files
  */
-function loadAccessoryDescriptions(string $productId): array {
+function loadAccessoryI18N(string $productId): array {
     $langs = ['en', 'de', 'fr', 'it', 'ru', 'ukr'];
-    $result = [];
+    $result = ['names' => [], 'descriptions' => []];
     foreach ($langs as $lang) {
         $path = __DIR__ . '/../data/i18n/ui_' . $lang . '.json';
         if (!file_exists($path)) continue;
@@ -26,62 +26,99 @@ function loadAccessoryDescriptions(string $productId): array {
         $data = json_decode($content, true);
         if (!is_array($data)) continue;
         
+        if (isset($data['product'][$productId]['name'])) {
+            $result['names'][$lang] = $data['product'][$productId]['name'];
+        }
         if (isset($data['product'][$productId]['desc'])) {
-            $result[$lang] = $data['product'][$productId]['desc'];
+            $result['descriptions'][$lang] = $data['product'][$productId]['desc'];
         }
     }
     return $result;
 }
 
 /**
- * Save accessory descriptions to i18n JSON files
- * Note: If a product name is not set in the i18n file, it will be initialized with the product ID
+ * Load accessory descriptions from i18n JSON files
  */
-function saveAccessoryDescriptions(string $productId, array $descriptions): void {
+function loadAccessoryDescriptions(string $productId): array {
+    $i18n = loadAccessoryI18N($productId);
+    return $i18n['descriptions'];
+}
+
+/**
+ * Save accessory names and descriptions to i18n JSON files
+ */
+function saveAccessoryI18N(string $slug, array $names, array $descriptions): void {
     $langs = ['en', 'de', 'fr', 'it', 'ru', 'ukr'];
+
     foreach ($langs as $lang) {
-        $desc = $descriptions[$lang] ?? '';
-        if ($desc === '') {
-            // Skip empty descriptions to avoid overwriting existing ones
-            continue;
-        }
         $path = __DIR__ . '/../data/i18n/ui_' . $lang . '.json';
         if (!file_exists($path)) {
             continue;
         }
-        
-        $content = file_get_contents($path);
-        if ($content === false) {
-            error_log("Failed to read i18n file: $path");
-            continue;
-        }
-        
-        $data = json_decode($content, true);
+
+        $data = json_decode(file_get_contents($path), true);
         if (!is_array($data)) {
-            error_log("Failed to decode JSON from i18n file: $path");
             $data = [];
         }
-        
-        if (!isset($data['product'])) {
+        if (!isset($data['product']) || !is_array($data['product'])) {
             $data['product'] = [];
         }
-        if (!isset($data['product'][$productId])) {
-            $data['product'][$productId] = [];
-        }
-        $data['product'][$productId]['desc'] = $desc;
-        
-        // Initialize name field if not present (for consistency in i18n files)
-        if (empty($data['product'][$productId]['name'])) {
-            $data['product'][$productId]['name'] = $productId;
+        if (!isset($data['product'][$slug]) || !is_array($data['product'][$slug])) {
+            $data['product'][$slug] = [];
         }
 
-        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        $result = file_put_contents($path, $json);
-        
-        if ($result === false) {
-            error_log("Failed to write i18n file: $path");
+        $name = $names[$lang] ?? '';
+        $desc = $descriptions[$lang] ?? '';
+
+        if ($name !== '') {
+            $data['product'][$slug]['name'] = $name;
+        }
+        if ($desc !== '') {
+            $data['product'][$slug]['desc'] = $desc;
+        }
+
+        file_put_contents(
+            $path,
+            json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+        );
+    }
+}
+
+/**
+ * Sync accessory to products.json for product.php
+ */
+function syncAccessoryToProducts(string $slug, string $category, string $nameKey, string $descKey, array $images, float $priceCHF): void {
+    $path = __DIR__ . '/../data/products.json';
+    $products = [];
+
+    if (file_exists($path)) {
+        $products = json_decode(file_get_contents($path), true);
+        if (!is_array($products)) {
+            $products = [];
         }
     }
+
+    $mainImage = !empty($images) ? $images[0] : '';
+
+    $products[$slug] = [
+        'id' => $slug,
+        'category' => $category,
+        'name_key' => $nameKey,
+        'desc_key' => $descKey,
+        'image' => $mainImage,
+        'variants' => [
+            [
+                'volume' => 'standard',
+                'priceCHF' => $priceCHF,
+            ]
+        ],
+        'active' => true
+    ];
+
+    file_put_contents(
+        $path,
+        json_encode($products, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
+    );
 }
 
 $accessories = loadJSON('accessories.json');
@@ -96,24 +133,49 @@ $success = '';
 $error = '';
 $editingId = $_GET['edit'] ?? '';
 $editingItem = $editingId && isset($accessories[$editingId]) ? $accessories[$editingId] : null;
+$currentNames = [];
 $currentDescriptions = [];
 if ($editingId) {
-    $currentDescriptions = loadAccessoryDescriptions($editingId);
+    $i18n = loadAccessoryI18N($editingId);
+    $currentNames = $i18n['names'];
+    $currentDescriptions = $i18n['descriptions'];
 }
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     if ($_POST['action'] === 'save_accessory') {
         $id = trim($_POST['id'] ?? '');
-        $name_key = trim($_POST['name_key'] ?? '');
-        $desc_key = trim($_POST['desc_key'] ?? '');
         $priceCHF = floatval($_POST['priceCHF'] ?? 0);
         $active = isset($_POST['active']) ? true : false;
+        
+        // Auto-generate name_key and desc_key from slug
+        $nameKey = 'product.' . $id . '.name';
+        $descKey = 'product.' . $id . '.desc';
         
         // Validate ID (only lowercase letters, numbers, underscores)
         if (!preg_match('/^[a-z0-9_]+$/', $id)) {
             $error = 'ID must contain only lowercase letters, numbers, and underscores.';
         } else {
+            // Collect names from all language inputs
+            $names = [
+                'en'  => trim($_POST['name_en'] ?? ''),
+                'de'  => trim($_POST['name_de'] ?? ''),
+                'fr'  => trim($_POST['name_fr'] ?? ''),
+                'it'  => trim($_POST['name_it'] ?? ''),
+                'ru'  => trim($_POST['name_ru'] ?? ''),
+                'ukr' => trim($_POST['name_ukr'] ?? ''),
+            ];
+            
+            // Collect descriptions from all language inputs
+            $descriptions = [
+                'en'  => trim($_POST['description_en'] ?? ''),
+                'de'  => trim($_POST['description_de'] ?? ''),
+                'fr'  => trim($_POST['description_fr'] ?? ''),
+                'it'  => trim($_POST['description_it'] ?? ''),
+                'ru'  => trim($_POST['description_ru'] ?? ''),
+                'ukr' => trim($_POST['description_ukr'] ?? ''),
+            ];
+            
             // Process images - can be textarea with one per line or multiple inputs
             $images = [];
             if (!empty($_POST['images'])) {
@@ -150,8 +212,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 // Create or update accessory
                 $accessories[$id] = [
                     'id' => $id,
-                    'name_key' => $name_key,
-                    'desc_key' => $desc_key,
+                    'name_key' => $nameKey,
+                    'desc_key' => $descKey,
                     'images' => $images,
                     'priceCHF' => $priceCHF,
                     'active' => $active,
@@ -159,20 +221,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 ];
                 
                 if (saveJSON('accessories.json', $accessories)) {
-                    // Save descriptions to i18n files
-                    $descriptions = [
-                        'en'  => trim($_POST['description_en'] ?? ''),
-                        'de'  => trim($_POST['description_de'] ?? ''),
-                        'fr'  => trim($_POST['description_fr'] ?? ''),
-                        'it'  => trim($_POST['description_it'] ?? ''),
-                        'ru'  => trim($_POST['description_ru'] ?? ''),
-                        'ukr' => trim($_POST['description_ukr'] ?? ''),
-                    ];
-                    saveAccessoryDescriptions($id, $descriptions);
+                    // Save names and descriptions to i18n files
+                    saveAccessoryI18N($id, $names, $descriptions);
+                    
+                    // Sync to products.json
+                    syncAccessoryToProducts($id, 'accessories', $nameKey, $descKey, $images, $priceCHF);
                     
                     $success = 'Accessory saved successfully!';
                     $editingId = '';
                     $editingItem = null;
+                    $currentNames = [];
                     $currentDescriptions = [];
                     // Reload data
                     $accessories = loadJSON('accessories.json');
@@ -341,9 +399,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                         <input type="text" 
                                id="name_key" 
                                name="name_key" 
-                               required 
-                               value="<?php echo $editingItem ? htmlspecialchars($editingItem['name_key']) : ''; ?>">
-                        <div class="help-text">Translation key, e.g. product.aroma_sashe.name</div>
+                               readonly
+                               value="<?php 
+                                   $displaySlug = $editingItem ? $editingItem['id'] : '[slug]';
+                                   echo htmlspecialchars('product.' . $displaySlug . '.name'); 
+                               ?>">
+                        <div class="help-text">Auto-generated as product.&lt;slug&gt;.name</div>
                     </div>
                     
                     <div class="form-group">
@@ -351,10 +412,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                         <input type="text" 
                                id="desc_key" 
                                name="desc_key" 
-                               required 
-                               value="<?php echo $editingItem ? htmlspecialchars($editingItem['desc_key']) : ''; ?>">
-                        <div class="help-text">Translation key, e.g. product.aroma_sashe.desc</div>
+                               readonly
+                               value="<?php 
+                                   $displaySlug = $editingItem ? $editingItem['id'] : '[slug]';
+                                   echo htmlspecialchars('product.' . $displaySlug . '.desc'); 
+                               ?>">
+                        <div class="help-text">Auto-generated as product.&lt;slug&gt;.desc</div>
                     </div>
+                    
+                    <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ddd;">
+                    <h3 style="margin-bottom: 1rem;">Product Names (by Language)</h3>
+                    
+                    <!-- Name Fields for all languages -->
+                    <div class="form-group">
+                        <label for="name_en">Name (EN) *</label>
+                        <input type="text" 
+                               id="name_en" 
+                               name="name_en" 
+                               required
+                               value="<?php echo htmlspecialchars($currentNames['en'] ?? ''); ?>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name_de">Name (DE)</label>
+                        <input type="text" 
+                               id="name_de" 
+                               name="name_de" 
+                               value="<?php echo htmlspecialchars($currentNames['de'] ?? ''); ?>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name_fr">Name (FR)</label>
+                        <input type="text" 
+                               id="name_fr" 
+                               name="name_fr" 
+                               value="<?php echo htmlspecialchars($currentNames['fr'] ?? ''); ?>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name_it">Name (IT)</label>
+                        <input type="text" 
+                               id="name_it" 
+                               name="name_it" 
+                               value="<?php echo htmlspecialchars($currentNames['it'] ?? ''); ?>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name_ru">Name (RU)</label>
+                        <input type="text" 
+                               id="name_ru" 
+                               name="name_ru" 
+                               value="<?php echo htmlspecialchars($currentNames['ru'] ?? ''); ?>">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name_ukr">Name (UKR)</label>
+                        <input type="text" 
+                               id="name_ukr" 
+                               name="name_ukr" 
+                               value="<?php echo htmlspecialchars($currentNames['ukr'] ?? ''); ?>">
+                    </div>
+                    
+                    <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ddd;">
+                    <h3 style="margin-bottom: 1rem;">Product Descriptions (by Language)</h3>
                     
                     <!-- Description Fields for all languages -->
                     <div class="form-group">
@@ -460,5 +580,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             </div>
         </main>
     </div>
+    
+    <script>
+    // Auto-update name_key and desc_key when ID changes
+    document.addEventListener('DOMContentLoaded', function() {
+        const idInput = document.getElementById('id');
+        const nameKeyInput = document.getElementById('name_key');
+        const descKeyInput = document.getElementById('desc_key');
+        
+        if (idInput && !idInput.hasAttribute('readonly')) {
+            idInput.addEventListener('input', function() {
+                const slug = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
+                if (slug) {
+                    nameKeyInput.value = 'product.' + slug + '.name';
+                    descKeyInput.value = 'product.' + slug + '.desc';
+                } else {
+                    nameKeyInput.value = 'product.[slug].name';
+                    descKeyInput.value = 'product.[slug].desc';
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html>
