@@ -124,7 +124,7 @@ function syncAccessoryToProducts(string $slug, string $category, string $nameKey
 $accessories = loadJSON('accessories.json');
 $fragrances = loadJSON('fragrances.json');
 
-// Get all fragrances except excluded ones (salted_caramel, new_york, abu_dhabi, palermo)
+// Get all fragrances except excluded ones (new_york, abu_dhabi, palermo)
 $fragranceCodes = array_keys($fragrances);
 $excluded = ['new_york', 'abu_dhabi', 'palermo'];
 $availableFragrances = array_values(array_diff($fragranceCodes, $excluded));

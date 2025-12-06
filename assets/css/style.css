@@ -2106,7 +2106,6 @@ section {
     transform-origin: top left;
 }
 
-.category-products--recommended .product-card__image,
 .category-products--recommended .product-card__title {
     font-size: 0.8rem;
 }
