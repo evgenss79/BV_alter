@@ -2077,3 +2077,77 @@ section {
     text-decoration: none;
     color: inherit;
 }
+
+/* ========================================
+   ACCESSORIES ENHANCEMENTS
+   ======================================== */
+
+/* 1. Accessories product hero image tuning - reduce size by ~40% */
+.category-hero--accessory .category-hero__image {
+    max-width: 60%; /* container already on ~40% */
+}
+
+.category-hero--accessory .category-hero__image-el {
+    transform: scale(0.6);
+    transform-origin: center center;
+    max-height: none; /* use scale instead of max-height */
+}
+
+/* 2. Recommended products: smaller cards, 5x2 layout */
+/* Note: Using transform scale as per requirements to reduce card size visually while maintaining grid structure */
+.category-products--recommended .products-grid--recommended {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: auto;
+    gap: 16px;
+}
+
+@media (max-width: 1024px) {
+    .category-products--recommended .products-grid--recommended {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .category-products--recommended .products-grid--recommended {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.category-products--recommended .product-card {
+    transform: scale(0.5);
+    transform-origin: top left;
+}
+
+.category-products--recommended .product-card__title {
+    font-size: 0.8rem;
+}
+
+/* 3. Accessories category cards: smaller 5-column grid */
+.accessories-grid--accessories {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 1024px) {
+    .accessories-grid--accessories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .accessories-grid--accessories {
+        grid-template-columns: 1fr;
+    }
+}
+
+.accessories-grid--accessories .catalog-card {
+    transform: scale(0.8);
+    transform-origin: top left;
+}
+
+.accessories-grid--accessories .catalog-card__image {
+    max-height: 150px;
+    object-fit: cover;
+}

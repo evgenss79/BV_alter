@@ -73,8 +73,8 @@ if ($slug === 'accessories') {
         </div>
     </section>
 
-    <section class="category-products">
-        <div class="accessories-grid">
+    <section class="category-products category-products--accessories">
+        <div class="accessories-grid accessories-grid--accessories">
             <?php foreach ($activeAccessories as $accessoryId => $accessory): ?>
                 <?php
                 $productId   = $accessory['id'] ?? $accessoryId;

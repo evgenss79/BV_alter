@@ -83,7 +83,7 @@ if (!isset($defaultPrice)) {
 include __DIR__ . '/includes/header.php';
 ?>
 
-<section class="category-hero">
+<section class="category-hero <?php echo $isAccessory ? 'category-hero--accessory' : ''; ?>">
     <div class="category-hero-text">
         <div class="category-hero__content">
             <p class="section-heading__label">
@@ -240,50 +240,31 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <!-- Recommended Products -->
-<section class="category-products">
+<section class="category-products category-products--recommended">
     <div class="container">
         <h2 class="text-center mb-4"><?php echo I18N::t('product.recommended', 'You might also like'); ?></h2>
-        <div class="products-grid">
+        <div class="products-grid products-grid--recommended">
             <?php
-            // Get products from different categories (exclude current product)
-            $recommendedProducts = array_filter($products, function($p, $id) use ($productId) {
-                return $id !== $productId && ($p['active'] ?? false);
-            }, ARRAY_FILTER_USE_BOTH);
+            // Get recommended products: 10 random active products from all categories except current
+            $allProducts = $products;
+            unset($allProducts[$productId]);
             
-            // Shuffle to get random products from different categories
-            $recommendedArray = [];
-            foreach ($recommendedProducts as $id => $p) {
-                $recommendedArray[$id] = $p;
+            // Keep only active products
+            $allProducts = array_filter($allProducts, function($p) {
+                return !empty($p['active']);
+            });
+            
+            // Shuffle and take 10
+            $keys = array_keys($allProducts);
+            shuffle($keys);
+            $keys = array_slice($keys, 0, 10);
+            
+            $recommendedProducts = [];
+            foreach ($keys as $k) {
+                $recommendedProducts[$k] = $allProducts[$k];
             }
             
-            // Get a diverse mix by prioritizing different categories
-            $categorizedProducts = [];
-            foreach ($recommendedArray as $id => $p) {
-                $cat = $p['category'] ?? 'other';
-                if (!isset($categorizedProducts[$cat])) {
-                    $categorizedProducts[$cat] = [];
-                }
-                $categorizedProducts[$cat][$id] = $p;
-            }
-            
-            // Select 1 product from different categories
-            $selectedProducts = [];
-            $maxProducts = 4;
-            foreach ($categorizedProducts as $cat => $catProducts) {
-                if (count($selectedProducts) >= $maxProducts) break;
-                // Get first product from this category
-                $firstProduct = array_slice($catProducts, 0, 1, true);
-                $selectedProducts = array_merge($selectedProducts, $firstProduct);
-            }
-            
-            // If we don't have enough, add more from any category
-            if (count($selectedProducts) < $maxProducts) {
-                $remaining = array_diff_key($recommendedArray, $selectedProducts);
-                $additional = array_slice($remaining, 0, $maxProducts - count($selectedProducts), true);
-                $selectedProducts = array_merge($selectedProducts, $additional);
-            }
-            
-            foreach ($selectedProducts as $recId => $recProduct):
+            foreach ($recommendedProducts as $recId => $recProduct):
                 $recName = I18N::t('product.' . $recId . '.name', $recProduct['name_key'] ?? $recId);
                 $recImage = $recProduct['image'] ?? '';
                 $recCategory = $recProduct['category'] ?? '';

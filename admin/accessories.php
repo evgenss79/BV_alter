@@ -124,10 +124,10 @@ function syncAccessoryToProducts(string $slug, string $category, string $nameKey
 $accessories = loadJSON('accessories.json');
 $fragrances = loadJSON('fragrances.json');
 
-// Get all fragrances except salted_caramel for allowed_fragrances selector
-$availableFragrances = array_filter(array_keys($fragrances), function($code) {
-    return $code !== 'salted_caramel';
-});
+// Get all fragrances except excluded ones (new_york, abu_dhabi, palermo)
+$fragranceCodes = array_keys($fragrances);
+$excluded = ['new_york', 'abu_dhabi', 'palermo'];
+$availableFragrances = array_values(array_diff($fragranceCodes, $excluded));
 
 $success = '';
 $error = '';
@@ -135,10 +135,12 @@ $editingId = $_GET['edit'] ?? '';
 $editingItem = $editingId && isset($accessories[$editingId]) ? $accessories[$editingId] : null;
 $currentNames = [];
 $currentDescriptions = [];
+$currentVolumes = [];
 if ($editingId) {
     $i18n = loadAccessoryI18N($editingId);
     $currentNames = $i18n['names'];
     $currentDescriptions = $i18n['descriptions'];
+    $currentVolumes = $editingItem['volumes'] ?? [];
 }
 
 // Handle form submission
@@ -205,6 +207,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 $allowed_fragrances = [];
             }
             
+            // Process volume selector (optional)
+            $hasVolumeSelector = !empty($_POST['enable_volume_selector']);
+            $volumes = isset($_POST['volumes']) && is_array($_POST['volumes']) 
+                ? array_values(array_unique(array_filter($_POST['volumes']))) 
+                : [];
+            
             // Validate at least one image
             if (empty($images)) {
                 $error = 'At least one image is required.';
@@ -217,7 +225,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                     'images' => $images,
                     'priceCHF' => $priceCHF,
                     'active' => $active,
-                    'allowed_fragrances' => $allowed_fragrances
+                    'allowed_fragrances' => $allowed_fragrances,
+                    'has_volume_selector' => $hasVolumeSelector,
+                    'volumes' => $hasVolumeSelector ? $volumes : []
                 ];
                 
                 if (saveJSON('accessories.json', $accessories)) {
@@ -558,7 +568,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <div class="help-text">Hold Ctrl/Cmd to select multiple. salted_caramel is excluded.</div>
+                        <div class="help-text">Hold Ctrl/Cmd to select multiple. Excluded: new_york, abu_dhabi, palermo.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" 
+                                   name="enable_volume_selector" 
+                                   value="1" 
+                                   <?php echo !empty($editingItem['has_volume_selector']) ? 'checked' : ''; ?>>
+                            Enable volume selector for this product
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Available Volumes / Formats</label>
+                        <select name="volumes[]" multiple size="3">
+                            <option value="125ml" <?php echo in_array('125ml', $currentVolumes) ? 'selected' : ''; ?>>125ml</option>
+                            <option value="5 guggul + 5 louban" <?php echo in_array('5 guggul + 5 louban', $currentVolumes) ? 'selected' : ''; ?>>5 guggul + 5 louban</option>
+                            <option value="10 guggul + 10 louban" <?php echo in_array('10 guggul + 10 louban', $currentVolumes) ? 'selected' : ''; ?>>10 guggul + 10 louban</option>
+                        </select>
+                        <small class="help-text">Optional. Leave empty if product does not require volume selector.</small>
                     </div>
                     
                     <div class="form-group">
