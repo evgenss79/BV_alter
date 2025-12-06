@@ -239,39 +239,7 @@ include __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<!-- Recommended Products -->
-<section class="category-products">
-    <div class="container">
-        <h2 class="text-center mb-4"><?php echo I18N::t('product.recommended', 'You might also like'); ?></h2>
-        <div class="products-grid">
-            <?php
-            // Get other products from same category
-            $recommendedProducts = array_filter($products, function($p, $id) use ($categorySlug, $productId) {
-                return ($p['category'] ?? '') === $categorySlug && $id !== $productId;
-            }, ARRAY_FILTER_USE_BOTH);
-            
-            $recommendedProducts = array_slice($recommendedProducts, 0, 3, true);
-            
-            foreach ($recommendedProducts as $recId => $recProduct):
-                $recName = I18N::t('product.' . $recId . '.name', $recProduct['name_key'] ?? $recId);
-                $recImage = $recProduct['image'] ?? '';
-                $recVariants = $recProduct['variants'] ?? [];
-                $recPrice = !empty($recVariants) ? ($recVariants[0]['priceCHF'] ?? 0) : 0;
-            ?>
-                <a href="product.php?id=<?php echo htmlspecialchars($recId); ?>&lang=<?php echo $currentLang; ?>" class="product-card" style="text-decoration: none;">
-                    <img src="assets/img/<?php echo htmlspecialchars($recImage); ?>" 
-                         alt="<?php echo htmlspecialchars($recName); ?>" 
-                         class="product-card__image"
-                         onerror="this.src='assets/img/placeholder.jpg'">
-                    <h3 class="product-card__title"><?php echo htmlspecialchars($recName); ?></h3>
-                    <div class="product-card__meta">
-                        <span class="product-card__price">CHF <?php echo number_format($recPrice, 2); ?></span>
-                    </div>
-                </a>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
+
 
 <script>
 window.FRAGRANCES = <?php echo json_encode(array_map(function($code) {
