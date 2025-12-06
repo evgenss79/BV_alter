@@ -19,7 +19,13 @@ function loadAccessoryDescriptions(string $productId): array {
     foreach ($langs as $lang) {
         $path = __DIR__ . '/../data/i18n/ui_' . $lang . '.json';
         if (!file_exists($path)) continue;
-        $data = json_decode(file_get_contents($path), true);
+        
+        $content = file_get_contents($path);
+        if ($content === false) continue;
+        
+        $data = json_decode($content, true);
+        if (!is_array($data)) continue;
+        
         if (isset($data['product'][$productId]['desc'])) {
             $result[$lang] = $data['product'][$productId]['desc'];
         }
@@ -29,6 +35,7 @@ function loadAccessoryDescriptions(string $productId): array {
 
 /**
  * Save accessory descriptions to i18n JSON files
+ * Note: If a product name is not set in the i18n file, it will be initialized with the product ID
  */
 function saveAccessoryDescriptions(string $productId, array $descriptions): void {
     $langs = ['en', 'de', 'fr', 'it', 'ru', 'ukr'];
@@ -42,10 +49,19 @@ function saveAccessoryDescriptions(string $productId, array $descriptions): void
         if (!file_exists($path)) {
             continue;
         }
-        $data = json_decode(file_get_contents($path), true);
+        
+        $content = file_get_contents($path);
+        if ($content === false) {
+            error_log("Failed to read i18n file: $path");
+            continue;
+        }
+        
+        $data = json_decode($content, true);
         if (!is_array($data)) {
+            error_log("Failed to decode JSON from i18n file: $path");
             $data = [];
         }
+        
         if (!isset($data['product'])) {
             $data['product'] = [];
         }
@@ -53,15 +69,18 @@ function saveAccessoryDescriptions(string $productId, array $descriptions): void
             $data['product'][$productId] = [];
         }
         $data['product'][$productId]['desc'] = $desc;
-        // Optionally set name if not present
+        
+        // Initialize name field if not present (for consistency in i18n files)
         if (empty($data['product'][$productId]['name'])) {
             $data['product'][$productId]['name'] = $productId;
         }
 
-        file_put_contents(
-            $path,
-            json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
-        );
+        $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        $result = file_put_contents($path, $json);
+        
+        if ($result === false) {
+            error_log("Failed to write i18n file: $path");
+        }
     }
 }
 
