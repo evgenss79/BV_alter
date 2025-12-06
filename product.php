@@ -245,24 +245,65 @@ include __DIR__ . '/includes/header.php';
         <h2 class="text-center mb-4"><?php echo I18N::t('product.recommended', 'You might also like'); ?></h2>
         <div class="products-grid">
             <?php
-            // Get other products from same category
-            $recommendedProducts = array_filter($products, function($p, $id) use ($categorySlug, $productId) {
-                return ($p['category'] ?? '') === $categorySlug && $id !== $productId;
+            // Get products from different categories (exclude current product)
+            $recommendedProducts = array_filter($products, function($p, $id) use ($productId) {
+                return $id !== $productId && ($p['active'] ?? false);
             }, ARRAY_FILTER_USE_BOTH);
             
-            $recommendedProducts = array_slice($recommendedProducts, 0, 3, true);
+            // Shuffle to get random products from different categories
+            $recommendedArray = [];
+            foreach ($recommendedProducts as $id => $p) {
+                $recommendedArray[$id] = $p;
+            }
             
-            foreach ($recommendedProducts as $recId => $recProduct):
+            // Get a diverse mix by prioritizing different categories
+            $categorizedProducts = [];
+            foreach ($recommendedArray as $id => $p) {
+                $cat = $p['category'] ?? 'other';
+                if (!isset($categorizedProducts[$cat])) {
+                    $categorizedProducts[$cat] = [];
+                }
+                $categorizedProducts[$cat][$id] = $p;
+            }
+            
+            // Select 1 product from different categories
+            $selectedProducts = [];
+            $maxProducts = 4;
+            foreach ($categorizedProducts as $cat => $catProducts) {
+                if (count($selectedProducts) >= $maxProducts) break;
+                // Get first product from this category
+                $firstProduct = array_slice($catProducts, 0, 1, true);
+                $selectedProducts = array_merge($selectedProducts, $firstProduct);
+            }
+            
+            // If we don't have enough, add more from any category
+            if (count($selectedProducts) < $maxProducts) {
+                $remaining = array_diff_key($recommendedArray, $selectedProducts);
+                $additional = array_slice($remaining, 0, $maxProducts - count($selectedProducts), true);
+                $selectedProducts = array_merge($selectedProducts, $additional);
+            }
+            
+            foreach ($selectedProducts as $recId => $recProduct):
                 $recName = I18N::t('product.' . $recId . '.name', $recProduct['name_key'] ?? $recId);
                 $recImage = $recProduct['image'] ?? '';
+                $recCategory = $recProduct['category'] ?? '';
                 $recVariants = $recProduct['variants'] ?? [];
                 $recPrice = !empty($recVariants) ? ($recVariants[0]['priceCHF'] ?? 0) : 0;
+                
+                // Handle accessories which may have price in accessories.json
+                if ($recCategory === 'accessories' && isset($accessoriesData[$recId]['priceCHF'])) {
+                    $recPrice = $accessoriesData[$recId]['priceCHF'];
+                }
+                
+                // Determine image path based on category
+                $recImgPath = ($recCategory === 'accessories') ? 'img/' . $recImage : 'assets/img/' . $recImage;
+                $recPlaceholder = ($recCategory === 'accessories') ? 'img/placeholder.svg' : 'assets/img/placeholder.jpg';
             ?>
                 <a href="product.php?id=<?php echo htmlspecialchars($recId); ?>&lang=<?php echo $currentLang; ?>" class="product-card" style="text-decoration: none;">
-                    <img src="assets/img/<?php echo htmlspecialchars($recImage); ?>" 
+                    <img src="<?php echo htmlspecialchars($recImgPath); ?>" 
                          alt="<?php echo htmlspecialchars($recName); ?>" 
                          class="product-card__image"
-                         onerror="this.src='assets/img/placeholder.jpg'">
+                         onerror="this.src='<?php echo htmlspecialchars($recPlaceholder); ?>'">
                     <h3 class="product-card__title"><?php echo htmlspecialchars($recName); ?></h3>
                     <div class="product-card__meta">
                         <span class="product-card__price">CHF <?php echo number_format($recPrice, 2); ?></span>

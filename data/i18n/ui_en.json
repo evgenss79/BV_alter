@@ -81,13 +81,10 @@
         },
         "support": {
             "title": "Support & FAQ",
-            "subtitle": "Frequently asked questions",
-            "shippingTitle": "Shipping & Delivery",
-            "shippingContent": "We offer free shipping on all orders over CHF 80. Standard delivery takes 1-3 business days within Switzerland.",
-            "returnsTitle": "Returns & Refunds",
-            "returnsContent": "We accept returns within 14 days of delivery. Items must be unused and in original packaging.",
-            "paymentTitle": "Payment Methods",
-            "paymentContent": "We currently accept TWINT for payments. Credit card and PayPal coming soon."
+            "subtitle": "Find answers to common questions",
+            "moreQuestions": "Have more questions?",
+            "privacyContent": "We are committed to protecting your privacy. Your personal information is used only to process your order and improve your shopping experience. We do not share your data with third parties except as necessary to fulfill your order.",
+            "termsContent": "By placing an order on NicheHome.ch, you agree to our terms and conditions. All products are subject to availability. Prices are in Swiss Francs (CHF) and include VAT."
         },
         "cart": {
             "title": "Shopping Cart",
@@ -148,13 +145,6 @@
             "formMessage": "Tell us about your needs",
             "formSubmit": "Send request",
             "formSuccess": "Thank you for your inquiry. Our team will contact you within 24 hours."
-        },
-        "support": {
-            "title": "Support & FAQ",
-            "subtitle": "Find answers to common questions",
-            "moreQuestions": "Have more questions?",
-            "privacyContent": "We are committed to protecting your privacy. Your personal information is used only to process your order and improve your shopping experience. We do not share your data with third parties except as necessary to fulfill your order.",
-            "termsContent": "By placing an order on NicheHome.ch, you agree to our terms and conditions. All products are subject to availability. Prices are in Swiss Francs (CHF) and include VAT."
         }
     },
     "footer": {
@@ -211,6 +201,10 @@
         "aroma_sashe": {
             "name": "Aroma Sashé",
             "desc": "Our home perfumes come in the form of solid air fresheners. We have created them concise and aesthetic.\n\nTherefore, this product will be a very pleasant addition to your home. The fragrance of the solid air freshener is more delicate than that of a regular home perfume.\n\nThis type of product will not declare itself as loudly. But it can subtly and effectively highlight individual details.\n\nIn other words, you have the opportunity to selectively scent any object by simply placing or hanging an aromatic air freshener there. For example, you can place it in a wardrobe with clothes. Every time you open the doors of your wardrobe, you will feel a light trace of your favorite fragrance.\n\nThere is a rule: the smaller the distribution area, the longer the fragrance lasts."
+        },
+        "christ_toy": {
+            "name": "Christmas Tree Toy",
+            "desc": "Beautiful Christmas tree ornament with your favorite fragrance. Perfect gift for the holidays."
         }
     }
 }

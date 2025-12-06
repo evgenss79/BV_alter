@@ -1,38 +1,57 @@
 {
-  "aroma_sashe": {
-    "id": "aroma_sashe",
-    "name_key": "product.aroma_sashe.name",
-    "desc_key": "product.aroma_sashe.desc",
-    "images": [
-      "2-Sashe.jpg",
-      "sashe_ward.jpg"
-    ],
-    "priceCHF": 11.90,
-    "active": true,
-    "allowed_fragrances": [
-      "cherry_blossom",
-      "bellini",
-      "eden",
-      "rosso",
-      "santal",
-      "lime_basil",
-      "bamboo",
-      "tobacco_vanilla",
-      "salty_water",
-      "christmas_tree",
-      "fleur",
-      "blanc",
-      "green_mango",
-      "carolina",
-      "sugar",
-      "dubai",
-      "africa",
-      "dune",
-      "valencia",
-      "etna",
-      "new_york",
-      "abu_dhabi",
-      "palermo"
-    ]
-  }
+    "aroma_sashe": {
+        "id": "aroma_sashe",
+        "name_key": "product.aroma_sashe.name",
+        "desc_key": "product.aroma_sashe.desc",
+        "images": [
+            "2-Sashe.jpg",
+            "sashe_ward.jpg"
+        ],
+        "priceCHF": 11.9,
+        "active": true,
+        "allowed_fragrances": [
+            "cherry_blossom",
+            "bellini",
+            "eden",
+            "rosso",
+            "santal",
+            "lime_basil",
+            "bamboo",
+            "tobacco_vanilla",
+            "salty_water",
+            "christmas_tree",
+            "fleur",
+            "blanc",
+            "green_mango",
+            "carolina",
+            "sugar",
+            "dubai",
+            "africa",
+            "dune",
+            "valencia",
+            "etna",
+            "new_york",
+            "abu_dhabi",
+            "palermo"
+        ]
+    },
+    "christ_toy": {
+        "id": "christ_toy",
+        "name_key": "product.christ_toy.name",
+        "desc_key": "product.christ_toy.desc",
+        "images": [
+            "christmas-toy-1.jpg",
+            "christmas-toy-2.jpg"
+        ],
+        "priceCHF": 15.9,
+        "active": true,
+        "allowed_fragrances": [
+            "cherry_blossom",
+            "eden",
+            "santal",
+            "christmas_tree",
+            "fleur",
+            "blanc"
+        ]
+    }
 }

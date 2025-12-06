@@ -6,9 +6,18 @@
         "desc_key": "product.diffuser_classic.desc",
         "image": "Mikado-category.jpg",
         "variants": [
-            {"volume": "125ml", "priceCHF": 20.90},
-            {"volume": "250ml", "priceCHF": 29.90},
-            {"volume": "500ml", "priceCHF": 50.90}
+            {
+                "volume": "125ml",
+                "priceCHF": 20.9
+            },
+            {
+                "volume": "250ml",
+                "priceCHF": 29.9
+            },
+            {
+                "volume": "500ml",
+                "priceCHF": 50.9
+            }
         ],
         "active": true
     },
@@ -19,8 +28,14 @@
         "desc_key": "product.candle_classic.desc",
         "image": "Candels category.jpg",
         "variants": [
-            {"volume": "160ml", "priceCHF": 24.90},
-            {"volume": "500ml", "priceCHF": 59.90}
+            {
+                "volume": "160ml",
+                "priceCHF": 24.9
+            },
+            {
+                "volume": "500ml",
+                "priceCHF": 59.9
+            }
         ],
         "active": true
     },
@@ -31,8 +46,14 @@
         "desc_key": "product.home_spray.desc",
         "image": "home pefume.jpg",
         "variants": [
-            {"volume": "10ml", "priceCHF": 9.90},
-            {"volume": "50ml", "priceCHF": 19.90}
+            {
+                "volume": "10ml",
+                "priceCHF": 9.9
+            },
+            {
+                "volume": "50ml",
+                "priceCHF": 19.9
+            }
         ],
         "active": true
     },
@@ -43,7 +64,10 @@
         "desc_key": "product.car_clip.desc",
         "image": "AutoParf.jpg",
         "variants": [
-            {"volume": "standard", "priceCHF": 14.90}
+            {
+                "volume": "standard",
+                "priceCHF": 14.9
+            }
         ],
         "active": true
     },
@@ -54,7 +78,10 @@
         "desc_key": "product.textile_spray.desc",
         "image": "Textil-spray.jpg",
         "variants": [
-            {"volume": "standard", "priceCHF": 19.90}
+            {
+                "volume": "standard",
+                "priceCHF": 19.9
+            }
         ],
         "active": true
     },
@@ -66,7 +93,10 @@
         "image": "New-York.jpg",
         "fragrance": "new_york",
         "variants": [
-            {"volume": "270ml", "priceCHF": 39.90}
+            {
+                "volume": "270ml",
+                "priceCHF": 39.9
+            }
         ],
         "active": true
     },
@@ -78,7 +108,10 @@
         "image": "abu-dhabi.jpg",
         "fragrance": "abu_dhabi",
         "variants": [
-            {"volume": "270ml", "priceCHF": 39.90}
+            {
+                "volume": "270ml",
+                "priceCHF": 39.9
+            }
         ],
         "active": true
     },
@@ -90,7 +123,10 @@
         "image": "Palermo.jpg",
         "fragrance": "palermo",
         "variants": [
-            {"volume": "270ml", "priceCHF": 39.90}
+            {
+                "volume": "270ml",
+                "priceCHF": 39.9
+            }
         ],
         "active": true
     },
@@ -102,7 +138,10 @@
         "image": "2-Sashe.jpg",
         "hover_image": "sashe_ward.jpg",
         "variants": [
-            {"volume": "standard", "priceCHF": 11.90}
+            {
+                "volume": "standard",
+                "priceCHF": 11.9
+            }
         ],
         "active": true,
         "allowed_fragrances": [
@@ -127,5 +166,19 @@
             "valencia",
             "etna"
         ]
+    },
+    "christ_toy": {
+        "id": "christ_toy",
+        "category": "accessories",
+        "name_key": "product.christ_toy.name",
+        "desc_key": "product.christ_toy.desc",
+        "image": "christmas-toy-1.jpg",
+        "variants": [
+            {
+                "volume": "standard",
+                "priceCHF": 15.9
+            }
+        ],
+        "active": true
     }
 }
